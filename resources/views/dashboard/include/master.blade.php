@@ -490,8 +490,12 @@
 			<!-- Footer opened -->
 			<div class="main-footer">
 				<div class="container-fluid pd-t-0 ht-100p">
-					<span> Copyright © 2022 <a href="javascript:void(0);" class="text-primary">Valex</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="javascript:void(0);"> Spruko </a> All rights reserved.</span>
+					<span> حقوق  النشر © 2022 <a href="javascript:void(0);" class="text-primary">شركة القيق </a>جميع الحقوق محفوظة</span>
 				</div>
+                <p>
+                    <script></script>جميع الحقوق محفوظة لدى <a class="text-white"
+                        href="https://themefisher.com">شركة القيق @2023</a>
+                </p>
 			</div>
 			<!-- Footer closed -->
 
@@ -565,7 +569,19 @@
 		<script src="{{ asset('adminassets/plugins/fileuploads/js/fileupload.js') }}"></script>
         <script src="{{ asset('adminassets/plugins/fileuploads/js/file-upload.js') }}"></script>
 
+<script>
+        const button = document.getElementById("myButton");
 
+button.addEventListener("click", function () {
+  if (button.classList.contains("inactive")) {
+    button.classList.remove("inactive");
+    button.classList.add("active");
+  } else {
+    button.classList.remove("active");
+    button.classList.add("inactive");
+  }
+});
+</script>
         @yield('script')
 	</body>
 </html>

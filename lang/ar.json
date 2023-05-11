@@ -1,4 +1,5 @@
 {
+    "Users Number":"عدد المستخدمين",
     "first_name" : "الاسم الاول",
     "Name" : " الأسم",
     "Name_en" : " الأسم بالانجليزي",
@@ -63,6 +64,11 @@
     "Show Order":"تفاصيل الطلب",
     "Enabled":"مفعل",
     "Disabled":"معطل",
-    "":"",
-    "":""
+    "Number Order":"عدد الطلبات",
+    "Dameen Partners":"شركاء ضمين",
+    "All Review":"جميع الأقوال",
+    "Reset Password":"إعادة تعيين كلمة المرور",
+    "Edit Profile":"تعديل الملف الشخصي",
+    "Account Settings":"إعدادت الحساب",
+    "Sign Out":"تسجيل الخروج"
 }

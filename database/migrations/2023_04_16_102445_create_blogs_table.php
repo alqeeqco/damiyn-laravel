@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('title_en',255);
-            $table->string('title_ar',255);
-            $table->string('content_en',2000);
-            $table->string('content_ar',2000);
+            $table->string('title_en');
+            $table->string('title_ar');
+            $table->string('content_en');
+            $table->string('content_ar');
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
             $table->tinyInteger('active');

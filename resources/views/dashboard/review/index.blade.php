@@ -26,7 +26,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-
+                   <button class="btn btn-success"> <a href="{{ route('admin.reviews.create') }}">{{ __('admin.add reviews') }}</a></button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

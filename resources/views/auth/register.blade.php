@@ -124,23 +124,23 @@
 			  <fieldset class="p-4">
 				<div class="class-group text-align-right">
 					<label for="">الإسم كامل</label>
-					<input class="form-control mb-3" name="name_en" type="text" placeholder="الإسم كامل" required="">
+					<input class="form-control mb-3" name="name_en" type="text" value="{{ old('name_en') }}" placeholder="الإسم كامل" required="">
 				</div>
 
 				<div class="class-group text-align-right">
 					<label for="">البريد الإلكتروني</label>
-					<input class="form-control mb-3" type="email" name="email" placeholder="البريد الإلكتروني" required="">
+					<input class="form-control mb-3" type="email" name="email" value="{{ old('email') }}"  placeholder="البريد الإلكتروني" required="">
 				</div>
 				<div class="class-group text-align-right">
 					<label for="">رقم الجوال </label>
-					<input class="form-control mb-3" type="phone" name="phone" placeholder="رقم الجوال " required="">
+					<input class="form-control mb-3" type="phone" name="phone"  value="{{ old('phone') }}" placeholder="رقم الجوال " required="">
 				</div>
 				<div class="loggedin-forgot">
 				  <p  class="pt-3 pb-2 register-text">عند إنشائك للحساب فأنت توافق على <a href=""> شروط الإستخدام و سياسة الخصوصية</a></p>
 				</div>
 				<button type="submit" class="w-100 btn btn-primary  mt-3 btn-blue">إنشاء حساب</button>
 				<div class="text-center mt-0 register-par">
-					<p class="parah">لدي حساب ?	<a class="mt-3 d-inline-block text-primary" href="login.html"> تسجيل الدخول</a>
+					<p class="parah">لدي حساب ?	<a class="mt-3 d-inline-block text-primary" href="{{ route('login') }}"> تسجيل الدخول</a>
 					</p>
 				</div>
 			  </fieldset>

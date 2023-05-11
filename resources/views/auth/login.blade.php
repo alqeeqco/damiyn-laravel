@@ -134,7 +134,7 @@
                             </form>
                         </div>
                         <div class="card-footer text-center footer-bg">
-                            <p class="card-footer-p"> ليس لدي حساب؟ <a href="" class="text-blue">إنشاء حساب</a>
+                            <p class="card-footer-p"> ليس لدي حساب؟ <a href="{{ route('register') }}" class="text-blue">إنشاء حساب</a>
                             </p>
                         </div>
                     </div>

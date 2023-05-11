@@ -137,3 +137,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/site', 'as' => 's
 
 Route::get('/',[indexController::class,'homeIndex'])->name('homeIndex');
 Route::get('/home/Blogs',[indexController::class,'homeBlogs'])->name('homeBlogs');
+

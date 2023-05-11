@@ -22,9 +22,9 @@ class CreateTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:255',
             'active' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg,gif',
         ];
     }
 

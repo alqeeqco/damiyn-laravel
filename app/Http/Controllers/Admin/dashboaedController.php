@@ -11,4 +11,6 @@ class dashboaedController extends Controller
     {
          return view('dashboard.dashboard');
     }
+
+
 }

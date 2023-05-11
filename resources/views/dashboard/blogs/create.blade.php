@@ -24,7 +24,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">{{ __('Title_en') }}</label>
-                            <input type="text" name="title_en" value="{{ old('title_en') }}" placeholder="title " class="form-control">
+                            <input type="text" name="title_en" value="{{ old('title_en') }}"  class="form-control">
                             @error('title_en')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -33,7 +33,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">{{ __('Title_ar') }}</label>
-                            <input type="text" name="title_ar" value="{{ old('title_ar') }}" placeholder="title " class="form-control">
+                            <input type="text" name="title_ar" value="{{ old('title_ar') }}"  class="form-control">
                             @error('title_ar')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -60,7 +60,7 @@
 
                     <div class="col-md-6">
                         <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
-                            <input type="file" name="image" class="dropify" data-default-file="../assets/img/photos/1.jpg" data-height="200">
+                            <input type="file" name="image" class="dropify" data-default-file="{{ asset('adminassets/img/photos/1.jpg') }}" data-height="200">
                             @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

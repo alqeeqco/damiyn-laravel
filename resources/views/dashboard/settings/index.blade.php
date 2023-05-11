@@ -28,8 +28,8 @@
     <div class="row row-sm">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-
+                <div class="card-header" style="text-align: end">
+                    <button class="btn btn-success"><a  href=" {{ route('admin.settings.create') }}">{{ __('admin.add settings ') }} </a></button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

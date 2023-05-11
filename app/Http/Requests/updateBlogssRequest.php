@@ -22,12 +22,12 @@ class updateBlogssRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_en' => 'required',
-            'title_ar' => 'required',
-            'content_en' => 'required',
-            'content_ar' => 'required',
+            'title_en' => 'required|max:255',
+            'title_ar' => 'required|max:255',
+            'content_en' => 'required|max:2000',
+            'content_ar' => 'required|max:2000',
             'active' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,gif',
         ];
     }
 

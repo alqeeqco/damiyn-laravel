@@ -23,7 +23,7 @@ class updateOrdersRequest extends FormRequest
     {
         return [
             'number_orders' => 'required',
-            'mobile_user' => 'required',
+            'mobile_user' => 'required|max:50',
             'Order_status' => 'required',
             'show_order_en' => 'nullable',
             'show_order_ar' => 'nullable',

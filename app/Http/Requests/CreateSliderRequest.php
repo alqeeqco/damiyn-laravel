@@ -22,10 +22,10 @@ class CreateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_en' => 'required',
-            'title_ar' => 'required',
+            'title_en' => 'required|max:255',
+            'title_ar' => 'required|max:255',
             'active' => 'required',
-            'slider' => 'required',
+            'slider' => 'required|image|mimes:png,jpg,jpeg,svg,gif',
         ];
     }
 

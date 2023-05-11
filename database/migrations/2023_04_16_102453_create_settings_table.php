@@ -13,21 +13,21 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('video',1000);
+            $table->string('video');
             $table->string('logo_header');
             $table->string('logo_footer');
-            $table->string('title_video_en',255);
-            $table->string('title_video_ar',255);
-            $table->string('content_video_en',500);
-            $table->string('content_video_ar',500);
-            $table->string('title_gallary_en',255);
-            $table->string('title_gallary_ar',255);
-            $table->string('content_gallary_en',500);
-            $table->string('content_gallary_ar',500);
-            $table->string('privacy_policy_en',1000);//سياسة الخصوصية
-            $table->string('privacy_policy_ar',1000);//سياسة الخصوصية
-            $table->string('Terms_and_Conditions_en',1000);//الشروط والاحكام
-            $table->string('Terms_and_Conditions_ar',1000);//الشروط والاحكام
+            $table->string('title_video_en');
+            $table->string('title_video_ar');
+            $table->string('content_video_en');
+            $table->string('content_video_ar');
+            $table->string('title_gallary_en');
+            $table->string('title_gallary_ar');
+            $table->string('content_gallary_en');
+            $table->string('content_gallary_ar');
+            $table->string('privacy_policy_en');//سياسة الخصوصية
+            $table->string('privacy_policy_ar');//سياسة الخصوصية
+            $table->string('Terms_and_Conditions_en');//الشروط والاحكام
+            $table->string('Terms_and_Conditions_ar');//الشروط والاحكام
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
             $table->tinyInteger('active');

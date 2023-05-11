@@ -75,6 +75,15 @@ class AuthController extends Controller
         $user->phone = $request->phone;
         $user->password = Hash::make($request->phone);
         $user->code = $code;
+        $checkExists_name = User::where(['phone' => $request->phone])->first();
+            if (!empty($checkExists_name)) {
+                return redirect()->back()->with(['error' => 'عفوا رقم المستخدم   مسجل من قبل'])->withInput();
+            }
+
+            $checkExists_name = User::where(['email'=>$request->email])->first();
+            if (!empty($checkExists_name)) {
+                return redirect()->back()->with(['error' => 'عفوا  الايميل مسجل من قبل'])->withInput();
+            }
         $user->save();
 
         $TWILIO_SID = env('TWILIO_SID');
@@ -88,7 +97,7 @@ class AuthController extends Controller
         //     'form'=>$TWILIO_FROM,
         //     'body'=>"Your verification code is $code"
         // ]);
-        $message = $twilio->message('00970'.$request->phone, $message, [], [
+        $message = $twilio->message($request->phone, $message, [], [
             'from'=>$TWILIO_FROM,
         ]);
 
@@ -124,7 +133,17 @@ class AuthController extends Controller
     }
     public function siteloginPost(Request $request)
     {
+        if($request->phone){
+            $user = User::where('phone', $request->phone)->first();
+
+        }else{
+            return back()->with(['error'=>'يرجى ادخال الرقم ']);
+        }
+
         $user = User::where('phone', $request->phone)->first();
+        if(!$user){
+            return back()->with(['error'=>'عفوا الرقم غير مسجل من قبل']);
+        }
 
         if(Auth::loginUsingId($user->id)){
             toastr()->success('Logged in successfully');

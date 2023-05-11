@@ -22,10 +22,10 @@ class UpdatedReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_en' => 'required',
-            'name_ar' => 'required',
-            'message_en' => 'required',
-            'message_ar' => 'required',
+            'name_en' => 'required|max:255',
+            'name_ar' => 'required|max:255',
+            'message_en' => 'required|max:2000',
+            'message_ar' => 'required|max:2000',
             'active' => 'required',
         ];
     }

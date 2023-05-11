@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
-                            <input type="file" name="image" class="dropify" data-default-file="../assets/img/photos/1.jpg" data-height="200">
+                            <input type="file" name="image" class="dropify" data-default-file="{{ asset('adminassets/img/photos/1.jpg') }}" data-height="200">
                             @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

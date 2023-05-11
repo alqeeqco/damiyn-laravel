@@ -26,7 +26,7 @@
 							<div class="app-sidebar__user clearfix">
 								<div class="dropdown user-pro-body">
 									<div class="main-img-user avatar-xl">
-										<img alt="user-img" src="{{ asset('adminassets/img/users/6.jpg') }}"><span class="avatar-status profile-status bg-green"></span>
+										<img alt="user-img" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"><span class="avatar-status profile-status bg-green"></span>
 									</div>
 									<div class="user-info">
 										<h4 class="fw-semibold mt-3 mb-0">{{ auth()->user()->$name }}</h4>
@@ -71,7 +71,6 @@
 														<ul class="sidemenu-list ">
 															<li class="side-menu__label1 "><a href="javascript:void(0);" class="">Settings</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/settings/index') ? 'active' : '' }}" href=" {{ route('admin.settings.index') }}">{{ __('admin.all settings ') }} </a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/settings/create') ? 'active' : '' }}" href=" {{ route('admin.settings.create') }}">{{ __('admin.add settings ') }} </a></li>
 														</ul>
 													</div>
 													<div class="tab-pane tab-content-double" id="side12">
@@ -199,7 +198,6 @@
 														<ul class="sidemenu-list">
 															<li class="side-menu__label1"><a href="javascript:void(0);" class="{{ request()->is('admin/slider*')  ? 'active' : '' }}">Slider</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/slider/index') ? 'active' : '' }}" href="{{ route('admin.slider.index') }}">{{ __('admin.all slider') }}</a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/slider/create') ? 'active' : '' }}" href="{{ route('admin.slider.create') }}">{{ __('admin.add slider') }}</a></li>
 														</ul>
 													</div>
 													<div class="tab-pane tab-content-double" id="side15">
@@ -327,7 +325,6 @@
 														<ul class="sidemenu-list">
 															<li class="side-menu__label1"><a href="javascript:void(0);">Blogs</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/blogs/index') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">{{ __('admin.all blogs') }}</a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/blogs/create') ? 'active' : '' }}" href="{{ route('admin.blogs.create') }}">{{ __('admin.add blogs') }}</a></li>
 														</ul>
 													</div>
 													<div class="tab-pane tab-content-double" id="side18">
@@ -583,7 +580,6 @@
 														<ul class="sidemenu-list">
 															<li class="side-menu__label1"><a href="javascript:void(0);">Features</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/features/index') ? 'active' : '' }}" href="{{ route('admin.features.index') }}">{{ __('admin.all features') }}</a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/features/create') ? 'active' : '' }}" href="{{ route('admin.features.create') }}">{{ __('admin.add features') }}</a></li>
 														</ul>
 													</div>
 													<div class="tab-pane  tab-content-double" id="side24">
@@ -711,7 +707,6 @@
 														<ul class="sidemenu-list">
 															<li class="side-menu__label1"><a href="javascript:void(0);">teams</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/teams/index') ? 'active' : '' }}" href="{{ route('admin.teams.index') }}">{{ __('admin.all teams') }}</a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/teams/create') ? 'active' : '' }}" href="{{ route('admin.teams.create') }}">{{ __('admin.add teams') }}</a></li>
 														</ul>
 													</div>
 													<div class="tab-pane  tab-content-double" id="side24">
@@ -839,7 +834,6 @@
 														<ul class="sidemenu-list">
 															<li class="side-menu__label1"><a href="javascript:void(0);">Review</a></li>
 															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/reviews/index') ? 'active' : '' }}" href="{{ route('admin.reviews.index') }}">{{ __('admin.all reviews') }}</a></li>
-															<li><a class="slide-item {{ str_contains(url()->current(), 'admin/reviews/create') ? 'active' : '' }}" href="{{ route('admin.reviews.create') }}">{{ __('admin.add reviews') }}</a></li>
 														</ul>
 													</div>
 													<div class="tab-pane  tab-content-double" id="side24">

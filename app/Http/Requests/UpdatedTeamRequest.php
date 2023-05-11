@@ -22,9 +22,9 @@ class UpdatedTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:255',
             'active' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,gif',
         ];
     }
 

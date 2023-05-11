@@ -3644,9 +3644,9 @@ a.slide_btn {
 }
 
 .col-footer {
+    justify-content: end;
   align-items: center;
   display: flex;
-  justify-content: center;
 }
 
 .bg-active a {

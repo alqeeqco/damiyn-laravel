@@ -22,10 +22,10 @@ class CreateReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_en' => 'required',
-            'name_ar' => 'required',
-            'message_en' => 'required',
-            'message_ar' => 'required',
+            'name_en' => 'required|max:255',
+            'name_ar' => 'required|max:255',
+            'message_en' => 'required|max:1000',
+            'message_ar' => 'required|max:1000',
             'active' => 'required',
         ];
     }
