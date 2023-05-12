@@ -98,6 +98,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('teams/edit/{id}', [TeamController::class, 'edit'])->name('teams.edit');
     Route::post('teams/update/{id}', [TeamController::class, 'update'])->name('teams.update');
     Route::delete('teams/delete/{id}', [TeamController::class, 'delete'])->name('teams.delete');
+    Route::post('/button/submit', [TeamController::class, 'submitButton'])->name('button.submit');
+
     /*              end team                           */
 });
 

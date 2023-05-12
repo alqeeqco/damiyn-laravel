@@ -161,7 +161,7 @@ $(function() {
 			}
 		}
 	});
-	
+
 	/* LINE CHART */
 	var ctx8 = document.getElementById('chartLine1');
 	new Chart(ctx8, {
@@ -219,7 +219,7 @@ $(function() {
 			}
 		}
 	});
-	
+
 	/** AREA CHART **/
 	var ctx9 = document.getElementById('chartArea1');
 	var gradient1 = ctx3.createLinearGradient(0, 350, 0, 0);
@@ -351,8 +351,8 @@ $(function() {
 			}
 		}
 	});
-	
-	
+
+
 	/** STACKED BAR CHART 2 **/
 	var ctx7 = document.getElementById('chartStacked2');
 	new Chart(ctx7, {
@@ -418,8 +418,8 @@ $(function() {
 			}
 		}
 	});
-	
-	
+
+
 	var ctx4 = document.getElementById('chartBar4').getContext('2d');
 	new Chart(ctx4, {
 		type: 'bar',
@@ -525,7 +525,7 @@ $(function() {
 			}
 		}
 	});
-	
+
 	/** PIE CHART **/
 	var datapie = {
 		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
