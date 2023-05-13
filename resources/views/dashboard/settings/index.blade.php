@@ -29,81 +29,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header" style="text-align: end">
-                    <button class="btn btn-success"><a  href=" {{ route('admin.settings.create') }}">{{ __('admin.add settings ') }} </a></button>
+                    <button class="btn btn-info"><a  href=" {{ route('admin.settings.create') }}">{{ __('admin.add settings ') }} </a></button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
 
                         <table class="table border-top-0  table-bordered text-nowrap border-bottom" id="asasd"
                             id="responsive-datatable">
-                            {{-- <thead>
-                                <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('ID') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Logo Header') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Logo footer') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Video') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Video Title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Video Content') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Gallary Title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Gallary Content') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Privacy Policy') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Terms and Conditions') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Updated at') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Active') }}</th>
-                                    <th class="wd-15p border-bottom-0"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $info)
-                                <tr>
-                                    <th scope="row">{{ $info->id }}</th>
-                                    <th scope="row"><img width="80" src="{{ asset('uploads/settings/'.$info->logo_header) }}" alt=""></th>
-                                    <th scope="row"><img width="80" src="{{ asset('uploads/settings/'.$info->logo_footer) }}" alt=""></th>
-                                    <td>{{ $info->video }}</td>
-                                    <td>{{ $info->$title_video }}</td>
-                                    <td>{{ $info->$content_video }}</td>
-                                    <td>{{ $info->$title_gallary }}</td>
-                                    <td>{{ $info->$content_gallary }}</td>
-                                    <td>{{ $info->$privacy_policy }}</td>
-                                    <td>{{ $info->$Terms_and_Conditions }}</td>
-                                    <td>
-                                        @if ($info->updated_by > 0 and $info->updated_by != null)
-                                        @php
-                                            $dt = new DateTime($info->updated_at);
-                                            $date = $dt->format('Y-m-d');
-                                            $time = $dt->format('h:i');
-                                            $newDateTime = date('A', strtotime($time));
-                                            $newDateTimeType = $newDateTime == 'AM' ? 'صباحا ' : 'مساء';
-                                        @endphp
-                                        {{ $date }} <br>
-                                        {{ $time }}
-                                        {{ $newDateTimeType }} <br>
-                                        بواسطة
-                                        {{ $data['updated_by_admin'] }}
-                                    @else
-                                         No Updated
-                                    @endif
 
-                                    </td>
-                                    <td>
-                                        @if ($info->active == 1)
-                                        Enabled
-                                        @else
-                                        Disabled
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.settings.edit',$info->id) }}"><span class="fe fe-edit"> </span></a>
-                                        <form class="d-inline" action="{{ route('admin.settings.delete',$info->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-                            </tbody> --}}
                             @if (@isset($data) && !@empty($data))
                             <tr>
                                 <td class="width30">{{ __('ID') }}</td>
