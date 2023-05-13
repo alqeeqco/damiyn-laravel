@@ -86,20 +86,20 @@ class AuthController extends Controller
             }
         $user->save();
 
-        $TWILIO_SID = env('TWILIO_SID');
-        $TWILIO_TOKEN = env('TWILIO_TOKEN');
-        $TWILIO_FROM = env('TWILIO_FROM');
-        $message = "Your verification code is $code";
+        // $TWILIO_SID = env('TWILIO_SID');
+        // $TWILIO_TOKEN = env('TWILIO_TOKEN');
+        // $TWILIO_FROM = env('TWILIO_FROM');
+        // $message = "Your verification code is $code";
 
-        $twilio = new Twilio($TWILIO_SID, $TWILIO_TOKEN, $TWILIO_FROM);
+        // $twilio = new Twilio($TWILIO_SID, $TWILIO_TOKEN, $TWILIO_FROM);
         // $twilio->message->create('+970'.$request->phone,[
 
         //     'form'=>$TWILIO_FROM,
         //     'body'=>"Your verification code is $code"
         // ]);
-        $message = $twilio->message($request->phone, $message, [], [
-            'from'=>$TWILIO_FROM,
-        ]);
+        // $message = $twilio->message($request->phone, $message, [], [
+        //     'from'=>$TWILIO_FROM,
+        // ]);
 
         //  $twilio->message($user->phone, "Your verification code is $code");
 

@@ -78,7 +78,7 @@
                                         data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
                                 </li>
                                 <li class="nav-item links ">
-                                    <a class="nav-link" href="{{ route('site.login') }}">من نحن</a>
+                                    <a class="nav-link" href="#">من نحن</a>
                                 </li>
                                 <li class="nav-item links ">
                                     <a class="nav-link" href="{{ route('site.login') }}">المقالات</a>
@@ -136,7 +136,7 @@
 					<input class="form-control mb-3" type="phone" name="phone"  value="{{ old('phone') }}" placeholder="رقم الجوال " required="">
 				</div>
 				<div class="loggedin-forgot">
-				  <p  class="pt-3 pb-2 register-text">عند إنشائك للحساب فأنت توافق على <a href=""> شروط الإستخدام و سياسة الخصوصية</a></p>
+				  <p  class="pt-3 pb-2 register-text">عند إنشائك للحساب فأنت توافق على <a href="#"> شروط الإستخدام و سياسة الخصوصية</a></p>
 				</div>
 				<button type="submit" class="w-100 btn btn-primary  mt-3 btn-blue">إنشاء حساب</button>
 				<div class="text-center mt-0 register-par">

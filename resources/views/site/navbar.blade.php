@@ -23,7 +23,7 @@
                                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
                             </li>
                             <li class="nav-item links ">
-                                <a class="nav-link" href="{{ route('site.home') }}">من نحن</a>
+                                <a class="nav-link" href="#">من نحن</a>
                             </li>
                             <li class="nav-item links ">
                                 <a class="nav-link" href="{{ route('site.blogs') }}">المقالات</a>

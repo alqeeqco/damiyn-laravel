@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title_ar');
             $table->string('content_en');
             $table->string('content_ar',);
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->integer('updated_by')->nullable();
             $table->timestamps();
         });

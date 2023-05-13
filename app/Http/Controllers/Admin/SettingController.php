@@ -8,6 +8,7 @@ use App\Http\Requests\updateSettingsRequest;
 use App\Models\Setting;
 use App\Models\Settings;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -54,17 +55,22 @@ class SettingController extends Controller
             $data_insert['Terms_and_Conditions_ar'] = $request->Terms_and_Conditions_ar;
             $data_insert['created_at'] = date("Y-m-d H:s");
 
-            $img = $request->file('logo_header');
-            $img_name = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/settings'), $img_name);
-            $data_insert['logo_header']=$img_name;
 
+            if ($request->file('logo_header')) {
+                $name = Str::random(12);
+                $path = $request->file('logo_header');
+                $name = $name . time() . '.' . $request->file('logo_header')->getClientOriginalExtension();
+                $data_insert['logo_header'] = $name;
+                $path->move('uploads/settings', $name);
+            }
             $data_insert['added_by'] = auth()->user()->id;
-
-            $img = $request->file('logo_footer');
-            $img_name1 = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/settings'), $img_name1);
-            $data_insert['logo_footer']=$img_name1;
+            if ($request->file('logo_footer')) {
+                $name = Str::random(12);
+                $path = $request->file('logo_footer');
+                $name = $name . time() . '.' . $request->file('logo_footer')->getClientOriginalExtension();
+                $data_insert['logo_footer'] = $name;
+                $path->move('uploads/settings', $name);
+            }
             Setting::create($data_insert);
             return redirect()->route('admin.settings.index')->with(['success'=>'Added successfully']);
 
@@ -110,23 +116,22 @@ class SettingController extends Controller
             $data_update['active'] = $request->active;
             $data_update['updated_by'] = auth()->user()->id;
             $data = Setting::findOrFail($id);
-            $img_name = $data->logo_header;
-            if($request->hasFile('logo_header')) {
-                File::delete(public_path('uploads/settings'.$data->logo_header));
-                $img = $request->file('logo_header');
-                $img_name = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/settings'), $img_name);
+            if ($request->file('logo_header')) {
+                $name = Str::random(12);
+                $path = $request->file('logo_header');
+                $name = $name . time() . '.' . $request->file('logo_header')->getClientOriginalExtension();
+                $data_update['logo_header'] = $name;
+                $path->move('uploads/settings', $name);
             }
-            $data_update['logo_header']=$img_name;
 
-            $img_name1 = $data->logo_footer;
-            if($request->hasFile('logo_footer')) {
-                File::delete(public_path('uploads/settings'.$data->logo_footer));
-                $img = $request->file('logo_footer');
-                $img_name1 = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/settings'), $img_name1);
+            if ($request->file('logo_footer')) {
+                $name = Str::random(12);
+                $path = $request->file('logo_footer');
+                $name = $name . time() . '.' . $request->file('logo_footer')->getClientOriginalExtension();
+                $data_update['logo_footer'] = $name;
+                $path->move('uploads/settings', $name);
             }
-            $data_update['logo_footer']=$img_name1;
+
             $data_update['updated_at'] = date("Y-m-d H:s");
 
             Setting::where(['id'=>$id])->update($data_update);
@@ -139,21 +144,40 @@ class SettingController extends Controller
         }
     }
 
+
+
     public function delete($id)
     {
         try{
             $settings = Setting::findOrFail($id);
-            File::delete(public_path('uploads/settings/'.$settings->logo_header));
-            File::delete(public_path('uploads/settings/'.$settings->logo_footer));
+            File::delete('uploads/settings/'.$settings->logo_header);
+            File::delete('uploads/settings/'.$settings->logo_footer);
 
             $settings->delete();
+            toastr()->success('Data has been deleted successfully!');
 
-            return redirect()->route('admin.settings.index')->with(['success'=>'Delete completed successfully']);
+            return redirect()->route('admin.slider.index');
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
+    }
+
+    public function toggle_active($id)
+    {
+        $team = Setting::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
     }
 
 }

@@ -34,7 +34,10 @@
                             <div class="parsley-input col-md-12 mg-t-20 mg-md-t-0" id="lnWrapper">
                                 <label>{{ __('Old Password') }} : <span class="tx-danger">*</span></label>
                                 <input class="form-control mg-b-20" data-parsley-class-handler="#lnWrapper"
-                                    name="old_password" type="password">
+                                    name="old_password" type="password" value="{{ old('old_password') }}">
+                                    @error('old_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                             </div>
                         </div>
 
@@ -42,13 +45,19 @@
                             <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
                                 <label>{{ __('New Password') }} : <span class="tx-danger">*</span></label>
                                 <input class="form-control mg-b-20" data-parsley-class-handler="#lnWrapper"
-                                    name="new_password" type="password">
-                            </div>
+                                    name="new_password" type="password" value="{{ old('new_password') }}">
+                                    @error('new_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
                                 <label> {{ __('Password Confirmation') }} : <span class="tx-danger">*</span></label>
                                 <input class="form-control mg-b-20" data-parsley-class-handler="#lnWrapper"
-                                    name="confirm_password" type="password">
-                            </div>
+                                    name="confirm_password" type="password" value="{{ old('confirm_password') }}">
+                                    @error('confirm_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                         </div>
 
                         <div class="mg-t-30">

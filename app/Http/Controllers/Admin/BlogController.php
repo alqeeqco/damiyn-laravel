@@ -7,6 +7,7 @@ use App\Http\Requests\CreateBlogsRequest;
 use App\Http\Requests\updateBlogssRequest;
 use App\Models\Blog;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -17,16 +18,14 @@ class BlogController extends Controller
         $data = Blog::select("*")->orderby('id', 'DESC')->paginate(10);
         if (!empty($data)) {
             foreach ($data as $info) {
-                $info->added_by_admin = User::where('id', $info->added_by)->value('name_en','name_ar');
+                $info->added_by_admin = User::where('id', $info->added_by)->value('name_en', 'name_ar');
 
                 if ($info->updated_by > 0 and $info->updated_by != null) {
-                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name_en','name_ar');
+                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name_en', 'name_ar');
                 }
             }
-
         }
         return view('dashboard.blogs.index', compact('data'));
-
     }
 
     public function create()
@@ -37,7 +36,7 @@ class BlogController extends Controller
     public function store(CreateBlogsRequest $request)
     {
         try {
-            $checkExists_name =Blog::select("id")->where(['title_en'=>$request->title_en,'title_ar'=>$request->title_ar])->first();
+            $checkExists_name = Blog::select("id")->where(['title_en' => $request->title_en, 'title_ar' => $request->title_ar])->first();
             if (!empty($checkExists_name)) {
                 toastr()->error('عفوا الصورة  مكررة من قبل');
                 return redirect()->back()->withInput();
@@ -49,14 +48,20 @@ class BlogController extends Controller
             $data_insert['active'] = $request->active;
             $data_insert['added_by'] = auth()->user()->id;
             $data_insert['created_at'] = date("Y-m-d H:s");
-            $img = $request->file('image');
-            $img_name = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/Blog'), $img_name);
-            $data_insert['image']=$img_name;
+            // $img = $request->file('image');
+            // $img_name = rand(). time().$img->getClientOriginalName();
+            // $img->move(public_path('uploads/Blog'), $img_name);
+            // $data_insert['image']=$img_name;
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_insert['image'] = $name;
+                $path->move('uploads/Blog', $name);
+            }
             Blog::create($data_insert);
             toastr()->success('تمت الاضافة بنجاح');
             return redirect()->route('admin.blogs.index');
-
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -66,14 +71,14 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $data = Blog::select("*")->where('id' , $id)->first();
-        return view('dashboard.blogs.edit',compact('data'));
+        $data = Blog::select("*")->where('id', $id)->first();
+        return view('dashboard.blogs.edit', compact('data'));
     }
 
-    public function update(updateBlogssRequest $request,$id)
+    public function update(updateBlogssRequest $request, $id)
     {
         try {
-            $checkExists_name =Blog::select("id")->where(['title_en'=>$request->title_en,'title_ar'=>$request->title_ar])->where('id','!=',$id)->first();
+            $checkExists_name = Blog::select("id")->where(['title_en' => $request->title_en, 'title_ar' => $request->title_ar])->where('id', '!=', $id)->first();
             if (!empty($checkExists_name)) {
                 toastr()->error('عفوا العنوان  مكرر من قبل');
 
@@ -87,20 +92,19 @@ class BlogController extends Controller
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
             $data = Blog::findOrFail($id);
-            $img_name = $data->image;
-            if($request->hasFile('image')) {
-                File::delete(public_path('uploads/Blog'.$data->image));
-                $img = $request->file('image');
-                $img_name = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/Blog'), $img_name);
+
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_update['image'] = $name;
+                $path->move('uploads/Blog', $name);
             }
 
-            $data_update['image']=$img_name;
-            Blog::where(['id'=>$id])->update($data_update);
+            Blog::where(['id' => $id])->update($data_update);
             toastr()->success('Data has been updated successfully!');
 
             return redirect()->route('admin.blogs.index');
-
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -110,18 +114,33 @@ class BlogController extends Controller
 
     public function delete($id)
     {
-        try{
+        try {
             $Blog = Blog::findOrFail($id);
-            File::delete(public_path('uploads/Blog/'.$Blog->path));
+            File::delete('uploads/Blog/' . $Blog->path);
 
             $Blog->delete();
             toastr()->success('تمت الحدف بنجاح');
 
             return redirect()->route('admin.blogs.index');
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
+    }
+    public function toggle_active($id)
+    {
+        $team = Blog::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1 ? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
     }
 }

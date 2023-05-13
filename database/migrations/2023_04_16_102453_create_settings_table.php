@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('Terms_and_Conditions_ar');//الشروط والاحكام
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }

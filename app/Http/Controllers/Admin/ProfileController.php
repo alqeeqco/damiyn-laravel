@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProfileRequest;
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\updateProfileRequest;
 use App\Models\Profile;
 use App\Models\User;
@@ -52,7 +53,7 @@ class ProfileController extends Controller
         return view('dashboard.profile.resetPassword', compact('user') );
     }
 
-    public function resetPassword(Request $request)
+    public function resetPassword(PasswordRequest $request)
     {
         $rules = [
             'old_password' => 'required|min:3',
@@ -62,10 +63,15 @@ class ProfileController extends Controller
         $validated = $request->validate($rules);
         $user = auth()->user();
         if (!Hash::check($request->get('old_password'), $user->password)) {
-            $message = 'The old password is incorrect'; //wrong old
+            $message = 'The old password is incorrect';
+            return redirect()->back()->with('danger' , $message);
+        }
+        if ($request->new_password !== $request->confirm_password) {
+            $message = 'The old password is incorrect';
             return redirect()->back()->with('danger' , $message);
         }
         $user->password = bcrypt($request->get('new_password'));
+
 
         $data=$user->save();
         toastr()->success('تمت التحديث بنجاح');

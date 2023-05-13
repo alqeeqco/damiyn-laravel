@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateSliderRequest;
 use App\Http\Requests\updateSliderRequest;
+use Illuminate\Support\Str;
 use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,9 +46,13 @@ class SliderController extends Controller
             $data_insert['active'] = $request->active;
             $data_insert['created_at'] = date("Y-m-d H:s");
             $img = $request->file('slider');
-            $img_name = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/sliders'), $img_name);
-            $data_insert['slider']=$img_name;
+            if ($request->file('slider')) {
+                $name = Str::random(12);
+                $path = $request->file('slider');
+                $name = $name . time() . '.' . $request->file('slider')->getClientOriginalExtension();
+                $data_insert['slider'] = $name;
+                $path->move('uploads/sliders', $name);
+            }
             Slider::create($data_insert);
             return redirect()->route('admin.slider.index')->with(['success'=>'Added successfully']);
 
@@ -80,14 +85,13 @@ class SliderController extends Controller
             $data_update['title_en'] = $request->title_en;
             $data_update['title_ar'] = $request->title_ar;
             $data = Slider::findOrFail($id);
-            $img_name = $data->slider;
-            if($request->hasFile('slider')) {
-                File::delete(public_path('uploads/Blog'.$data->slider));
-                $img = $request->file('slider');
-                $img_name = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/sliders'), $img_name);
+            if ($request->file('slider')) {
+                $name = Str::random(12);
+                $path = $request->file('slider');
+                $name = $name . time() . '.' . $request->file('slider')->getClientOriginalExtension();
+                $data_update['slider'] = $name;
+                $path->move('uploads/sliders', $name);
             }
-            $data_update['slider']=$img_name;
             $data_update['active'] = $request->active;
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
@@ -104,15 +108,32 @@ class SliderController extends Controller
     public function delete($id)
     {
         try{
-            $sliders = Slider::findOrFail($id);
-            File::delete(public_path('uploads/sliders/'.$sliders->slider));
-            $sliders->delete();
+            $slider = Slider::findOrFail($id);
+            File::delete('uploads/sliders/'.$slider->path);
 
-            return redirect()->route('admin.slider.delete')->with(['success'=>'Delete completed successfully']);
+            $slider->delete();
+            toastr()->success('Data has been deleted successfully!');
+
+            return redirect()->route('admin.slider.index');
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
+    }
+    public function toggle_active($id)
+    {
+        $team = Slider::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
     }
 }

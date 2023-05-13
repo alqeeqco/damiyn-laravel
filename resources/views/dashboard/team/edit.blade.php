@@ -37,7 +37,7 @@
                                 <option value=""> --select--</option>
                                 <option {{  old('active',$data['active']) == 1 ?'selected' : ''}}  value="1"> Yes
                                 </option>
-                                <option {{  old('active',$data['active']) == 0 ?'selected' : ''}}  value="0"> No</option>
+                                <option {{  old('active',$data['active']) == 2 ?'selected' : ''}}  value="2"> No</option>
                             </select>
 
                             @error('active')

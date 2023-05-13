@@ -52,14 +52,14 @@
 		<div class="container">
 			<div class="row">
                 @foreach (\App\Models\Feature::where('active',1)->get() as $feature )
-                <div class="col-md-4">
+                <div class="col-md-4" style="overflow: hidden">
 					<div data-aos="fade-right">
 						<div class="card task1 ">
 							<div class="card-body padding-card">
 								<div>
 									<img width="50" src="{{ asset('uploads/feature/'.$feature->image) }}" alt="">
 									<h5> {{ $feature->$title_feature}}</h5>
-									<p>{{ $feature->$content_feature}}</p>
+									<p >  {!! Str::words($feature->$content_feature, 20, '...') !!}</p>
 								</div>
 							</div>
 						</div>
@@ -225,15 +225,15 @@
 			</div>
 			<div class="grid text-center d-flex">
 				@foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
-                <div class="total">
-                    <img  src="{{ asset('uploads/team/'.$review->image) }}" alt="">
+                <div class="total" style="overflow: hidden;">
+                    <img style="max-width: 100%;" src="{{ asset('uploads/team/'.$review->image) }}" alt="">
                 </div>
                 @endforeach
 
 			</div>
 			<div class="grid text-center mt-2 d-flex justify-content-center">
 				@foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(2)->offset(5)->get() as $review )
-                <div class="total">
+                <div class="total" style="overflow: hidden;">
                     <img  src="{{ asset('uploads/team/'.$review->image) }}" alt="">
                 </div>
                 @endforeach

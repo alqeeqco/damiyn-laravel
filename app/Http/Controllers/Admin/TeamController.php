@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -38,10 +39,13 @@ class TeamController extends Controller
                 return redirect()->back()->with(['error' => 'عفوا  الاسم مكرر من قبل'])->withInput();
             }
             $data_insert['name'] = $request->name;
-            $img = $request->file('image');
-            $img_name = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/team'), $img_name);
-            $data_insert['image']=$img_name;
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_insert['image'] = $name;
+                $path->move('uploads/team', $name);
+            }
             $data_insert['active'] = $request->active;
             $data_insert['added_by'] = auth()->user()->id;
             $data_insert['created_at'] = date("Y-m-d H:s");
@@ -73,14 +77,13 @@ class TeamController extends Controller
             $data_update['name'] = $request->name;
             $data_update['active'] = $request->active;
             $data = Team::findOrFail($id);
-            $img_name = $data->image;
-            if($request->hasFile('image')) {
-                File::delete(public_path('uploads/team'.$data->image));
-                $img = $request->file('image');
-                $img_name = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/team'), $img_name);
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_update['image'] = $name;
+                $path->move('uploads/team', $name);
             }
-            $data_update['image']=$img_name;
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
             Team::where(['id'=>$id])->update($data_update);
@@ -98,7 +101,7 @@ class TeamController extends Controller
     {
         try{
             $Team = Team::findOrFail($id);
-            File::delete(public_path('uploads/Team/'.$Team->path));
+            File::delete('uploads/Team/'.$Team->path);
 
             $Team->delete();
             toastr()->success('Data has been deleted successfully!');
@@ -109,5 +112,21 @@ class TeamController extends Controller
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
+    }
+
+    public function toggle_active($id)
+    {
+        $team = Team::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
     }
 }

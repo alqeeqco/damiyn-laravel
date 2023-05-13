@@ -74,4 +74,20 @@ class OrderController extends Controller
                 ->withInput();
         }
     }
+
+    public function toggle_active($id)
+    {
+        $team = Order::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
+    }
 }

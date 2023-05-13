@@ -108,7 +108,7 @@
                                     <option value=""> --select--</option>
                                     <option @if (old('active') == 1) selected="selected" @endif value="1"> Yes
                                     </option>
-                                    <option @if (old('active') == 0 and old('active') != '') selected="selected" @endif value="0"> No
+                                    <option @if (old('active') == 2 and old('active') != '') selected="selected" @endif value="2"> No
                                     </option>
                                 </select>
                                 @error('active')

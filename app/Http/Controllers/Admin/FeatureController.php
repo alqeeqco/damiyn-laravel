@@ -7,6 +7,7 @@ use App\Http\Requests\CreateFeatureRequest;
 use App\Http\Requests\UpdatedFeatureRequest;
 use App\Models\Feature;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -47,10 +48,13 @@ class FeatureController extends Controller
             $data_insert['content_ar'] = $request->content_ar;
             $data_insert['active'] = $request->active;
             $data_insert['created_at'] = date("Y-m-d H:s");
-            $img = $request->file('image');
-            $img_name = rand(). time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/feature'), $img_name);
-            $data_insert['image']=$img_name;
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_insert['image'] = $name;
+                $path->move('uploads/feature', $name);
+            }
             Feature::create($data_insert);
             toastr()->success('تمت الاضافة بنجاح');
 
@@ -83,14 +87,13 @@ class FeatureController extends Controller
             $data_update['active'] = $request->active;
             $data_update['updated_at'] = date("Y-m-d H:s");
             $data = Feature::findOrFail($id);
-            $img_name = $data->image;
-            if($request->hasFile('image')) {
-                File::delete(public_path('uploads/feature'.$data->image));
-                $img = $request->file('image');
-                $img_name = rand(). time().$img->getClientOriginalName();
-                $img->move(public_path('uploads/feature'), $img_name);
+            if ($request->file('image')) {
+                $name = Str::random(12);
+                $path = $request->file('image');
+                $name = $name . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $data_update['image'] = $name;
+                $path->move('uploads/feature', $name);
             }
-            $data_update['image']=$img_name;
             Feature::where(['id'=>$id])->update($data_update);
             toastr()->success('تمت التحديث بنجاح');
 
@@ -107,7 +110,7 @@ class FeatureController extends Controller
     {
         try{
             $feature = Feature::findOrFail($id);
-            File::delete(public_path('uploads/feature/'.$feature->path));
+            File::delete('uploads/feature/'.$feature->path);
 
             $feature->delete();
             toastr()->success('تمت الحدف بنجاح');
@@ -117,5 +120,21 @@ class FeatureController extends Controller
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
+    }
+
+    public function toggle_active($id)
+    {
+        $team = Feature::findOrFail($id);
+        if ($team->active) {
+            $team->update([
+                'active' => $team->active == 1? 2 : 1,
+            ]);
+        } else {
+            $team->update([
+                'active' => $team->active,
+            ]);
+        }
+        session()->flash('success', 'تم التحديث بنجاح');
+        return back();
     }
 }

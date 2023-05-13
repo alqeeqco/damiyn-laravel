@@ -42,7 +42,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for=""> {{ __('Content_en') }}</label>
-                            <textarea name="content_en" id="content_en" cols="10" rows="1"  class="form-control">{{ old('content_en') }}</textarea>
+                            <textarea name="content_en" id="content_en" cols="10" rows="2"  class="form-control">{{ old('content_en') }}</textarea>
                             @error('content_en')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -51,7 +51,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for=""> {{ __('Content_ar') }}</label>
-                            <textarea name="content_ar" id="content_ar" cols="10" rows="1"  class="form-control">{{ old('content_ar') }}</textarea>
+                            <textarea name="content_ar" id="content_ar" cols="10" rows="2"  class="form-control">{{ old('content_ar') }}</textarea>
                             @error('content_ar')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -73,7 +73,7 @@
                                 <option value=""> --select--</option>
                                 <option @if (old('active') == 1) selected="selected" @endif value="1"> Yes
                                 </option>
-                                <option @if (old('active') == 0 and old('active') != '') selected="selected" @endif value="0"> No</option>
+                                <option @if (old('active') == 2 and old('active') != '') selected="selected" @endif value="2"> No</option>
                             </select>
 
                             @error('active')

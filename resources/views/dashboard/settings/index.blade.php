@@ -159,12 +159,21 @@
                             <tr>
                                 <td class="width30">{{ __('Active') }}</td>
                                 <td>
-                                    @if ($data['active'] == 1)
-                                    {{ __('Enabled') }}
+
+                                    @if($data['active'] == 1)
+                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white"
+                                                style="font-size: 12px;background: #4FE39C"> <i class="fa fa-check"></i>
+                                        </a>
+                                    @elseif($data['active'] == 2)
+                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white"
+                                           style="font-size: 12px;background: #DC4267"><i class="fas fa-times"></i>
+                                        </a>
                                     @else
-                                    {{ __('Disabled') }}
+                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white btn-warning"
+                                                style="font-size: 12px"><i class="fas fa-times"></i>
+                                        </a>
                                     @endif
-                                </td>
+                            </td>
                             </tr>
 
                             <tr>
@@ -236,4 +245,47 @@
     <script>
         $('#asasd').DataTable();
     </script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    let ids = [];
+    function checkbox(id) {
+        if (id === 0) {
+            if ($('#'+id).is(":checked")) {
+                $("# $data['id']}}").prop("checked", true);
+                ids.push($data['id'])
+            } else {
+                $("# $data['id']").prop("checked", false);
+                ids = [];
+            }
+        }else {
+            if ($('#'+id).is(":checked")) {
+                ids.push(id)
+            }else {
+                $("#0").prop("checked", false);
+                ids.splice(ids.indexOf(id), 1)
+            }
+        }
+
+
+        }
+    }
+
+    function groupDelete() {
+        if (ids.length > 0) {
+            $.post( "/leaders/groupDelete", {ids: ids}).done(function() {
+                ids.forEach(item => {
+                    $("#row-"+item).remove()
+                })
+                $("#0").prop("checked", false)
+            }).fail(function() {
+
+            });
+        }
+    }
+</script>
 @endsection

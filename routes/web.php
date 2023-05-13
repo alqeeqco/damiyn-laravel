@@ -35,6 +35,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
     Route::post('slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
     Route::delete('slider/delete/{id}', [SliderController::class, 'delete'])->name('slider.delete');
+    Route::get('slider/toggle_active/{id}', [SliderController::class, 'toggle_active'])->name('slider.toggle_active');
+
     /*              end slider
 
     /*              start settings                                     */
@@ -44,6 +46,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('settings/edit/{id}', [SettingController::class, 'edit'])->name('settings.edit');
     Route::post('settings/update/{id}', [SettingController::class, 'update'])->name('settings.update');
     Route::delete('settings/delete/{id}', [SettingController::class, 'delete'])->name('settings.delete');
+    Route::get('settings/toggle_active/{id}', [SettingController::class, 'toggle_active'])->name('settings.toggle_active');
 
     /*              end settings                                     */
 
@@ -54,6 +57,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('blogs/edit/{id}', [BlogController::class, 'edit'])->name('blogs.edit');
     Route::post('blogs/update/{id}', [BlogController::class, 'update'])->name('blogs.update');
     Route::delete('blogs/delete/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
+    Route::get('blogs/toggle_active/{id}', [BlogController::class, 'toggle_active'])->name('blogs.toggle_active');
+
     /*              end blogs                                     */
 
     /*              start order                                     */
@@ -64,6 +69,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::post('order/update/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::delete('order/delete/{id}', [OrderController::class, 'delete'])->name('order.delete');
     Route::post('order/new_order/{id}', [OrderController::class, 'new_order'])->name('order.new_order');
+    Route::get('order/toggle_active/{id}', [OrderController::class, 'toggle_active'])->name('order.toggle_active');
+
     /*              end order                                     */
 
     /*              start Features                                     */
@@ -73,6 +80,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('features/edit/{id}', [FeatureController::class, 'edit'])->name('features.edit');
     Route::post('features/update/{id}', [FeatureController::class, 'update'])->name('features.update');
     Route::delete('features/delete/{id}', [FeatureController::class, 'delete'])->name('features.delete');
+    Route::get('features/toggle_active/{id}', [FeatureController::class, 'toggle_active'])->name('features.toggle_active');
+
     /*              end Features                                     */
 
     /*              start profile                                     */
@@ -89,6 +98,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('reviews/edit/{id}', [ReviewController::class, 'edit'])->name('reviews.edit');
     Route::post('reviews/update/{id}', [ReviewController::class, 'update'])->name('reviews.update');
     Route::delete('reviews/delete/{id}', [ReviewController::class, 'delete'])->name('reviews.delete');
+    Route::get('reviews/toggle_active/{id}', [ReviewController::class, 'toggle_active'])->name('reviews.toggle_active');
+
     /*              end profile                           */
 
     /*              start team                                     */
@@ -98,7 +109,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('teams/edit/{id}', [TeamController::class, 'edit'])->name('teams.edit');
     Route::post('teams/update/{id}', [TeamController::class, 'update'])->name('teams.update');
     Route::delete('teams/delete/{id}', [TeamController::class, 'delete'])->name('teams.delete');
-    Route::post('/button/submit', [TeamController::class, 'submitButton'])->name('button.submit');
+    Route::get('teams/toggle_active/{id}', [TeamController::class, 'toggle_active'])->name('teams.toggle_active');
 
     /*              end team                           */
 });

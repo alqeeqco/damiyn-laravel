@@ -24,8 +24,8 @@ class UpdatedFeatureRequest extends FormRequest
         return [
             'title_en' => 'required|max:255',
             'title_ar' => 'required|max:255',
-            'content_en' => 'required|max:2000',
-            'content_ar' => 'required|max:2000',
+            'content_en' => 'required|max:4000',
+            'content_ar' => 'required|max:4000',
             'active' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,gif',
         ];

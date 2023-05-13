@@ -25,7 +25,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <button class="btn btn-success"><a  href="{{ route('admin.features.create') }}">{{ __('admin.add features') }}</a></button>
+                    <button class="btn btn-info"><a  href="{{ route('admin.features.create') }}">{{ __('admin.add features') }}</a></button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -49,7 +49,7 @@
                                     <th scope="row">{{ $info->id }}</th>
                                     <td>{{ $info->$title }}</td>
                                     <td><img width="80" src="{{ asset('uploads/feature/'.$info->image ) }}" alt=""></td>
-                                    <td>{{ $info->$content }}</td>
+                                    <td> {!! Str::words($info->$content, 10, '...') !!}</td>
                                     <td>
                                         @if ($info->updated_by > 0 and $info->updated_by != null)
                                         @php
@@ -70,11 +70,19 @@
 
                                     </td>
                                     <td>
-                                        @if ($info->active == 1)
-                                        {{ __('Enabled') }}
-                                        @else
-                                        {{ __('Disabled') }}
-                                        @endif
+                                        @if($info->active == 1)
+                                        <a href="{{ route('admin.features.toggle_active',$info->id) }}" class="btn text-white"
+                                                style="font-size: 12px;background: #4FE39C"> <i class="fa fa-check"></i>
+                                        </a>
+                                    @elseif($info->active == 2)
+                                        <a href="{{ route('admin.features.toggle_active',$info->id) }}" class="btn text-white"
+                                           style="font-size: 12px;background: #DC4267"><i class="fas fa-times"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('admin.features.toggle_active',$info->id) }}" class="btn text-white btn-warning"
+                                                style="font-size: 12px"><i class="fas fa-times"></i>
+                                        </a>
+                                    @endif
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="{{ route('admin.features.edit',$info->id) }}"><span class="fe fe-edit"> </span></a>
@@ -116,5 +124,48 @@
     <script src="{{ asset('adminassets/js/table-data.js') }}"></script>
     <script>
         $('#asasd').DataTable();
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        let ids = [];
+        function checkbox(id) {
+            if (id === 0) {
+                if ($('#'+id).is(":checked")) {
+                    @foreach($data as $info)
+                    $("#{{$info->id}}").prop("checked", true);
+                    ids.push({{$info->id}})
+                    @endforeach
+                } else {
+                    @foreach($data as $info)
+                    $("#{{$info->id}}").prop("checked", false);
+                    ids = [];
+                    @endforeach
+                }
+            } else {
+                if ($('#'+id).is(":checked")) {
+                    ids.push(id)
+                } else {
+                    $("#0").prop("checked", false);
+                    ids.splice(ids.indexOf(id), 1)
+                }
+            }
+        }
+
+        function groupDelete() {
+            if (ids.length > 0) {
+                $.post( "/leaders/groupDelete", {ids: ids}).done(function() {
+                    ids.forEach(item => {
+                        $("#row-"+item).remove()
+                    })
+                    $("#0").prop("checked", false)
+                }).fail(function() {
+
+                });
+            }
+        }
     </script>
 @endsection

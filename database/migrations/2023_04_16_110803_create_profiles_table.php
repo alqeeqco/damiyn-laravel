@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('mobile_number');
             $table->integer('added_by');
             $table->integer('updated_by');
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }

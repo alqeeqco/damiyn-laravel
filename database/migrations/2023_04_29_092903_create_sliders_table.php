@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slider');
             $table->integer('added_by')->nullable();
             $table->integer('updated_by')->nullable();
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }

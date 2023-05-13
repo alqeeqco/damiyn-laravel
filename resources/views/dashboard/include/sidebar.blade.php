@@ -6,7 +6,7 @@
 				<div class="sticky">
 					<aside class="app-sidebar sidebar-scroll">
 						<div class="main-sidebar-header active">
-							<a class="desktop-logo logo-light active" href="{{ route('admin.dashboard.index') }}">
+							<a class="desktop-logo logo-light active" href="{{ route('site.home') }}">
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
                                 <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" class="main-logo" alt="logo">

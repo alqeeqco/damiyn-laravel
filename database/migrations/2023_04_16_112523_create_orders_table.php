@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('show_order_ar')->nullable();
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->date('date');
             $table->timestamps();
         });

@@ -492,10 +492,7 @@
 				<div class="container-fluid pd-t-0 ht-100p">
 					<span> حقوق  النشر © 2022 <a href="javascript:void(0);" class="text-primary">شركة القيق </a>جميع الحقوق محفوظة</span>
 				</div>
-                <p>
-                    <script></script>جميع الحقوق محفوظة لدى <a class="text-white"
-                        href="https://themefisher.com">شركة القيق @2023</a>
-                </p>
+
 			</div>
 			<!-- Footer closed -->
 
@@ -583,5 +580,7 @@ button.addEventListener("click", function () {
 });
 </script>
         @yield('script')
+
+
 	</body>
 </html>
