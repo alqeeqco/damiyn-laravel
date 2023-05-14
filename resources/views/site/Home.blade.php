@@ -28,7 +28,8 @@
 
 				</div> --}}
 
-                <div class="slide_group">
+
+                <div class="slide_group text">
                     @foreach (\App\Models\Slider::where('active',1)->limit(2)->orderby('id','DESC')->get() as $info )
 					<div class="slide">
                         <img class="slider-img" src="{{ asset('uploads/sliders/' . $info->slider) }}" />
