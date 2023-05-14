@@ -5,7 +5,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light navigation">
                     <a class="navbar-brand" href="{{ route('site.home') }}">
                     @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
-                        <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="">
+                        <img   src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="">
                     @endforeach
                 </a>
 

@@ -31,7 +31,10 @@
     <meta name="theme-name" content="classimax" />
 
     <!-- favicon -->
-    <link href="images/favicon.png" rel="shortcut icon">
+    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    <link href="{{ asset('uploads/settings/'.$logo->logo_header) }}" rel="shortcut icon">
+ @endforeach
+
 
     <!--
   Essential stylesheets

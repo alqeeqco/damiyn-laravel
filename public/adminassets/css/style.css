@@ -94,7 +94,7 @@ Width
 @font-face {
     src: url(../fonts/Montserrat-Arabic\ Light\ 300.otf);
 
-    font-family: Montserrat-Arabic, Montserrat-Arabic;
+    font-family:Montserrat-Arabic, Montserrat-Arabic;
   }
 
 /* ######## BOOTSTRAP ######## */
@@ -107,14 +107,19 @@ Width
     --float-left: right;
     --float-right: left;
 }
-.width30{
-    width: 30%;
-}
 
 /* ######  Accordions ###### */
 .accordion>.card {
     overflow: hidden;
 }
+.card-header{
+    text-align: end;
+}
+
+.card-header button a{
+    color: white;
+}
+
 
 .accordion>.card:not(:first-of-type) .card-header:first-child {
     border-radius: 0;
@@ -123,16 +128,6 @@ Width
 .accordion>.card:not(:first-of-type):not(:last-of-type) {
     border-block-end: 0;
     border-radius: 0;
-}
-.card-header{
-    text-align: end;
-}
-.card-header a{
-    color: white;
-}
-
-.card-header a:hover{
-    color: white;
 }
 
 .accordion>.card:first-of-type {
@@ -258,7 +253,7 @@ Width
 .panel-heading1 a.collapsed:before {
     content: "\e9af";
     position: absolute;
-    font-family: Montserrat-Arabic, Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, Montserrat-Arabic;
     inset-inline-end: 10px;
     top: 12px;
     font-size: 20px;
@@ -521,7 +516,8 @@ Width
 .badge {
     font-size: 10px;
     font-weight: 500 !important;
-    font-family: Montserrat-Arabic, Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic,Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 }
 
 .bg-light {
@@ -974,7 +970,7 @@ a.bg-dark.focus {
     padding-inline-end: 0.5rem !important;
     color: #c8cfdd;
     content: "\e933";
-    font-family: Montserrat-Arabic, Montserrat-Arabic, "feather";
+    font-family:Montserrat-Arabic,Montserrat-Arabic, "feather";
 }
 
 .breadcrumb-item+.breadcrumb-item:hover::before {
@@ -1003,7 +999,7 @@ a.bg-dark.focus {
 .breadcrumb-style2 .breadcrumb-item {
     font-size: 11px;
     font-weight: 500;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic,Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -1027,7 +1023,7 @@ a.bg-dark.focus {
 
 .breadcrumb-style2 .breadcrumb-item+.breadcrumb-item::before {
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather";
+    font-family:Montserrat-Arabic, "feather";
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -1051,7 +1047,7 @@ a.bg-dark.focus {
 .breadcrumb-style3 .breadcrumb-item {
     font-size: 11px;
     font-weight: 500;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -3511,7 +3507,7 @@ dd {
 
 .carousel-caption h5,
 .carousel-caption p {
-    font-family: Montserrat-Arabic, "Roboto", sans-serif !important;
+    font-family:Montserrat-Arabic, "Roboto", sans-serif !important;
 }
 
 .carousel-control-prev-icon,
@@ -3537,7 +3533,7 @@ dd {
 /* ######  Carousel End ###### */
 /* ######  Custom ###### */
 html {
-    font-family: Montserrat-Arabic, sans-serif;
+    font-family:Montserrat-Arabic, sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -3558,7 +3554,7 @@ section {
 
 body {
     margin: 0;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
@@ -3690,7 +3686,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: Montserrat-Arabic, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family:Montserrat-Arabic, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1em;
 }
 
@@ -3750,7 +3746,7 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: Montserrat-Arabic, inherit;
+    font-family:Montserrat-Arabic, inherit;
     font-size: inherit;
     line-height: inherit;
 }
@@ -4210,27 +4206,6 @@ pre code {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
 }
-button {
-    padding: 10px 20px;
-    background-color: gray;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  button.active {
-    background-color: green;
-    padding: 8px;
-    border: none;
-    outline: none;
-  }
-
-  button.inactive {
-    background-color: red;
-    padding: 8px;
-    border: none;
-    outline: none;
-  }
 
 .col-2 {
     flex: 0 0 16.66667%;
@@ -8948,7 +8923,7 @@ textarea.form-file-input.parsley-error:focus~.form-file-label {
 }
 
 .main-nav-tabs .lSAction>a::before {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 18px;
     position: absolute;
     top: -4px;
@@ -9501,7 +9476,7 @@ textarea.form-file-input.parsley-error:focus~.form-file-label {
     z-index: 1;
     display: block;
     max-width: 276px;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -10400,7 +10375,7 @@ textarea.form-file-input.parsley-error:focus~.form-file-label {
     z-index: 98;
     display: block;
     margin: 0;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -12368,7 +12343,7 @@ a.close.disabled {
 /* ############### PAGE LAYOUT STYLES ############### */
 /* ###### 6.3 Global  ###### */
 body {
-    font-family: Montserrat-Arabic, "Roboto", sans-serif;
+    font-family:Montserrat-Arabic, "Roboto", sans-serif;
 }
 
 .main-body,
@@ -12538,7 +12513,7 @@ body {
     border-block-end: 0;
     border-inline-start: 0;
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     position: absolute;
     display: inline-block;
     color: #7a8eb1;
@@ -12551,7 +12526,7 @@ body {
     border-block-end: 0;
     border-inline-start: 0;
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     position: absolute;
     display: inline-block;
     color: #7a8eb1;
@@ -12695,7 +12670,7 @@ body {
 
 .flag-text:before {
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-weight: 400;
     font-size: 12px;
     position: absolute;
@@ -13926,7 +13901,7 @@ pre {
     z-index: 99;
     border-color: #bec5d0;
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     top: 9px;
     inset-inline-start: 8px;
@@ -13949,7 +13924,7 @@ pre {
     z-index: 99;
     border-color: #bec5d0;
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     top: 10px;
     inset-inline-start: 8px;
@@ -14196,7 +14171,7 @@ pre {
 .main-dashboard-header-right>div h5 {
     font-size: 20px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #1c273c;
     margin-block-end: 0;
     line-height: 1;
@@ -14352,7 +14327,7 @@ pre {
     margin-inline-start: auto;
     margin-inline-end: 10px;
     font-weight: 600;
-    font-family: Montserrat-Arabic, "Archivo", Arial, sans-serif;
+    font-family:Montserrat-Arabic, "Archivo", Arial, sans-serif;
     color: #1c273c;
 }
 
@@ -14481,7 +14456,7 @@ pre {
 .total-revenue h4 {
     font-size: 21px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #1c273c;
     letter-spacing: -0.5px;
     margin-block-end: 3px;
@@ -14609,7 +14584,7 @@ pre {
 .card-table h4 {
     font-size: 21px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #1c273c;
 }
 
@@ -15044,7 +15019,7 @@ pre {
 .panel-heading1 a:before {
     content: "\e994";
     position: absolute;
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     inset-inline-end: 10px;
     top: 12px;
     font-size: 20px;
@@ -18462,7 +18437,7 @@ html.fullscreen-button .app-content {
     margin-block-start: 0;
     font-size: 14px;
     line-height: inherit;
-    font-family: Montserrat-Arabic, inherit;
+    font-family:Montserrat-Arabic, inherit;
     text-align: start;
 }
 
@@ -19147,7 +19122,7 @@ html.fullscreen-button .app-content {
 
 .landing-page .slick-prev:before,
 .landing-page .slick-next:before {
-    font-family: Montserrat-Arabic, "feather";
+    font-family:Montserrat-Arabic, "feather";
     font-size: 20px;
     padding: 10px;
     line-height: 1;
@@ -20485,7 +20460,7 @@ body.dark-theme.landing-page {
 
 .main-navbar .nav-link.with-sub::after {
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 11px;
     font-weight: 400;
     display: inline-block;
@@ -20564,7 +20539,7 @@ body.dark-theme.landing-page {
 
 .main-navbar .nav-sub-link.with-sub::after {
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 11px;
     font-weight: 400;
     display: inline-block;
@@ -22453,7 +22428,7 @@ a.tag-addon:hover {
 
 .review-project.card tbody>tr>th:not(:first-child),
 .review-project.card tbody>tr>td:not(:first-child) {
-    font-family: Montserrat-Arabic, roboto;
+    font-family:Montserrat-Arabic, roboto;
     font-size: 13px !important;
 }
 
@@ -23854,7 +23829,7 @@ a.tag-addon:hover {
 .main-header-menu .nav-item>.nav-link.with-sub::after {
     content: "\f3d0";
     display: inline-block;
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 12px;
     font-weight: 400;
     margin-inline-start: auto;
@@ -24188,7 +24163,7 @@ a.tag-addon:hover {
 
 .main-header-right .btn-buy {
     text-transform: uppercase;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 11px;
     font-weight: 500;
     background-color: var(--primary-bg-color);
@@ -25577,7 +25552,7 @@ a.tag-addon:hover {
 
 .main-iconbar-body .nav-link.with-sub::after {
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 11px;
     font-weight: 400;
     display: inline-block;
@@ -27278,7 +27253,7 @@ a.tag-addon:hover {
 
 .main-sidebar-body .nav-sub-link.with-sub::after {
     content: "\f3d0";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 12px;
     font-weight: 400;
     display: inline-block;
@@ -27336,7 +27311,7 @@ a.tag-addon:hover {
 
 .main-sidebar-body .nav-sub li .nav-sub-link::after {
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     top: 7px;
     inset-inline-start: -30px;
@@ -28089,7 +28064,7 @@ a.tag-addon:hover {
     flex: 1 0 auto;
     color: #fff;
     text-align: center;
-    font-family: Montserrat-Arabic, "Niconne";
+    font-family:Montserrat-Arabic, "Niconne";
     padding: 0 15px;
     font-size: 26px;
     font-weight: 400;
@@ -28568,7 +28543,7 @@ slide is-expanded side-menu__item {
 
 .slide.is-expanded .sub-side-menu__item:before {
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     top: 9px;
     inset-inline-start: 20px;
@@ -29176,7 +29151,7 @@ slide is-expanded side-menu__item {
 
 .app-sidebar .slide-menu a:before {
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     inset-inline-start: 0px;
     font-size: 9px;
@@ -29185,7 +29160,7 @@ slide is-expanded side-menu__item {
 
 .sub-slide-menu1 .sub-slide-item2:before {
     content: "\e92f";
-    font-family: Montserrat-Arabic, "feather" !important;
+    font-family:Montserrat-Arabic, "feather" !important;
     position: absolute;
     inset-inline-start: 29px !important;
     font-size: 9px;
@@ -37378,7 +37353,7 @@ body.light-theme.app.body-style1 .main-header {
 .sales-flot .flot-chart .flot-x-axis>div span:first-child {
     display: block;
     text-transform: uppercase;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 500;
     font-size: 10px;
     color: #737f9e;
@@ -37390,7 +37365,7 @@ body.light-theme.app.body-style1 .main-header {
     display: block;
     font-size: 16px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #242f48;
     line-height: 1;
     top: 15px;
@@ -37470,7 +37445,7 @@ body.light-theme.app.body-style1 .main-header {
 .card-dashboard-twelve .flot-chart .flot-x-axis>div span:first-child {
     display: block;
     text-transform: uppercase;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 500;
     font-size: 10px;
     color: #7987a1;
@@ -37480,7 +37455,7 @@ body.light-theme.app.body-style1 .main-header {
     display: block;
     font-size: 16px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #1c273c;
     line-height: 1;
 }
@@ -37539,7 +37514,7 @@ table.dataTable thead .sorting_desc {
 
 table.dataTable thead .sorting_asc::after,
 table.dataTable thead .sorting_desc::after {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 11px;
     position: absolute;
     line-height: 0;
@@ -37562,7 +37537,7 @@ table.dataTable thead .sorting {
 
 table.dataTable thead .sorting::before,
 table.dataTable thead .sorting::after {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 11px;
     position: absolute;
     line-height: 0;
@@ -37834,7 +37809,7 @@ table.dataTable tfoot td {
 .ui-datepicker {
     background-color: #fff;
     border: 1px solid rgba(28, 39, 60, 0.2);
-    font-family: Montserrat-Arabic, inherit;
+    font-family:Montserrat-Arabic, inherit;
     font-size: inherit;
     padding: 10px;
     margin: 1px 0 0;
@@ -37870,7 +37845,7 @@ table.dataTable tfoot td {
 .ui-datepicker .ui-datepicker-header .ui-datepicker-next::before,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::before {
     font-size: 16px;
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     position: absolute;
     top: -2px;
     text-indent: 0;
@@ -37987,7 +37962,7 @@ table.dataTable tfoot td {
 
 .datetimepicker table th.prev span::before,
 .datetimepicker table th.next span::before {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     position: absolute;
     top: 50%;
     font-size: 16px;
@@ -38111,7 +38086,7 @@ table.dataTable tfoot td {
 
 .main-datetimepicker>.datepicker_header a:nth-child(2)::before,
 .main-datetimepicker>.datepicker_header a:last-child::before {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     position: absolute;
     top: 50%;
     line-height: 0;
@@ -38130,7 +38105,7 @@ table.dataTable tfoot td {
 }
 
 .main-datetimepicker>.datepicker_header span {
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     text-transform: uppercase;
 }
 
@@ -38152,7 +38127,7 @@ table.dataTable tfoot td {
     width: 230px;
     border-width: 0;
     border-radius: 0;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     padding: 5px;
     float: none;
     margin: 0;
@@ -38230,7 +38205,7 @@ table.dataTable tfoot td {
 }
 
 .picker-item {
-    font-family: Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .picker-picked {
@@ -38299,7 +38274,7 @@ table.dataTable tfoot td {
 .wizard>.steps a:active .number {
     flex-shrink: 0;
     font-weight: 700;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: #fff;
     display: block;
     text-align: center;
@@ -38836,7 +38811,7 @@ table.dataTable tfoot td {
 
 /* Setup basic CSS for Label */
 .jqvmap-pin {
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     cursor: default;
     pointer-events: none;
 }
@@ -39166,7 +39141,7 @@ table.dataTable tfoot td {
     display: block;
     padding-inline-start: 10px;
     font-size: 13px;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     border: 1px solid #eae8f1;
     background-color: #fff;
     outline: none;
@@ -39323,14 +39298,14 @@ textarea.parsley-success:focus {
 /* ###### Rangeslider ###### */
 .irs-min,
 .irs-max {
-    font-family: Montserrat-Arabic, "Roboto", sans-serif;
+    font-family:Montserrat-Arabic, "Roboto", sans-serif;
     border-radius: 0;
 }
 
 .irs-from,
 .irs-to,
 .irs-single {
-    font-family: Montserrat-Arabic, "Roboto", sans-serif;
+    font-family:Montserrat-Arabic, "Roboto", sans-serif;
     background-color: var(--primary-bg-color);
     border-radius: 0;
 }
@@ -39806,7 +39781,7 @@ textarea.parsley-success:focus {
     padding: 8px 15px;
     background-image: none;
     background-color: #d0d7e8;
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 12px;
     text-shadow: none;
     text-transform: capitalize;
@@ -39822,7 +39797,7 @@ textarea.parsley-success:focus {
 }
 
 .sp-button-container .sp-cancel {
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 12px;
     text-transform: capitalize;
     color: #737f9e !important;
@@ -39860,7 +39835,7 @@ textarea.parsley-success:focus {
 
 .sp-dd::before {
     content: "\f280";
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 15px;
     color: #949eb7;
     position: absolute;
@@ -39940,7 +39915,7 @@ textarea.parsley-success:focus {
     width: 34px;
     height: 34px;
     font-size: 12px;
-    font-family: Montserrat-Arabic, "Archivo", sans-serif;
+    font-family:Montserrat-Arabic, "Archivo", sans-serif;
     border-radius: 100%;
     display: flex;
     align-items: center;
@@ -40274,7 +40249,7 @@ textarea.parsley-success:focus {
 .main-datepicker .ui-datepicker .ui-datepicker-calendar td span,
 .main-datepicker .ui-datepicker .ui-datepicker-calendar td a {
     padding: 4px 5px;
-    font-family: Montserrat-Arabic, Verdana, sans-serif;
+    font-family:Montserrat-Arabic, Verdana, sans-serif;
     font-size: 11px;
     color: #4d5875;
 }
@@ -40419,7 +40394,7 @@ textarea.parsley-success:focus {
 
 .main-calendar .fc-icon-left-single-arrow::after,
 .main-calendar .fc-icon-right-single-arrow::after {
-    font-family: Montserrat-Arabic, "Ionicons";
+    font-family:Montserrat-Arabic, "Ionicons";
     font-size: 18px;
     font-weight: 400;
     line-height: 1;
@@ -40461,7 +40436,7 @@ textarea.parsley-success:focus {
 .main-calendar .fc-view .fc-day-number {
     font-size: 14px;
     font-weight: 400;
-    font-family: Montserrat-Arabic, Arial, sans-serif;
+    font-family:Montserrat-Arabic, Arial, sans-serif;
     color: #4d5875;
     display: inline-block;
     padding: 5px 8px;
@@ -40497,7 +40472,7 @@ textarea.parsley-success:focus {
 .main-calendar .fc-view.fc-agenda-view .fc-day-header>a>span:last-child {
     font-weight: 700;
     font-size: 14px;
-    font-family: Montserrat-Arabic, Helvetica, Arial, sans-serif;
+    font-family:Montserrat-Arabic, Helvetica, Arial, sans-serif;
     line-height: 1;
 }
 
@@ -40564,7 +40539,7 @@ textarea.parsley-success:focus {
     display: block;
     font-size: 30px;
     font-weight: 700;
-    font-family: Montserrat-Arabic, Helvetica, Arial, sans-serif;
+    font-family:Montserrat-Arabic, Helvetica, Arial, sans-serif;
     letter-spacing: -1px;
     color: #242f48;
     line-height: 1;
@@ -43413,7 +43388,7 @@ textarea.parsley-success:focus {
 .main-invoice-list .media-body p {
     margin-block-end: 0;
     font-size: 11px;
-    font-family: Montserrat-Arabic, Arial, sans-serif;
+    font-family:Montserrat-Arabic, Arial, sans-serif;
     color: #364261;
 }
 
@@ -61963,11 +61938,11 @@ button.bg-dark:focus {
 }
 
 .tx-sserif {
-    font-family: Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family:Montserrat-Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .tx-roboto {
-    font-family: Montserrat-Arabic, "Roboto", sans-serif;
+    font-family:Montserrat-Arabic, "Roboto", sans-serif;
 }
 
 .tx-white {
@@ -64617,7 +64592,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-    font-family: Montserrat-Arabic, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-family:Montserrat-Arabic, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
 .text-justify {

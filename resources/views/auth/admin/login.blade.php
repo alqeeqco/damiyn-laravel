@@ -8,7 +8,10 @@
     <title>Login Admin</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('adminassets/img/brand/favicon.png') }}" type="image/x-icon">
+
+    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    <link rel="icon" href="{{ asset('uploads/settings/'.$logo->logo_header) }}" type="image/x-icon">
+ @endforeach
 
     <!-- Icons css -->
     <link href="{{ asset('adminassets/css/icons.css" rel="stylesheet') }}">
@@ -58,9 +61,9 @@
                                     <div class="card-sigin">
                                         <div class="mb-5 d-flex justify-content-center">
                                             <a href="index.html"><img
-                                                    src="{{ asset('adminassets/img/brand/favicon.png') }}"
+                                                    src="{{ asset('adminassets/brand/favicon.png') }}"
                                                     class="sign-favicon-a ht-40" alt="logo">
-                                                <img src="{{ asset('adminassets/img/brand/favicon-white.png') }}"
+                                                <img src="{{ asset('adminassets/brand/favicon-white.png') }}"
                                                     class="sign-favicon-b ht-40" alt="logo">
                                             </a>
                                             <h1 class="main-logo1 ms-1 me-0 my-auto tx-28 ">ضمين</h1>

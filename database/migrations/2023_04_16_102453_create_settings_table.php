@@ -18,16 +18,16 @@ return new class extends Migration
             $table->string('logo_footer');
             $table->string('title_video_en');
             $table->string('title_video_ar');
-            $table->string('content_video_en');
-            $table->string('content_video_ar');
+            $table->text('content_video_en');
+            $table->text('content_video_ar');
             $table->string('title_gallary_en');
             $table->string('title_gallary_ar');
-            $table->string('content_gallary_en');
-            $table->string('content_gallary_ar');
-            $table->string('privacy_policy_en');//سياسة الخصوصية
-            $table->string('privacy_policy_ar');//سياسة الخصوصية
-            $table->string('Terms_and_Conditions_en');//الشروط والاحكام
-            $table->string('Terms_and_Conditions_ar');//الشروط والاحكام
+            $table->text('content_gallary_en');
+            $table->text('content_gallary_ar');
+            $table->text('privacy_policy_en');//سياسة الخصوصية
+            $table->text('privacy_policy_ar');//سياسة الخصوصية
+            $table->text('Terms_and_Conditions_en');//الشروط والاحكام
+            $table->text('Terms_and_Conditions_ar');//الشروط والاحكام
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
             $table->tinyInteger('active')->default(1);

@@ -29,7 +29,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header" style="text-align: end">
+                    @if (@empty($data))
                     <button class="btn btn-info"><a  href=" {{ route('admin.settings.create') }}">{{ __('admin.add settings ') }} </a></button>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

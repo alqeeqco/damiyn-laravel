@@ -156,7 +156,7 @@ class SettingController extends Controller
             $settings->delete();
             toastr()->success('Data has been deleted successfully!');
 
-            return redirect()->route('admin.slider.index');
+            return redirect()->route('admin.settings.index');
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])

@@ -113,6 +113,12 @@ label {
 .card-background {
   background: #F6FBFF;
 }
+header{
+    height: 186px;
+    align-items: center;
+    display: flex;
+}
+
 
 .login-header {
   font-size: 24px;
@@ -3546,6 +3552,7 @@ form textarea {
     width: 100px;
   }
 
+
   .col-footer-image {
     text-align: center;
   }
@@ -3557,7 +3564,7 @@ form textarea {
 
 
 .slide_viewer {
-  height: 500px;
+  height: 600px;
   overflow: hidden;
   position: relative;
 }
@@ -3608,7 +3615,7 @@ form textarea {
   left: 0;
   position: absolute;
   right: 0;
-  top: 460px;
+  top: 615px;
   text-align: center;
 }
 
@@ -3728,7 +3735,14 @@ a.slide_btn {
   .next_btn {
     right: 50px;
   }
+  .col-footer{
+    justify-content: center;
+  }
+  header{
+    height: 380px;
+  }
 }
+
 
 
 
@@ -3762,6 +3776,7 @@ a.slide_btn {
   border-radius: 50%;
   animation: pulse-border 1500ms ease-out infinite;
 }
+.card-header{}
 
 .video-play-button:after {
   content: "";
@@ -3817,3 +3832,9 @@ a.slide_btn {
   color: #fa183d;
 }
 
+@media only screen and (max-width: 990px) {
+
+    header{
+      height: 380px;
+    }
+  }

@@ -1,16 +1,16 @@
 @extends('dashboard.include.master')
 
 @section('title')
-{{ __('Order') }}
+    {{ __('Order') }}
 @endsection
 @section('titlecontent')
-{{ __('Dashboard') }}
+    {{ __('Dashboard') }}
 @endsection
 @section('titlelinkcontent')
-<a href="{{ route('admin.order.index') }}">{{ __('Order') }}</a>
+    <a href="{{ route('admin.order.index') }}">{{ __('Order') }}</a>
 @endsection
 @section('titleparhcontent')
-{{ __('Show') }}
+    {{ __('Show') }}
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('adminassets/scss/plugins/_dataTables.bootstrap5.scss') }}">
@@ -43,76 +43,82 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $info )
-                                <tr>
-                                    <th scope="row">{{ $info->id }}</th>
-                                    <td>{{ $info->number_orders }}</td>
+                                @foreach ($data as $info)
+                                    <tr>
+                                        <th scope="row">{{ $info->id }}</th>
+                                        <td>{{ $info->number_orders }}</td>
 
-                                    <td>{{ $info->mobile_user }}</td>
-                                    <td>
-                                        @if ($info->Order_status == 1)
-                                        <button class="btn btn-success btn-sm">مكتمل</button>
-                                        @elseif($info->Order_status == 2)
-                                        <button class="btn btn-warning btn-sm">بانتظار الدفع</button>
+                                        <td>{{ $info->mobile_user }}</td>
+                                        <td>
+                                            @if ($info->Order_status == 1)
+                                                <button class="btn btn-success btn-sm">مكتمل</button>
+                                            @elseif($info->Order_status == 2)
+                                                <button class="btn btn-warning btn-sm">بانتظار الدفع</button>
+                                            @else
+                                                <button class="btn btn-primary btn-sm">قيد التنفيذ</button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($info->Order_type == 1)
+                                                منتج
+                                            @else
+                                                خدمة
+                                            @endif
+                                        </td>
+                                        <td>{{ $info->show_order }}</td>
 
-                                        @else
-                                        <button class="btn btn-primary btn-sm">قيد التنفيذ</button>
+                                        <td>
+                                            @if ($info->updated_by > 0 and $info->updated_by != null)
+                                                @php
+                                                    $dt = new DateTime($info->updated_at);
+                                                    $date = $dt->format('Y-m-d');
+                                                    $time = $dt->format('h:i');
+                                                    $newDateTime = date('A', strtotime($time));
+                                                    $newDateTimeType = $newDateTime == 'AM' ? 'صباحا ' : 'مساء';
+                                                @endphp
+                                                {{ $date }} <br>
+                                                {{ $time }}
+                                                {{ $newDateTimeType }} <br>
+                                                بواسطة
+                                                {{ $data['updated_by_admin'] }}
+                                            @else
+                                                {{ __('No Updated') }}
+                                            @endif
 
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($info->Order_type == 1)
-                                        منتج
-                                        @else
-                                        خدمة
-                                        @endif
-                                    </td>
-                                    <td>{{ $info->show_order}}</td>
+                                        </td>
+                                        <td>
+                                            @if ($info->active == 1)
+                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
+                                                    class="btn text-white" style="font-size: 12px;background: #4FE39C"> <i
+                                                        class="fa fa-check"></i>
+                                                </a>
+                                            @elseif($info->active == 2)
+                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
+                                                    class="btn text-white" style="font-size: 12px;background: #DC4267"><i
+                                                        class="fas fa-times"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
+                                                    class="btn text-white btn-warning" style="font-size: 12px"><i
+                                                        class="fas fa-times"></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary"
+                                                href="{{ route('admin.order.edit', $info->id) }}"><span class="fe fe-edit">
+                                                </span></a>
+                                            <form class="d-inline" action="{{ route('admin.order.delete', $info->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn  btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure')"><span class="fe fe-trash-2">
+                                                    </span></button>
+                                            </form>
+                                        </td>
 
-                                    <td>
-                                        @if ($info->updated_by > 0 and $info->updated_by != null)
-                                            @php
-                                                $dt = new DateTime($info->updated_at);
-                                                $date = $dt->format('Y-m-d');
-                                                $time = $dt->format('h:i');
-                                                $newDateTime = date('A', strtotime($time));
-                                                $newDateTimeType = $newDateTime == 'AM' ? 'صباحا ' : 'مساء';
-                                            @endphp
-                                            {{ $date }} <br>
-                                            {{ $time }}
-                                            {{ $newDateTimeType }} <br>
-                                            بواسطة
-                                            {{ $data['updated_by_admin'] }}
-                                        @else
-                                             {{ __('No Updated') }}
-                                        @endif
-
-                                    </td>
-                                    <td>
-                                        @if($info->active == 1)
-                                        <a href="{{ route('admin.order.toggle_active',$info->id) }}" class="btn text-white"
-                                                style="font-size: 12px;background: #4FE39C"> <i class="fa fa-check"></i>
-                                        </a>
-                                    @elseif($info->active == 2)
-                                        <a href="{{ route('admin.order.toggle_active',$info->id) }}" class="btn text-white"
-                                           style="font-size: 12px;background: #DC4267"><i class="fas fa-times"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('admin.order.toggle_active',$info->id) }}" class="btn text-white btn-warning"
-                                                style="font-size: 12px"><i class="fas fa-times"></i>
-                                        </a>
-                                    @endif
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.order.edit',$info->id) }}"><span class="fe fe-edit"> </span></a>
-                                        <form class="d-inline" action="{{ route('admin.order.delete',$info->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>
-                                        </form>
-                                    </td>
-
-                                </tr>
+                                    </tr>
                                 @endforeach
 
                             </tbody>
@@ -153,21 +159,22 @@
             }
         });
         let ids = [];
+
         function checkbox(id) {
             if (id === 0) {
-                if ($('#'+id).is(":checked")) {
-                    @foreach($data as $info)
-                    $("#{{$info->id}}").prop("checked", true);
-                    ids.push({{$info->id}})
+                if ($('#' + id).is(":checked")) {
+                    @foreach ($data as $info)
+                        $("#{{ $info->id }}").prop("checked", true);
+                        ids.push({{ $info->id }})
                     @endforeach
                 } else {
-                    @foreach($data as $info)
-                    $("#{{$info->id}}").prop("checked", false);
-                    ids = [];
+                    @foreach ($data as $info)
+                        $("#{{ $info->id }}").prop("checked", false);
+                        ids = [];
                     @endforeach
                 }
             } else {
-                if ($('#'+id).is(":checked")) {
+                if ($('#' + id).is(":checked")) {
                     ids.push(id)
                 } else {
                     $("#0").prop("checked", false);
@@ -178,9 +185,11 @@
 
         function groupDelete() {
             if (ids.length > 0) {
-                $.post( "/leaders/groupDelete", {ids: ids}).done(function() {
+                $.post("/leaders/groupDelete", {
+                    ids: ids
+                }).done(function() {
                     ids.forEach(item => {
-                        $("#row-"+item).remove()
+                        $("#row-" + item).remove()
                     })
                     $("#0").prop("checked", false)
                 }).fail(function() {

@@ -22,12 +22,16 @@
     <meta name="theme-name" content="classimax" />
 
     <!-- favicon -->
-    <link href="images/favicon.png" rel="shortcut icon">
+    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    <link href="{{ asset('uploads/settings/'.$logo->logo_header) }}" rel="shortcut icon">
+ @endforeach
+
 
     <!--
   Essential stylesheets
   =====================================-->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
     <link href="{{ asset('webassets/plugins/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('webassets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">

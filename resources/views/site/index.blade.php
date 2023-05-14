@@ -170,7 +170,7 @@
                             <div class="card-body">
                                 <div class="card-body card-video">
                                     @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $setting)
-                                        <a href="{{ $setting->video }}" class="video-play-button">
+                                        <a target="_blank"  href="{{ $setting->video }}" class="video-play-button">
                                             <span></span>
                                         </a>
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('title_en');
             $table->string('title_ar');
-            $table->string('content_en');
-            $table->string('content_ar');
+            $table->text('content_en');
+            $table->text('content_ar');
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();
             $table->tinyInteger('active')->default(1);

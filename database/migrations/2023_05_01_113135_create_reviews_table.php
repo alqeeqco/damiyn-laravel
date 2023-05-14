@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
-            $table->string('message_en');
-            $table->string('message_ar');
+            $table->text('message_en');
+            $table->text('message_ar');
             $table->tinyInteger('active')->default(1);
             $table->integer('added_by');
             $table->integer('updated_by')->nullable();

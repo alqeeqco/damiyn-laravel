@@ -19,8 +19,20 @@
                                 <img src="{{ asset('uploads/settings/'.$logo->logo_footer) }}" class="main-logo" alt="logo">
                                 @endforeach
                             </a>
-							<a class="logo-icon mobile-logo icon-light active" href="{{ route('admin.dashboard.index') }}"><img src="{{ asset('adminassets/img/brand/favicon.png') }}" alt="logo"></a>
-							<a class="logo-icon mobile-logo icon-dark active" href="{{ route('admin.dashboard.index') }}"><img src="{{ asset('adminassets/img/brand/favicon-white.png') }}" alt="logo"></a>
+							<a class="logo-icon mobile-logo icon-light active" href="{{ route('admin.dashboard.index') }}">
+
+
+                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="logo">
+
+                                @endforeach
+                            </a>
+							<a class="logo-icon mobile-logo icon-dark active" href="{{ route('admin.dashboard.index') }}">
+
+                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="logo">
+                                @endforeach
+                            </a>
 						</div>
 						<div class="main-sidemenu">
 							<div class="app-sidebar__user clearfix">

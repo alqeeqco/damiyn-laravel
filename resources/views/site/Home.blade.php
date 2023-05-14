@@ -90,7 +90,7 @@
 							<div class="card-body card-video">
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $setting)
-                                <a  href="{{ $setting->video }}"  class="video-play-button">
+                                <a target="_blank"  href="{{ $setting->video }}"  class="video-play-button">
                                     <span></span>
                                   </a>
 
@@ -184,7 +184,12 @@
 					</div>
 					<div class="about2 ">
 						<h5>ماذا قالو عن <span class="new">ضمين</span></h5>
-						<p>ماذا قال عنا عملاؤنا وعن خدمات ضمين ...</p>
+                        @foreach (\App\Models\Review::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
+                        @if (!@empty($review))
+                        <p>ماذا قال عنا عملاؤنا وعن خدمات ضمين ...</p>
+                        @endif
+                        @endforeach
+
 					</div>
 				</div>
 			</div>
@@ -219,7 +224,12 @@
 				<div class="col-md-12 abouts">
 					<div class="about2">
 						<h5>شركاء ضمين</h5>
-						<p>شركاء نجاح ضمين دائما وأبدا...</p>
+                        @foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
+						@if (!@empty($review))
+                        <p>شركاء نجاح ضمين دائما وأبدا...</p>
+                        @endif
+                        @endforeach
+
 					</div>
 				</div>
 			</div>

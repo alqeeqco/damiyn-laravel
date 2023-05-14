@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Feature;
 use App\Models\Order;
+use App\Models\Review;
 use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class indexController extends Controller
         if (auth()->check() and auth()->user()->status == 'Inactive') {
             return redirect('site/verfiction');
         }
-        return view('site.home');
+        $data = Review::all();
+        return view('site.home',compact('data'));
     }
 
     public function edit()

@@ -13,7 +13,10 @@
 		<title>  @yield('title',env('APP_NAME'))  </title>
 
 		<!-- Favicon -->
-		<link rel="icon" href="{{ asset('adminassets/img/brand/favicon.png') }}" type="image/x-icon">
+
+        @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+            <link rel="icon" href="{{ asset('uploads/settings/'.$logo->logo_header) }}" type="image/x-icon">
+         @endforeach
 
 		<!-- Icons css -->
 		<link href="{{ asset('adminassets/css/icons.css') }}" rel="stylesheet">
