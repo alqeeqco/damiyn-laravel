@@ -19,15 +19,6 @@
 	<section class="hero-area bg-1 text-center ">
 		<div class="slider">
 			<div class="slide_viewer">
-				{{-- <div class="slide_group">
-                    @foreach (\App\Models\Slider::limit(2)->get() as $info )
-                    <div class="slide"  style="background-image: url({{ asset('uploads/sliders/' . $info->slider) }});background-size: cover;">
-					</div>
-                    @foreach (\App\Models\Slider::limit(2)->get() as $info )
-                    @endforeach
-
-				</div> --}}
-
 
                 <div class="slide_group text">
                     @foreach (\App\Models\Slider::where('active',1)->limit(2)->orderby('id','DESC')->get() as $info )
@@ -225,7 +216,7 @@
 				<div class="col-md-12 abouts">
 					<div class="about2">
 						<h5>شركاء ضمين</h5>
-                        @foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
+                        @foreach ( \App\Models\Team::where('active',2)->orderby('id','DESC')->limit(6)->get() as $review )
 						@if (!@empty($review))
                         <p>شركاء نجاح ضمين دائما وأبدا...</p>
                         @endif

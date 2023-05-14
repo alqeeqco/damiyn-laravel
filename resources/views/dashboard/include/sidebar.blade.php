@@ -9,28 +9,28 @@
 							<a class="desktop-logo logo-light active" href="{{ route('site.home') }}">
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" class="main-logo" alt="logo">
+                                <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" class="main-logo" alt="logo">
                                 @endforeach
                             </a>
 
 							<a class="desktop-logo logo-dark active" href="{{ route('admin.dashboard.index') }}">
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/'.$logo->logo_footer) }}" class="main-logo" alt="logo">
+                                <img src="{{ url('uploads/settings/'.$logo->logo_footer) }}" class="main-logo" alt="logo">
                                 @endforeach
                             </a>
 							<a class="logo-icon mobile-logo icon-light active" href="{{ route('admin.dashboard.index') }}">
 
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="logo">
+                                <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" alt="logo">
 
                                 @endforeach
                             </a>
 							<a class="logo-icon mobile-logo icon-dark active" href="{{ route('admin.dashboard.index') }}">
 
                                 @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="logo">
+                                <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" alt="logo">
                                 @endforeach
                             </a>
 						</div>

@@ -13,12 +13,21 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\NotifictionController;
 use App\Http\Controllers\Website\indexController;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('admin/login', function () {
     return view('auth.admin.login');
+});
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return 'Application cache has been cleared';
 });
 
 Route::view('not-allowed', 'site.index');

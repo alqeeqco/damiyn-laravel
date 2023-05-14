@@ -18,10 +18,10 @@ class SettingController extends Controller
     {
         $data = Setting::select("*")->orderby('id', 'DESC')->first();
         if (!empty($data)) {
-                $data->added_by_admin = User::where('id',$data->added_by)->value('name_en','name_ar');
-                if ($data->updated_by > 0 and $data->updated_by != null) {
-                    $data->updated_by_admin = User::where('id', $data->updated_by)->value('name_en','name_ar');
-                }
+            $data->added_by_admin = User::where('id', $data->added_by)->value('name_en', 'name_ar');
+            if ($data->updated_by > 0 and $data->updated_by != null) {
+                $data->updated_by_admin = User::where('id', $data->updated_by)->value('name_en', 'name_ar');
+            }
         }
         return view('dashboard.settings.index', compact('data'));
     }
@@ -72,8 +72,7 @@ class SettingController extends Controller
                 $path->move('uploads/settings', $name);
             }
             Setting::create($data_insert);
-            return redirect()->route('admin.settings.index')->with(['success'=>'Added successfully']);
-
+            return redirect()->route('admin.settings.index')->with(['success' => 'Added successfully']);
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -83,14 +82,14 @@ class SettingController extends Controller
 
     public function edit($id)
     {
-        $data = Setting::select("*")->where('id' , $id)->first();
-        return view('dashboard.settings.edit',compact('data'));
+        $data = Setting::select("*")->where('id', $id)->first();
+        return view('dashboard.settings.edit', compact('data'));
     }
 
-    public function update(updateSettingsRequest $request,$id)
+    public function update(updateSettingsRequest $request, $id)
     {
         try {
-            $data = Setting::select('id')->where(['id'=>$id])->first();
+            $data = Setting::select('id')->where(['id' => $id])->first();
             if (empty($data)) {
                 return redirect()->route('admin.customers.index')->with(['error' => 'عفوا غير قادر علي الوصول الي البيانات المطلوبة !!']);
             }
@@ -109,7 +108,7 @@ class SettingController extends Controller
             $data_update['title_gallary_ar'] = $request->title_gallary_ar;
             $data_update['content_gallary_en'] = $request->content_gallary_en;
             $data_update['content_gallary_ar'] = $request->content_gallary_ar;
-     $data_update['privacy_policy_en'] = $request->privacy_policy_en;
+            $data_update['privacy_policy_en'] = $request->privacy_policy_en;
             $data_update['privacy_policy_ar'] = $request->privacy_policy_ar;
             $data_update['Terms_and_Conditions_en'] = $request->Terms_and_Conditions_en;
             $data_update['Terms_and_Conditions_ar'] = $request->Terms_and_Conditions_ar;
@@ -134,9 +133,8 @@ class SettingController extends Controller
 
             $data_update['updated_at'] = date("Y-m-d H:s");
 
-            Setting::where(['id'=>$id])->update($data_update);
-            return redirect()->route('admin.settings.index')->with(['success'=>'Update completed successfully']);
-
+            Setting::where(['id' => $id])->update($data_update);
+            return redirect()->route('admin.settings.index')->with(['success' => 'Update completed successfully']);
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -148,16 +146,16 @@ class SettingController extends Controller
 
     public function delete($id)
     {
-        try{
+        try {
             $settings = Setting::findOrFail($id);
-            File::delete('uploads/settings/'.$settings->logo_header);
-            File::delete('uploads/settings/'.$settings->logo_footer);
+            File::delete('uploads/settings/' . $settings->logo_header);
+            File::delete('uploads/settings/' . $settings->logo_footer);
 
             $settings->delete();
             toastr()->success('Data has been deleted successfully!');
 
             return redirect()->route('admin.settings.index');
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
@@ -169,7 +167,7 @@ class SettingController extends Controller
         $team = Setting::findOrFail($id);
         if ($team->active) {
             $team->update([
-                'active' => $team->active == 1? 2 : 1,
+                'active' => $team->active == 1 ? 2 : 1,
             ]);
         } else {
             $team->update([
@@ -179,5 +177,4 @@ class SettingController extends Controller
         session()->flash('success', 'تم التحديث بنجاح');
         return back();
     }
-
 }

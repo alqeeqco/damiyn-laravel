@@ -3,6 +3,9 @@
 
   font-family: Montserrat-Arabic;
 }
+html{
+    overflow-x: hidden;
+}
 
 body {
   line-height: 1.5;
