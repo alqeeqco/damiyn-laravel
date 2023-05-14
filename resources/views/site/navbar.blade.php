@@ -33,7 +33,7 @@
                         <ul class="navbar-nav ml-auto mt-10">
                             <div class="dropdown">
                                 <div>
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn_toggle_name btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ auth()->user()->name_en }}<br><span>{{ auth()->user()->phone }}</span>
                                       </button>
                                 </div>

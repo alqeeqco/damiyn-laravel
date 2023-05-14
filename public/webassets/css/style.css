@@ -955,6 +955,10 @@ button {
   color: white;
   padding-top: 3px;
   border-radius: 11px;
+  position: absolute;
+  left: 20px;
+  top: 26px;
+
 }
 
 form {
@@ -1458,6 +1462,7 @@ ul.pagination .active a {
 
 .image-card1 {
   width: 100%;
+
 }
 
 .image-card2 {
@@ -3792,6 +3797,10 @@ a.slide_btn {
   border-radius: 50%;
   transition: all 200ms;
 }
+.btn_toggle_name{
+    width: 212px;
+    height: 62px;
+}
 
 .video-play-button:hover:after {
   background-color: darken(#fa183d, 10%);
@@ -3837,4 +3846,47 @@ a.slide_btn {
     header{
       height: 380px;
     }
+    .image-card1{
+        padding-bottom: 10px;
+    }
+    .test{
+        padding-bottom: 10px;
+    }
+    .slide_buttons {
+        top: 540px;
+    }
+    .slide_viewer {
+        height: 360px;
+    }
+    .slider-img{
+        width: 100%;
+    }
+    .hero-area {
+        height: 360px;
+    }
+  }
+
+  @media only screen and (max-width: 540px) {
+    .slide_buttons {
+        top: 445px;
+    }
+    .hero-area {
+        height: 180px;
+    }
+  }
+
+  @media only screen and (max-width: 414px) {
+    .slide_buttons {
+        top: 387px;
+    }
+
+    @media only screen and (max-width: 280px) {
+        .slide_buttons {
+            top: 390px;
+        }
+        a.slide_btn{
+            font-size: 100px;
+        }
+    }
+
   }

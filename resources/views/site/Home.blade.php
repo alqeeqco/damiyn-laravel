@@ -31,7 +31,7 @@
                 <div class="slide_group">
                     @foreach (\App\Models\Slider::where('active',1)->limit(2)->orderby('id','DESC')->get() as $info )
 					<div class="slide">
-                        <img src="{{ asset('uploads/sliders/' . $info->slider) }}" />
+                        <img class="slider-img" src="{{ asset('uploads/sliders/' . $info->slider) }}" />
 					</div>
                     @endforeach
 
