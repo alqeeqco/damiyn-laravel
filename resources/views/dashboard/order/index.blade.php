@@ -1,5 +1,7 @@
 @extends('dashboard.include.master')
-
+@php
+    $show_order = 'show_order_'.app()->currentLocale();
+@endphp
 @section('title')
     {{ __('Order') }}
 @endsection
@@ -65,7 +67,7 @@
                                                 خدمة
                                             @endif
                                         </td>
-                                        <td>{{ $info->show_order }}</td>
+                                        <td>{{ $info->$show_order }}</td>
 
                                         <td>
                                             @if ($info->updated_by > 0 and $info->updated_by != null)
