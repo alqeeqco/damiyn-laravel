@@ -60,7 +60,7 @@ class indexController extends Controller
     public function blogs()
     {
         $blogs = Blog::select("*")->where('active',1)->orderby('id','ASC')->get();
-        return view('site.Blogs',compact('blogs'));
+        return view('site.blogs',compact('blogs'));
     }
 
     public function orderIndex()
@@ -112,14 +112,14 @@ class indexController extends Controller
     public function sliderIndex()
     {
         $sliders = Slider::select("*")->orderby('id','DESC')->limit(2)->get();
-        return view('site.Home',compact('sliders'));
+        return view('site.home',compact('sliders'));
     }
 
     public function featuresIndex()
     {
         $features = Feature::select("*")->orderby('id','DESC')->get();
 
-        return view('site.Home',compact('features'));
+        return view('site.home',compact('features'));
     }
 
     public function homeIndex()
@@ -129,7 +129,7 @@ class indexController extends Controller
 
     public function homeBlogs()
     {
-        return view('site.Blogs');
+        return view('site.blogs');
     }
 
     public function ajax_search(Request $request)

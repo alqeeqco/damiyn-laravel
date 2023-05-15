@@ -216,6 +216,7 @@
 						<h5>شركاء ضمين</h5>
 						@if ((\App\Models\Team::where('active',1)->first()))
                         <p>شركاء نجاح ضمين دائما وأبدا...</p>
+
                         @endif
 
 
