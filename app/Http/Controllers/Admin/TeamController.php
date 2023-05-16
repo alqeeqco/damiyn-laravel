@@ -18,9 +18,9 @@ class TeamController extends Controller
         $data = Team::select("*")->orderby('id', 'DESC')->paginate(10);
         if (!empty($data)) {
             foreach ($data as $info) {
-                $info->added_by_name = User::where('id', $info->added_by)->value('name_en','name_ar');
+                $info->added_by_name = User::where('id', $info->added_by)->value('name');
                 if ($info->updated_by > 0 and $info->updated_by != null) {
-                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name_en','name_ar');
+                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name');
                 }
             }
             return view('dashboard.team.index', compact('data'));

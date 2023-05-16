@@ -21,9 +21,9 @@ class SettingController extends Controller
     {
         $data = Setting::select("*")->orderby('id', 'DESC')->first();
         if (!empty($data)) {
-            $data->added_by_admin = User::where('id', $data->added_by)->value('name_en', 'name_ar');
+            $data->added_by_admin = User::where('id', $data->added_by)->value('name');
             if ($data->updated_by > 0 and $data->updated_by != null) {
-                $data->updated_by_admin = User::where('id', $data->updated_by)->value('name_en', 'name_ar');
+                $data->updated_by_admin = User::where('id', $data->updated_by)->value('name');
             }
         }
         return view('dashboard.settings.index', compact('data'));

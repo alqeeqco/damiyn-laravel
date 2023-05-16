@@ -22,10 +22,10 @@ class SliderController extends Controller
         $data = Slider::select("*")->orderby('id', 'DESC')->orderby('id','DESC')->paginate(10);
         if (!empty($data)) {
             foreach ($data as $info) {
-                $info->added_by_admin = User::where('id', $info->added_by)->value('name_en','name_ar');
+                $info->added_by_admin = User::where('id', $info->added_by)->value('name');
 
                 if ($info->updated_by > 0 and $info->updated_by != null) {
-                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name_en','name_ar');
+                    $info->updated_by_admin = User::where('id', $info->updated_by)->value('name');
                 }
             }
         }

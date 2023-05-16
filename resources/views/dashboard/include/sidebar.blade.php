@@ -1,6 +1,4 @@
-@php
-    $name = 'name_'.app()->currentLocale();
-@endphp
+
 
 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
 				<div class="sticky">
@@ -41,7 +39,7 @@
 										<img alt="user-img" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"><span class="avatar-status profile-status bg-green"></span>
 									</div>
 									<div class="user-info">
-										<h4 class="fw-semibold mt-3 mb-0">{{ auth()->user()->$name }}</h4>
+										<h4 class="fw-semibold mt-3 mb-0">{{ auth()->user()->name }}</h4>
 										<span class="mb-0 text-muted">{{ auth()->user()->email }}</span>
 									</div>
 								</div>
