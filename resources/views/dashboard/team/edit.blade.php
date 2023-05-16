@@ -19,6 +19,7 @@
             <div class="card-body">
                <form action="{{ route('admin.teams.update',$data['id']) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -47,7 +48,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
-                        <input type="file" name="image" class="dropify" data-default-file="{{ asset('uploads/sliders/'.$data['image'] ) }}" data-height="200">
+                        <input type="file" name="image" class="dropify" data-default-file="{{ asset('uploads/team/'.$data['image'] ) }}" data-height="200">
                         @error('image')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

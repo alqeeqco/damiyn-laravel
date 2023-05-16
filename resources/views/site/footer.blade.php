@@ -23,7 +23,7 @@
                         <a class="nav-link" href="{{ route('site.blogs') }}">المقالات</a>
                     </li>
                     <li class="nav-item li-text with-footer-link">
-                        <a class="nav-link action" href="{{ route('site.home') }}">من نحن</a>
+                        <a class="nav-link action" href="#">من نحن</a>
                     </li>
                     <li class="nav-item li-text bg-active with-footer-link">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="col-md-4 icon-footer col-footer-image">
-                @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                     <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                 @endforeach
             </div>
@@ -81,12 +81,12 @@
                     </div>
                     <div class="form-group label-right mb-3">
                         <label>{{ __('Order Type') }}</label><br>
-                        <select name="Order_type" id="Order_type" class="form-select"
+                        <select name="order_type" id="Order_type" class="form-select"
                             aria-label="Default select example">
                             <option selected>إختر نوع الطلب</option>
-                            <option @if (old('Order_type') == 1) selected ="selected" @endif value="1"> منتج
+                            <option @if (old('order_type') == 1) selected ="selected" @endif value="1"> منتج
                             </option>
-                            <option @if (old('Order_type') == 0) selected ="selected" @endif value="0"> خدمة
+                            <option @if (old('order_type') == 0) selected ="selected" @endif value="0"> خدمة
                             </option>
                         </select>
                     </div>
@@ -113,7 +113,7 @@
                         src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
             </div>
             <div class="modal-body modal-body-edit">
-                @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $Setting)
+                @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
                     <h5>{{ __('Terms and Conditions') }}</h5>
                     <p>{{ $Setting->$Terms_and_Conditions }}</p>
                 @endforeach
@@ -129,7 +129,7 @@
                         src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
             </div>
             <div class="modal-body modal-body-edit">
-                @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $Setting)
+                @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
                     <h5> {{ __('Privacy Policy') }}</h5>
                     <p>{{ $Setting->$privacy_policy }}</p>
                 @endforeach

@@ -38,7 +38,7 @@ return [
     'all reviews'=>'All Reviews',
     'add reviews'=>'Add Reviews',
     'Trash reviews'=>'Trash',
-    'Main'=>'MAIN'
+    'Main'=>'MAIN',
 
 
 ];

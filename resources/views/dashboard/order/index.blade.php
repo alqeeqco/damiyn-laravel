@@ -51,17 +51,29 @@
                                         <td>{{ $info->number_orders }}</td>
 
                                         <td>{{ $info->mobile_user }}</td>
-                                        <td>
-                                            @if ($info->Order_status == 1)
+                                        {{-- <td>
+                                            @if ($info->order_status == 1)
                                                 <button class="btn btn-success btn-sm">مكتمل</button>
-                                            @elseif($info->Order_status == 2)
+                                            @elseif($info->order_status == 2)
                                                 <button class="btn btn-warning btn-sm">بانتظار الدفع</button>
                                             @else
                                                 <button class="btn btn-primary btn-sm">قيد التنفيذ</button>
                                             @endif
-                                        </td>
+                                        </td> --}}
+                                        <th>
+                                            @if($info->order_status == 1)
+                                                <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-success btn-sm">مكتمل 
+                                                </a>
+                                            @elseif($info->order_status == 2)
+                                                <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-warning btn-sm">بانتظار الدفع
+                                                </a>
+                                            @else
+                                                <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-primary btn-sm"> قيد التنفيذ
+                                                </a>
+                                            @endif
+                                        </th>
                                         <td>
-                                            @if ($info->Order_type == 1)
+                                            @if ($info->order_type == 1)
                                                 منتج
                                             @else
                                                 خدمة
@@ -110,7 +122,7 @@
                                             <a class="btn btn-sm btn-primary"
                                                 href="{{ route('admin.order.edit', $info->id) }}"><span class="fe fe-edit">
                                                 </span></a>
-                                            <form class="d-inline" action="{{ route('admin.order.delete', $info->id) }}"
+                                            <form class="d-inline" action="{{ route('admin.order.destroy', $info->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('delete')

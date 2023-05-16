@@ -81,7 +81,7 @@
 						<div class="card padding-video">
 							<div class="card-body card-video">
 
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $setting)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $setting)
                                 <a target="_blank"  href="{{ $setting->video }}"  class="video-play-button">
                                     <span></span>
                                   </a>
@@ -97,7 +97,7 @@
                     <div class="allows col-md-5">
                         <div data-aos="zoom-out-left">
                             <div class="card">
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $setting)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $setting)
                                 <div class="card-body">
                                     <div class="image_bg">
                                         <img width="40" src="{{ asset('webassets/images/blog/Group 99.png') }}" alt="">
@@ -126,7 +126,7 @@
 		<!-- Container Start -->
 		<div class="container">
 			<div class="row">
-				@foreach (\App\Models\Setting::where('active',1)->orderby('id','DESC')->limit(1)->get() as $gallary)
+				@foreach (\App\Models\Setting::orderby('id','DESC')->limit(1)->get() as $gallary)
                 <div class="col-md-4 abouts task2">
 					<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
 						<div class="image_bg">

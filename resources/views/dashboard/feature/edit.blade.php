@@ -19,6 +19,7 @@
             <div class="card-body">
                <form action="{{ route('admin.features.update',$data['id']) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

@@ -19,6 +19,7 @@
             <div class="card-body">
                 <form action="{{ route('admin.settings.update', $data['id']) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -87,15 +88,6 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for=""> {{ __('Gallary Content_en') }}</label>
-                                <input type="text" name="content_gallary_en" value="{{ old('content_gallary_en',$data['content_gallary_en']) }}"  class="form-control">
-                                @error('content_gallary_en')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for=""> {{ __('Gallary Content_ar') }}</label>
                                 <input type="text" name="content_gallary_ar" value="{{ old('content_gallary_ar',$data['content_gallary_ar']) }}"  class="form-control">
                                 @error('content_gallary_ar')
                                 <span class="text-danger">{{ $message }}</span>
@@ -104,17 +96,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>  {{ __('Active') }}</label>
-                                <select name="active" id="active" class="form-control">
-                                    <option value=""> --select--</option>
-                                    <option {{  old('active',$data['active']) == 1 ?'selected' : ''}}  value="1"> Yes
-                                    </option>
-                                    <option {{  old('active',$data['active']) == 2 ?'selected' : ''}}  value="2"> No</option>
-                                </select>
-                                @error('active')
+                                <label for=""> {{ __('Gallary Content_ar') }}</label>
+                                <input type="text" name="content_gallary_en" value="{{ old('content_gallary_en',$data['content_gallary_en']) }}"  class="form-control">
+                                @error('content_gallary_en')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-
                             </div>
                         </div>
 

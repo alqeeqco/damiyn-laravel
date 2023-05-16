@@ -26,7 +26,7 @@
                         <select name="Order_typeSearch" id="Order_typeSearch" class="profile-select">
                             <option value="all">نوع الطلب</option>
                             <option value="1">منتج</option>
-                            <option value="2">خدمة</option>
+                            <option value="0">خدمة</option>
 
                         </select>
                     </div>
@@ -54,12 +54,20 @@
                                 </tr>
                                @foreach ($orders as $info )
                                <tr class="table-body text-center">
-                                <td>{{ $info->number_orders }}</td>
+                                <td>
+                                    @if ($info->order_status == 1)
+                                    p
+                                    @elseif ($info->order_status == 2)
+                                    S
+                                    @else
+                                    S
+                                    @endif
+                                    {{ $info->number_orders }}</td>
                                 <td>{{ $info->mobile_user }}</td>
                                 <td>
-                                    @if ($info->Order_status == 1)
+                                    @if ($info->order_status == 1)
                                     <button class="btn btn-finish">مكتمل </button>
-                                    @elseif($info->Order_status == 2)
+                                    @elseif($info->order_status == 2)
                                     <button class="btn btn-payment">بإنتظار الدفع</button>
 
                                     @else
@@ -69,7 +77,7 @@
                                 </td>
                                 <td>{{ $info->created_at->format('F d, Y,')}}</td>
                                 <td>
-                                    @if ($info->Order_type == 1)
+                                    @if ($info->order_type == 1)
                                     منتج
                                     @else
                                     خدمة
@@ -85,7 +93,18 @@
                                                     src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
                                         </div>
                                         <div class="modal-body modal-body-edit">
-                                            <h5> <span class="modal-span">{{ $info->number_orders }}</span>{{ __("Show Order") }}</h5>
+                                            <h5>
+                                                {{ __("Show Order") }}
+                                                <span class="modal-span">
+                                                    @if ($info->order_status == 1)
+                                                    p
+                                                    @elseif ($info->order_status == 2)
+                                                    S
+                                                    @else
+                                                    S
+                                                    @endif
+                                                {{ $info->number_orders }}
+                                            </span></h5>
                                             <p>{{ $info->$show_order }}</p>
                                         </div>
                                     </div>

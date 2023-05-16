@@ -22,10 +22,11 @@ class CreateBlogsRequest extends FormRequest
     public function rules()
     {
         return [
+            'slug' => 'required|max:255',
             'title_en' => 'required|max:255',
             'title_ar' => 'required|max:255',
-            'content_en' => 'required|max:1000',
-            'content_ar' => 'required|max:1000',
+            'content_en' => 'required',
+            'content_ar' => 'required',
             'active' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg,svg,gif',
         ];
@@ -34,6 +35,7 @@ class CreateBlogsRequest extends FormRequest
     public function messages()
     {
         return [
+            'slug.required' => 'يرجى كتابة الرابط المراد عرضه',
             'title_en.required' => 'اسم العنوان كاملا مطلوب',
             'title_ar.required' => 'اسم العنوان كاملا مطلوب',
             'content_en.required' => 'يرجى تعبئة المحتوى',

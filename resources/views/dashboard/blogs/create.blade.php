@@ -41,17 +41,27 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="">{{ __('Slug') }}</label>
+                            <input type="text" name="slug" value="{{ old('slug') }}"   class="form-control">
+                            @error('slug')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
                             <label for=""> {{ __('Content_en') }}</label>
-                            <textarea name="content_en" id="content_en" cols="10" rows="2"  class="form-control">{{ old('content_en') }}</textarea>
+                            <textarea name="content_en"  id="content_en" cols="10" rows="2"  class="myedit">{{ old('content_en') }}</textarea>
                             @error('content_en')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label for=""> {{ __('Content_ar') }}</label>
-                            <textarea name="content_ar" id="content_ar" cols="10" rows="2"  class="form-control">{{ old('content_ar') }}</textarea>
+                            <textarea name="content_ar" id="content_ar" cols="10" rows="2"  class="myedit">{{ old('content_ar') }}</textarea>
                             @error('content_ar')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -101,5 +111,11 @@
 		<!--Internal Fileuploads js-->
 		<script src="{{ asset('adminassets/plugins/fileuploads/js/fileupload.js') }}"></script>
         <script src="{{ asset('adminassets/plugins/fileuploads/js/file-upload.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/tinymce.min.js" integrity="sha512-tofxIFo8lTkPN/ggZgV89daDZkgh1DunsMYBq41usfs3HbxMRVHWFAjSi/MXrT+Vw5XElng9vAfMmOWdLg0YbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script>
+        tinymce.init({
+            selector: '.myedit'
+        })
+        </script>
 @endsection

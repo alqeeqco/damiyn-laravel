@@ -32,7 +32,7 @@
 	<meta name="theme-name" content="classimax" />
 
 	<!-- favicon -->
-    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
     <link href="{{ asset('uploads/settings/'.$logo->logo_header) }}" rel="shortcut icon">
  @endforeach
 
@@ -62,7 +62,7 @@
 				<div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="{{ route('homeIndex') }}">
-                            @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                            @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
                             @endforeach
                         </a>
@@ -127,7 +127,7 @@
 			  <fieldset class="p-4">
 				<div class="class-group text-align-right">
 					<label for="">الإسم كامل</label>
-					<input class="form-control mb-3" name="name_en" type="text" value="{{ old('name_en') }}" placeholder="الإسم كامل" required="">
+					<input class="form-control mb-3" name="name" type="text" value="{{ old('name') }}" placeholder="الإسم كامل" required="">
 				</div>
 
 				<div class="class-group text-align-right">
@@ -198,7 +198,7 @@
 				</ul>
 			</div>
 			<div class="col-md-4 icon-footer col-footer-image">
-                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                 <img src="{{ asset('uploads/settings/'.$logo->logo_footer) }}" alt="">
             @endforeach
 
@@ -270,7 +270,7 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="assets/images/blog/close-circle.svg" alt=""></button>
 		</div>
 		<div class="modal-body modal-body-edit">
-            @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $Setting )
+            @foreach (\App\Models\Setting::limit(1)->get() as $Setting )
             <h5>{{ __('Terms and Conditions') }}</h5>
             <p>{{ $Setting->$Terms_and_Conditions }}</p>
             @endforeach
@@ -285,7 +285,7 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="assets/images/blog/close-circle.svg" alt=""></button>
 		</div>
 		<div class="modal-body modal-body-edit">
-            @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $Setting )
+            @foreach (\App\Models\Setting::limit(1)->get() as $Setting )
             <h5> {{ __('Privacy Policy') }}</h5>
             <p>{{ $Setting->$privacy_policy }}</p>
             @endforeach

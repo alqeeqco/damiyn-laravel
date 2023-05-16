@@ -19,6 +19,7 @@
             <div class="card-body">
                <form action="{{ route('admin.blogs.update',$data['id']) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -34,6 +35,15 @@
                             <label for="">{{ __('Title_ar') }}</label>
                             <input type="text" name="title_ar" value="{{ old('title_ar',$data['title_ar']) }}" class="form-control">
                             @error('title_ar')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">{{ __('Slug') }}</label>
+                            <input type="text" name="slug" value="{{ old('slug',$data['slug']) }}"   class="form-control">
+                            @error('slug_ar')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         </div>

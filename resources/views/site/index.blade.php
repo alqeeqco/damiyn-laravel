@@ -58,7 +58,7 @@
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="index.html">
-                            @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                            @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
                             @endforeach
 
@@ -87,7 +87,7 @@
                             </ul>
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="{{ route('site.login') }}">تسجيل دخول</a>
+                                    <a class="nav-link login-button" href="{{ route('login.site') }}">تسجيل دخول</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link  add-button" href="{{ route('site.register') }}"> حساب جديد </a>
@@ -169,7 +169,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-body card-video">
-                                    @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $setting)
+                                    @foreach (\App\Models\Setting::limit(1)->get() as $setting)
                                         <a target="_blank"  href="{{ $setting->video }}" class="video-play-button">
                                             <span></span>
                                         </a>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="allows col-md-5">
                     <div data-aos="zoom-out-left">
-                        @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $setting)
+                        @foreach (\App\Models\Setting::limit(1)->get() as $setting)
                             <div class="card-body">
                                 <div class="image_bg">
                                     <img width="40" src="{{ asset('webassets/images/blog/Group 99.png') }}"
@@ -214,7 +214,7 @@
         <!-- Container Start -->
         <div class="container">
             <div class="row">
-                @foreach (\App\Models\Setting::where('active', 1)->orderby('id', 'DESC')->limit(1)->get() as $gallary)
+                @foreach (\App\Models\Setting::orderby('id', 'DESC')->limit(1)->get() as $gallary)
                     <div class="col-md-4 abouts task2">
                         <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                             <div class="image_bg">
@@ -367,7 +367,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 icon-footer col-footer-image">
-                    @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                         <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                     @endforeach
 

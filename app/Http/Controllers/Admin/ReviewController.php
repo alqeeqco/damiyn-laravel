@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\File;
 
 class ReviewController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Review::select("*")->orderby('id', 'DESC')->paginate(10);
@@ -26,13 +29,18 @@ class ReviewController extends Controller
         }
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('dashboard.review.create');
     }
 
-
-    public function store(CreateReviewRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
         try {
             $checkExists_name =Review::select("id")->where(['name_ar'=>$request->name_ar,'name_en'=>$request->name_en])->first();
@@ -48,7 +56,7 @@ class ReviewController extends Controller
             $data_insert['created_at'] = date("Y-m-d H:s");
             Review::create($data_insert);
             toastr()->success('Data has been saved successfully!');
-             return redirect()->route('admin.reviews.index');
+             return redirect()->route('admin.reviews.index')->with(['success'=>__('Data has been added successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -57,13 +65,27 @@ class ReviewController extends Controller
         }
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $data = Review::select("*")->where('id' , $id)->first();
         return view('dashboard.review.edit',compact('data'));
     }
 
-    public function update(UpdatedReviewRequest $request,$id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         try {
             $checkExists_name =Review::select("id")->where(['name_en'=>$request->name_en,'name_ar'=>$request->name_ar])->where('id','!=',$id)->first();
@@ -80,7 +102,7 @@ class ReviewController extends Controller
             Review::where(['id'=>$id])->update($data_update);
             toastr()->success('Data has been updated successfully!');
 
-            return redirect()->route('admin.reviews.index');
+            return redirect()->route('admin.reviews.index')->with(['success'=>__('The data has been updated successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -89,7 +111,10 @@ class ReviewController extends Controller
         }
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try{
             $review = Review::findOrFail($id);
@@ -98,7 +123,7 @@ class ReviewController extends Controller
             $review->delete();
             toastr()->success('Data has been deleted successfully!');
 
-            return redirect()->route('admin.reviews.index');
+            return redirect()->route('admin.reviews.index')->with(['success'=>__('Data has been deleted successfully!')]);
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])

@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\File;
 
 class SettingController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Setting::select("*")->orderby('id', 'DESC')->first();
@@ -26,11 +29,17 @@ class SettingController extends Controller
         return view('dashboard.settings.index', compact('data'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('dashboard.settings.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(CreateSettingsRequest $request)
     {
         try {
@@ -48,7 +57,6 @@ class SettingController extends Controller
             $data_insert['title_gallary_ar'] = $request->title_gallary_ar;
             $data_insert['content_gallary_en'] = $request->content_gallary_en;
             $data_insert['content_gallary_ar'] = $request->content_gallary_ar;
-            $data_insert['active'] = $request->active;
             $data_insert['privacy_policy_en'] = $request->privacy_policy_en;
             $data_insert['privacy_policy_ar'] = $request->privacy_policy_ar;
             $data_insert['Terms_and_Conditions_en'] = $request->Terms_and_Conditions_en;
@@ -72,7 +80,7 @@ class SettingController extends Controller
                 $path->move('uploads/settings', $name);
             }
             Setting::create($data_insert);
-            return redirect()->route('admin.settings.index')->with(['success' => 'Added successfully']);
+            return redirect()->route('admin.settings.index')->with(['success'=>__('Data has been added successfully')]);
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -80,13 +88,27 @@ class SettingController extends Controller
         }
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+       //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $data = Setting::select("*")->where('id', $id)->first();
         return view('dashboard.settings.edit', compact('data'));
     }
 
-    public function update(updateSettingsRequest $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(updateSettingsRequest $request, string $id)
     {
         try {
             $data = Setting::select('id')->where(['id' => $id])->first();
@@ -112,7 +134,6 @@ class SettingController extends Controller
             $data_update['privacy_policy_ar'] = $request->privacy_policy_ar;
             $data_update['Terms_and_Conditions_en'] = $request->Terms_and_Conditions_en;
             $data_update['Terms_and_Conditions_ar'] = $request->Terms_and_Conditions_ar;
-            $data_update['active'] = $request->active;
             $data_update['updated_by'] = auth()->user()->id;
             $data = Setting::findOrFail($id);
             if ($request->file('logo_header')) {
@@ -134,7 +155,7 @@ class SettingController extends Controller
             $data_update['updated_at'] = date("Y-m-d H:s");
 
             Setting::where(['id' => $id])->update($data_update);
-            return redirect()->route('admin.settings.index')->with(['success' => 'Update completed successfully']);
+            return redirect()->route('admin.settings.index')->with(['success'=>__('The data has been updated successfully')]);
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
@@ -142,9 +163,10 @@ class SettingController extends Controller
         }
     }
 
-
-
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try {
             $settings = Setting::findOrFail($id);
@@ -152,9 +174,9 @@ class SettingController extends Controller
             File::delete('uploads/settings/' . $settings->logo_footer);
 
             $settings->delete();
-            toastr()->success('Data has been deleted successfully!');
+            toastr()->success('تم الحدف بنجاح!');
 
-            return redirect()->route('admin.settings.index');
+            return redirect()->route('admin.settings.index')->with(['success'=>__('Data has been deleted successfully!')]);
         } catch (\Exception $ex) {
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])

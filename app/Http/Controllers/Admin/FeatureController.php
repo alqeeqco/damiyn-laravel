@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\File;
 
 class FeatureController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Feature::select("*")->orderby('id', 'DESC')->paginate(10);
@@ -28,13 +31,19 @@ class FeatureController extends Controller
         }
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('dashboard.feature.create');
+
     }
 
-
-    public function store(CreateFeatureRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
         try {
             $checkExists_name =Feature::select("id")->where(['title_en'=>$request->title_en,'title_ar'=>$request->title_ar])->first();
@@ -58,7 +67,7 @@ class FeatureController extends Controller
             Feature::create($data_insert);
             toastr()->success('تمت الاضافة بنجاح');
 
-            return redirect()->route('admin.features.index');
+            return redirect()->route('admin.features.index')->with(['success'=>__('Data has been added successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -67,13 +76,27 @@ class FeatureController extends Controller
         }
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $data = Feature::select("*")->where('id' , $id)->first();
         return view('dashboard.feature.edit',compact('data'));
     }
 
-    public function update(UpdatedFeatureRequest $request,$id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         try {
             $checkExists_name =Feature::select("id")->where(['title_en'=>$request->title_en,'title_ar'=>$request->title_ar])->where('id','!=',$id)->first();
@@ -97,7 +120,7 @@ class FeatureController extends Controller
             Feature::where(['id'=>$id])->update($data_update);
             toastr()->success('تمت التحديث بنجاح');
 
-            return redirect()->route('admin.features.index');
+            return redirect()->route('admin.features.index')->with(['success'=>__('The data has been updated successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -106,7 +129,10 @@ class FeatureController extends Controller
         }
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try{
             $feature = Feature::findOrFail($id);
@@ -114,14 +140,13 @@ class FeatureController extends Controller
 
             $feature->delete();
             toastr()->success('تمت الحدف بنجاح');
-            return redirect()->route('admin.features.index');
+            return redirect()->route('admin.features.index')->with(['success'=>__('The data has been updated successfully')]);
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
     }
-
     public function toggle_active($id)
     {
         $team = Feature::findOrFail($id);
@@ -135,6 +160,6 @@ class FeatureController extends Controller
             ]);
         }
         session()->flash('success', 'تم التحديث بنجاح');
-        return back();
+        return back()->with(['success'=>__('The data has been updated successfully')]);
     }
 }

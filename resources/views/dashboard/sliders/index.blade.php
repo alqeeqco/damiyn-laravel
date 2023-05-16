@@ -84,7 +84,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="{{ route('admin.slider.edit',$info->id) }}"><span class="fe fe-edit"> </span></a>
-                                        <form class="d-inline" action="{{ route('admin.slider.delete',$info->id) }}" method="POST">
+                                        <form class="d-inline" action="{{ route('admin.slider.destroy',$info->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                         <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>

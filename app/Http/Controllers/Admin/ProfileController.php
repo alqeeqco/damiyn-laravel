@@ -38,7 +38,7 @@ class ProfileController extends Controller
             User::where(['id'=>$id])->update($data_update);
             toastr()->success('تمت التحديث بنجاح');
 
-            return redirect('admin/dashboard/index');
+            return redirect('admin/dashboard/index')->with(['success'=>__('The data has been updated successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -76,7 +76,7 @@ class ProfileController extends Controller
         $data=$user->save();
         toastr()->success('تمت التحديث بنجاح');
 
-        return redirect('/admin/dashboard/index');
+        return redirect('/admin/dashboard/index')->with(['success'=>__('The data has been updated successfully')]);;
     }
 
 

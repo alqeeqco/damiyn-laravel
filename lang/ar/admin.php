@@ -33,7 +33,7 @@ return [
     'all reviews'=>'جميع الأقوال',
     'add reviews'=>'اضافة مقولة',
     'Trash reviews'=>'المحدوفات',
-    'Main'=>'رئيسي'
+    'Main'=>'رئيسي',
 
 
 ];

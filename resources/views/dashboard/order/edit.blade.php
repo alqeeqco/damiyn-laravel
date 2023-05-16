@@ -19,6 +19,7 @@
             <div class="card-body">
                <form action="{{ route('admin.order.update',$data['id']) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -41,16 +42,16 @@
                     <div class="col-md-6">
                     <div class="form-group">
                         <label> {{ __('Order status') }}</label>
-                        <select name="Order_status" id="Order_status" class="form-control">
+                        <select name="order_status" id="order_status" class="form-control">
                             <option value="">--Select-- </option>
-                            <option @if (old('Order_status', $data['Order_status']) == 1) selected="selected" @endif value="1">
+                            <option @if (old('order_status', $data['order_status']) == 1) selected="selected" @endif value="1">
                                 مكتمل </option>
-                            <option @if (old('Order_status', $data['Order_status']) == 2) selected="selected" @endif value="2">
+                            <option @if (old('order_status', $data['order_status']) == 2) selected="selected" @endif value="2">
                                 بانتظار الدفع </option>
-                            <option @if (old('Order_status', $data['Order_status']) == 3) selected="selected" @endif value="3">
+                            <option @if (old('order_status', $data['order_status']) == 3) selected="selected" @endif value="3">
                                 قيد التنفيذ</option>
                         </select>
-                        @error('Order_status')
+                        @error('order_status')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -58,13 +59,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> {{ __('Order Type') }} </label>
-                            <select name="Order_type" id="Order_type" class="form-control">
+                            <select name="order_type" id="order_type" class="form-control">
                                 <option value=""> --select--</option>
-                                <option {{  old('Order_type',$data['Order_type']) == 1 ?'selected' : ''}}  value="1"> منتج
+                                <option {{  old('order_type',$data['order_type']) == 1 ?'selected' : ''}}  value="1"> منتج
                                 </option>
-                                <option {{  old('Order_type',$data['Order_type']) == 0 ?'selected' : ''}}  value="0"> خدمة</option>
+                                <option {{  old('order_type',$data['order_type']) == 0 ?'selected' : ''}}  value="0"> خدمة</option>
                             </select>
-                            @error('Order_type')
+                            @error('order_type')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         </div>

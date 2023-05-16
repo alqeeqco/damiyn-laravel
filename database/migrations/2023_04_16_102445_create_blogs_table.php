@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('title_en');
             $table->string('title_ar');
+            $table->string('slug')->unique();
             $table->text('content_en');
             $table->text('content_ar');
             $table->integer('added_by');

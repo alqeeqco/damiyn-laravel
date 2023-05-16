@@ -86,8 +86,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for=""> {{ __('Gallary Content_en') }}</label>
-                                <input type="text" name="content_gallary_en" value="{{ old('content_gallary_en') }}"  class="form-control">
-                                @error('content_gallary_en')
+                                <input type="text" name="content_gallary_ar" value="{{ old('content_gallary_ar') }}"  class="form-control">
+                                @error('content_gallary_ar')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             </div>
@@ -95,8 +95,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for=""> {{ __('Gallary Content_ar') }}</label>
-                                <input type="text" name="content_gallary_ar" value="{{ old('content_gallary_ar') }}"  class="form-control">
-                                @error('content_gallary_ar')
+                                <input type="text" name="content_gallary_en" value="{{ old('content_gallary_en') }}"  class="form-control">
+                                @error('content_gallary_en')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             </div>

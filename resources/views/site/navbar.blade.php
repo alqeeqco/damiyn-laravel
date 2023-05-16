@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light navigation">
                     <a class="navbar-brand" href="{{ route('site.home') }}">
-                    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                         <img   src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="">
                     @endforeach
                 </a>
@@ -41,7 +41,7 @@
                                   <li class="d-flex"><img class="mr-2" width="20" src="{{ asset('webassets/images/blog/frame.svg') }}" alt=""><a class="dropdown-item" href="{{ route('site.profile.edit') }}">الحساب الشخصي</a></li>
                                   <li class="d-flex"><img class="mr-2"   width="20" src="{{ asset('webassets/images/blog/element-4.svg') }}" alt=""><a class="dropdown-item" href="{{ route('site.order/index') }}">طلباتي</a></li>
                                   <li class="d-flex">
-                                  <form action="{{ route('logout') }}" method="post" class="d-flex">
+                                  <form action="{{ route('site.logout') }}" method="post" class="d-flex">
                                     @csrf
                                         @method('delete')
                                         <img class="mr-2"   width="20" src="{{ asset('webassets/images/blog/login.svg') }}" alt=""><button class="dropdown-item" style="border: 0"> تسجيل الخروج </button>

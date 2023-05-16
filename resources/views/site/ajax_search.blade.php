@@ -18,9 +18,9 @@ $show_order= 'show_order_'.app()->currentLocale();
         <td>{{ $info->number_orders }}</td>
         <td>{{ $info->mobile_user }}</td>
         <td>
-            @if ($info->Order_status == 1)
+            @if ($info->order_status == 1)
             <button class="btn btn-finish">مكتمل </button>
-            @elseif($info->Order_status == 2)
+            @elseif($info->order_status == 2)
             <button class="btn btn-payment">بإنتظار الدفع</button>
 
             @else
@@ -30,7 +30,7 @@ $show_order= 'show_order_'.app()->currentLocale();
         </td>
         <td>{{ $info->created_at->format('F d, Y,')}}</td>
         <td>
-            @if ($info->Order_type == 1)
+            @if ($info->order_type == 1)
             منتج
             @else
             خدمة

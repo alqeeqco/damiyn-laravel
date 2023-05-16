@@ -8,9 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
 class TeamController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Team::select("*")->orderby('id', 'DESC')->paginate(10);
@@ -25,12 +27,17 @@ class TeamController extends Controller
         }
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('dashboard.team.create');
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         try {
@@ -50,9 +57,9 @@ class TeamController extends Controller
             $data_insert['added_by'] = auth()->user()->id;
             $data_insert['created_at'] = date("Y-m-d H:s");
             Team::create($data_insert);
-            toastr()->success('Data has been saved successfully!');
+            toastr()->success('تم الاضافة بنجاح!');
 
-            return redirect()->route('admin.teams.index');
+            return redirect()->route('admin.teams.index')->with(__('Data has been added successfully'));
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -61,13 +68,27 @@ class TeamController extends Controller
         }
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $data = Team::select("*")->where('id' , $id)->first();
         return view('dashboard.team.edit',compact('data'));
     }
 
-    public function update(Request $request,$id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         try {
             $checkExists_name =Team::select("id")->where(['name'=>$request->name])->where('id','!=',$id)->first();
@@ -87,8 +108,8 @@ class TeamController extends Controller
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
             Team::where(['id'=>$id])->update($data_update);
-            toastr()->success('Data has been updated successfully!');
-            return redirect()->route('admin.teams.index');
+            toastr()->success('تم التحديث بنجاح !');
+            return redirect()->route('admin.teams.index')->with(__('The data has been updated successfully'));
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -97,23 +118,23 @@ class TeamController extends Controller
         }
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try{
             $Team = Team::findOrFail($id);
             File::delete('uploads/Team/'.$Team->path);
 
             $Team->delete();
-            toastr()->success('Data has been deleted successfully!');
-
-            return redirect()->route('admin.teams.index');
+            return redirect()->route('admin.teams.index')->with(['error'=>__('Data has been deleted successfully!')]);
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
     }
-
     public function toggle_active($id)
     {
         $team = Team::findOrFail($id);

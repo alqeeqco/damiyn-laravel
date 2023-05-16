@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('number_orders');
             $table->string('mobile_user');
-            $table->tinyInteger('Order_status')->default(2);//حالة الطلب
-            $table->tinyInteger('Order_type');//نوع الطلب
+            $table->tinyInteger('order_status')->default(2);//حالة الطلب
+            $table->tinyInteger('order_type');//نوع الطلب
             $table->text('show_order_en')->nullable();
             $table->text('show_order_ar')->nullable();
             $table->integer('added_by');

@@ -3,7 +3,7 @@
         <div class="main-header-left ">
             <div class="responsive-logo">
                 <a href="index.html" class="header-logo">
-                    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                     <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" class="logo-1" alt="logo">
                     <img src="{{ asset('uploads/settings/'.$logo->logo_footer) }}" class="dark-logo-1" alt="logo">
 
@@ -101,7 +101,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.resetPassword') }}"><i class="bx bx-user-circle"></i>{{ __('Reset Password') }}</a>
                                 <a class="dropdown-item" href=" {{ route('admin.profile.edit') }}"><i class="bx bx-cog"></i> {{ __('Edit Profile') }}</a>
                                 <a class="dropdown-item" href="{{ route('admin.settings.index') }}"><i class="bx bx-slider-alt"></i> {{ __('Account Settings') }}</a>
-                                <form action="{{ route('logout') }}" method="post" class="d-flex">
+                                <form action="{{ route('admin.logout') }}" method="POST" class="d-flex">
                                 @csrf
                                     @method('delete')
                                 <button class="dropdown-item" style="border: 0; outline: 0;" type="submit"><i class="bx bx-log-out"></i> {{ __('Sign Out') }}</button>

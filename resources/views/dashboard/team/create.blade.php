@@ -19,6 +19,7 @@
             <div class="card-body">
                <form action="{{ route('admin.teams.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

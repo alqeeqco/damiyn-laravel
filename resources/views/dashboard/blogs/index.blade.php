@@ -2,6 +2,7 @@
 @php
     $title = 'title_'.app()->currentLocale();
     $content = 'content_'.app()->currentLocale();
+    $slug = 'slug_'.app()->currentLocale();
 @endphp
 @section('title')
 {{ __('Blogs') }}
@@ -37,6 +38,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('ID') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Title') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Image') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('Slug') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Content') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Updated at') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Active') }}</th>
@@ -49,7 +51,8 @@
                                     <th scope="row">{{ $info->id }}</th>
                                     <td>{{ $info->$title }}</td>
                                     <td><img width="80" src="{{ asset('uploads/Blog/'.$info->image ) }}" alt=""></td>
-                                    <td>{!! Str::words($info->$content, 12, '...') !!}</td>
+                                    <td>{{ $info->slug }}</td>
+                                    <td>{!! Str::words($info->$content, 8, '...') !!}</td>
                                     <td>
                                         @if ($info->updated_by > 0 and $info->updated_by != null)
                                             @php
@@ -86,7 +89,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="{{ route('admin.blogs.edit',$info->id) }}"><span class="fe fe-edit"> </span></a>
-                                        <form class="d-inline" action="{{ route('admin.blogs.delete',$info->id) }}" method="POST">
+                                        <form class="d-inline" action="{{ route('admin.blogs.destroy',$info->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                         <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>

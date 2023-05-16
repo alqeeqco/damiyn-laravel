@@ -17,13 +17,14 @@
     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
         <div class="card">
             <div class="card-body">
-               <form action="{{ route('admin.slider.update',$data['id']) }}" method="post" enctype="multipart/form-data">
+               <form action="{{ route('admin.slider.update',$data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for=""> {{ __('Title_en') }}</label>
-                            <input type="text" name="title_en"  value="{{ old('title_en',$data['title_en']) }}" class="form-control">
+                            <input type="text" name="title_en"  value="{{ old('title_en',$data->title_en) }}" class="form-control">
                             @error('title_en')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -32,7 +33,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for=""> {{ __('Title_ar') }}</label>
-                            <input type="text" name="title_ar"  value="{{ old('title_ar',$data['title_ar']) }}" class="form-control">
+                            <input type="text" name="title_ar"  value="{{ old('title_ar',$data->title_ar) }}" class="form-control">
                             @error('title_ar')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -43,9 +44,9 @@
                             <label>  {{ __('Active') }}</label>
                             <select name="active" id="active" class="form-control">
                                 <option value=""> --select--</option>
-                                <option {{  old('active',$data['active']) == 1 ?'selected' : ''}}  value="1"> Yes
+                                <option {{  old('active',$data->active) == 1 ?'selected' : ''}}  value="1"> Yes
                                 </option>
-                                <option {{  old('active',$data['active']) == 2 ?'selected' : ''}}  value="2"> No</option>
+                                <option {{  old('active',$data->active) == 2 ?'selected' : ''}}  value="2"> No</option>
                             </select>
 
                             @error('active')
@@ -56,7 +57,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
-                        <input type="file" name="slider" class="dropify" data-default-file="{{ asset('uploads/sliders/'.$data['slider'] ) }}" data-height="200">
+                        <input type="file" name="slider" class="dropify" data-default-file="{{ asset('uploads/sliders/'.$data->slider ) }}" data-height="200">
                         @error('slider')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

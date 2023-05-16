@@ -11,8 +11,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
+
 class SliderController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Slider::select("*")->orderby('id', 'DESC')->orderby('id','DESC')->paginate(10);
@@ -28,11 +32,17 @@ class SliderController extends Controller
         return view('dashboard.sliders.index', compact('data'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('dashboard.sliders.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(CreateSliderRequest $request)
     {
         try {
@@ -54,7 +64,7 @@ class SliderController extends Controller
                 $path->move('uploads/sliders', $name);
             }
             Slider::create($data_insert);
-            return redirect()->route('admin.slider.index')->with(['success'=>'Added successfully']);
+            return redirect()->route('admin.slider.index')->with(['success'=>__('Data has been added successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -63,13 +73,27 @@ class SliderController extends Controller
         }
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $data = Slider::select("*")->where('id' , $id)->first();
         return view('dashboard.sliders.edit',compact('data'));
     }
 
-    public function update(updateSliderRequest $request,$id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(updateSliderRequest $request, string $id)
     {
         try {
             $data = Slider::select('id')->where(['id'=>$id])->first();
@@ -96,7 +120,7 @@ class SliderController extends Controller
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
             Slider::where(['id'=>$id])->update($data_update);
-            return redirect()->route('admin.slider.index')->with(['success'=>'Update completed successfully']);
+            return redirect()->route('admin.slider.index')->with(['success'=> __('The data has been updated successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -105,22 +129,26 @@ class SliderController extends Controller
         }
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try{
             $slider = Slider::findOrFail($id);
             File::delete('uploads/sliders/'.$slider->path);
 
             $slider->delete();
-            toastr()->success('Data has been deleted successfully!');
+            toastr()->success('تم الحدف بنجاح!');
 
-            return redirect()->route('admin.slider.index');
+            return redirect()->route('admin.slider.index')->with(['success'=>__('Data has been deleted successfully!')]);
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])
                 ->withInput();
         }
     }
+
     public function toggle_active($id)
     {
         $team = Slider::findOrFail($id);
@@ -133,7 +161,7 @@ class SliderController extends Controller
                 'active' => $team->active,
             ]);
         }
-        session()->flash('success', 'تم التحديث بنجاح');
+        session()->flash('success', __('The data has been updated successfully'));
         return back();
     }
 }

@@ -14,7 +14,7 @@
 
 		<!-- Favicon -->
 
-        @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+        @foreach (\App\Models\Setting::limit(1)->get() as $logo)
             <link rel="icon" href="{{ asset('uploads/settings/'.$logo->logo_header) }}" type="image/x-icon">
          @endforeach
 
@@ -504,7 +504,6 @@
 
 		<!-- Back-to-top -->
 		<a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
-
 		<!-- JQuery min js -->
 		<script src="{{ asset('adminassets/plugins/jquery/jquery.min.js') }}"></script>
 
@@ -523,9 +522,6 @@
 
 		<!-- Moment js -->
 		<script src="{{ asset('adminassets/plugins/raphael/raphael.min.js') }}"></script>
-
-		<!--Internal Apexchart js-->
-		<script src="{{ asset('adminassets/js/apexcharts.js') }}"></script>
 
 		<!--Internal  Perfect-scrollbar js -->
 		<script src="{{ asset('adminassets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>

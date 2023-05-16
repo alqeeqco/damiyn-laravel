@@ -1,4 +1,9 @@
 {
+    "Slug":"عنوان الرابط",
+    "Slug_en":" عنوان الرابط بالانجليزي",
+    "Slug_ar":" عنوان الرابط بالعربي",
+    "Title":"العنوان",
+    "Content":"المحتوى",
     "Users Number":"عدد المستخدمين",
     "first_name" : "الاسم الاول",
     "Name" : " الأسم",
@@ -70,5 +75,11 @@
     "Reset Password":"إعادة تعيين كلمة المرور",
     "Edit Profile":"تعديل الملف الشخصي",
     "Account Settings":"إعدادت الحساب",
-    "Sign Out":"تسجيل الخروج"
+    "Sign Out":"تسجيل الخروج",
+    "Data has been deleted successfully!":"تم حدف البيانات بنجاح !",
+    "The data has been updated successfully":"تم التحديث البيانات بنجاح !",
+    "Data has been added successfully":"تم اضافة البيانات بنجاح !",
+    "Email":"إيميل",
+    "Number User":"رقم الهاتف",
+    "Users":"المستخدمين"
 }

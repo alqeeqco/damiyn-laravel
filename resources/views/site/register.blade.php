@@ -21,7 +21,7 @@
 	<!-- favicon -->
 	<link href="images/favicon.png" rel="shortcut icon">
 
-	<!-- 
+	<!--
   Essential stylesheets
   =====================================-->
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -56,25 +56,25 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto main-nav  ">
 								<li class="nav-item links ">
-									<a class="nav-link" href="index.html">الرئيسية</a>
+									<a class="nav-link" href="{{ route('homeIndex') }}">الرئيسية</a>
 								</li>
 								<li class="nav-item links active">
 									<a class="nav-link" href="index.html" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
 								</li>
 								<li class="nav-item links ">
-									<a class="nav-link" href="index.html">من نحن</a>
+									<a class="nav-link" href="#">من نحن</a>
 								</li>
 								<li class="nav-item links ">
-									<a class="nav-link" href="Blogs.html">المقالات</a>
+									<a class="nav-link" href="{{ route('site.login') }}">المقالات</a>
 								</li>
 
 							</ul>
 							<ul class="navbar-nav ml-auto mt-10">
 								<li class="nav-item">
-									<a class="nav-link login-button" href="login.html">تسجيل دخول</a>
+									<a class="nav-link login-button" href="{{ route('login.site') }}">تسجيل دخول</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link  add-button" href="register.html"> حساب جديد </a>
+									<a class="nav-link  add-button" href="{{ route('site.register') }}"> حساب جديد </a>
 								</li>
 							</ul>
 						</div>
@@ -161,16 +161,16 @@
 			<div class="col-md-6 col-footer">
 				<ul class=" list-footer">
 					<li class="nav-item li-text with-footer-link">
-						<a class="nav-link" href="Blogs.html">المقالات</a>
+						<a class="nav-link" href="{{ route('login.site') }}">المقالات</a>
 					</li>
 					<li class="nav-item li-text with-footer-link">
-						<a class="nav-link action" href="index.html">من نحن</a>
+						<a class="nav-link action" href="#">من نحن</a>
 					</li>
 					<li class="nav-item li-text bg-active with-footer-link">
 						<a class="nav-link" href="index.html" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
 					</li>
 					<li class="nav-item li-text">
-						<a class="nav-link" href="index.html">الرئيسية</a>
+						<a class="nav-link" href="{{ route('homeIndex') }}">الرئيسية</a>
 					</li>
 				</ul>
 			</div>
@@ -263,7 +263,7 @@
 	</div>
   </div>
 
-	<!-- 
+	<!--
 Essential Scripts
 =====================================-->
 	<script src="assets/plugins/jquery/jquery.min.js"></script>

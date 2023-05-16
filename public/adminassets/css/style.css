@@ -96,6 +96,12 @@ Width
 
     font-family:Montserrat-Arabic, Montserrat-Arabic;
   }
+  .btn{
+    font-family:Montserrat-Arabic
+  }
+  .dropdown-item{
+    font-family:Montserrat-Arabic
+  }
 
 /* ######## BOOTSTRAP ######## */
 /*Color variables*/

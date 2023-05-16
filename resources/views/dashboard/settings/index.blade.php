@@ -91,25 +91,6 @@
                                 <td class="width30"> {{ __('Terms and Conditions') }}</td>
                                 <td> {!! Str::words($data[$Terms_and_Conditions], 15, '...') !!}</td>
                             </tr>
-                            <tr>
-                                <td class="width30">{{ __('Active') }}</td>
-                                <td>
-
-                                    @if($data['active'] == 1)
-                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white"
-                                                style="font-size: 12px;background: #4FE39C"> <i class="fa fa-check"></i>
-                                        </a>
-                                    @elseif($data['active'] == 2)
-                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white"
-                                           style="font-size: 12px;background: #DC4267"><i class="fas fa-times"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('admin.settings.toggle_active',$data['id']) }}" class="btn text-white btn-warning"
-                                                style="font-size: 12px"><i class="fas fa-times"></i>
-                                        </a>
-                                    @endif
-                            </td>
-                            </tr>
 
                             <tr>
                                 <td class="width30"> تاريخ اخر تحديث</td>
@@ -139,7 +120,7 @@
                                 <td class="width30"></td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="{{ route('admin.settings.edit',$data['id']) }}"><span class="fe fe-edit"> </span></a>
-                                    <form class="d-inline" action="{{ route('admin.settings.delete',$data['id']) }}" method="POST">
+                                    <form class="d-inline" action="{{ route('admin.settings.destroy',$data['id']) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                     <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>

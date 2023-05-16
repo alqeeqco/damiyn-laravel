@@ -9,7 +9,7 @@
 
     <!-- Favicon -->
 
-    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
     <link rel="icon" href="{{ asset('uploads/settings/'.$logo->logo_header) }}" type="image/x-icon">
  @endforeach
 
@@ -46,7 +46,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
                     <div class="row wd-100p mx-auto text-center">
                         <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
-                            <img src="{{ asset('adminassets/img/pngs/8.png') }}"
+                            <img src="{{ asset('adminassets/img/pngs/Admin.jpg') }}"
                                 class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
                         </div>
                     </div>
@@ -60,11 +60,12 @@
                                 <div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
                                     <div class="card-sigin">
                                         <div class="mb-5 d-flex justify-content-center">
-                                            <a href="index.html"><img
-                                                    src="{{ asset('adminassets/brand/favicon.png') }}"
-                                                    class="sign-favicon-a ht-40" alt="logo">
-                                                <img src="{{ asset('adminassets/brand/favicon-white.png') }}"
-                                                    class="sign-favicon-b ht-40" alt="logo">
+                                            <a href="index.html">
+                                                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
+                                                <img src="{{ asset('uploads/settings/'.$logo->logo_header) }}" class="sign-favicon-a ht-40" alt="logo">
+                                                @endforeach
+
+                                                <img src="{{ asset('adminassets/brand/favicon-white.png') }}"  class="sign-favicon-b ht-40" alt="logo">
                                             </a>
                                             <h1 class="main-logo1 ms-1 me-0 my-auto tx-28 ">ضمين</h1>
                                         </div>

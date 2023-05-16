@@ -8,28 +8,28 @@
 						<div class="main-sidebar-header active">
 							<a class="desktop-logo logo-light active" href="{{ route('site.home') }}">
 
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" class="main-logo" alt="logo">
                                 @endforeach
                             </a>
 
 							<a class="desktop-logo logo-dark active" href="{{ route('admin.dashboard.index') }}">
 
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ url('uploads/settings/'.$logo->logo_footer) }}" class="main-logo" alt="logo">
                                 @endforeach
                             </a>
 							<a class="logo-icon mobile-logo icon-light active" href="{{ route('admin.dashboard.index') }}">
 
 
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" alt="logo">
 
                                 @endforeach
                             </a>
 							<a class="logo-icon mobile-logo icon-dark active" href="{{ route('admin.dashboard.index') }}">
 
-                                @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+                                @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ url('uploads/settings/'.$logo->logo_header) }}" alt="logo">
                                 @endforeach
                             </a>
@@ -97,6 +97,10 @@
                                 <li class="slide {{ str_contains(url()->current(), 'admin/review') ? 'is-expanded' : ''  }}">
 									<a class="side-menu__item" data-bs-toggle="slide" href="{{ route('admin.reviews.index') }}">
                                         <img width="30" style="margin-inline-end: 14px;" src="https://img.icons8.com/nolan/64/starburst-shape.png"/><span class="side-menu__label">{{ __('admin.review') }}</span></a>
+								</li>
+                                <li class="slide {{ str_contains(url()->current(), 'admin/users') ? 'is-expanded' : ''  }}">
+									<a class="side-menu__item" data-bs-toggle="slide" href="{{ route('admin.users.index') }}">
+                                        <img width="30" style="margin-inline-end: 14px;" src="https://img.icons8.com/nolan/64/starburst-shape.png"/><span class="side-menu__label">{{ __('Users') }}</span></a>
 								</li>
 							</ul>
 							<div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/></svg></div>

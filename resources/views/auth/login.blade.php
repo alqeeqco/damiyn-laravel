@@ -31,7 +31,7 @@
     <meta name="theme-name" content="classimax" />
 
     <!-- favicon -->
-    @foreach (\App\Models\Setting::where('active',1)->limit(1)->get() as $logo)
+    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
     <link href="{{ asset('uploads/settings/'.$logo->logo_header) }}" rel="shortcut icon">
  @endforeach
 
@@ -61,7 +61,7 @@
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="{{ route('homeIndex') }}">
-                            @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                            @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                                 <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
                             @endforeach
                         </a>
@@ -89,7 +89,7 @@
                             </ul>
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="{{ route('site.login') }}">تسجيل دخول</a>
+                                    <a class="nav-link login-button" href="{{ route('login.site') }}">تسجيل دخول</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link  add-button" href="{{ route('site.register') }}"> حساب جديد </a>
@@ -137,7 +137,7 @@
                             </form>
                         </div>
                         <div class="card-footer text-center footer-bg">
-                            <p class="card-footer-p"> ليس لدي حساب؟ <a href="{{ route('register') }}" class="text-blue">إنشاء حساب</a>
+                            <p class="card-footer-p"> ليس لدي حساب؟ <a href="{{ route('site.register') }}" class="text-blue">إنشاء حساب</a>
                             </p>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 icon-footer col-footer-image">
-                    @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $logo)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                         <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                     @endforeach
 
@@ -270,7 +270,7 @@
                             src="assets/images/blog/close-circle.svg" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
-                    @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $Setting)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
                         <h5>{{ __('Terms and Conditions') }}</h5>
                         <p>{{ $Setting->$Terms_and_Conditions }}</p>
                     @endforeach
@@ -287,7 +287,7 @@
                             src="assets/images/blog/close-circle.svg" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
-                    @foreach (\App\Models\Setting::where('active', 1)->limit(1)->get() as $Setting)
+                    @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
                         <h5> {{ __('Privacy Policy') }}</h5>
                         <p>{{ $Setting->$privacy_policy }}</p>
                     @endforeach
