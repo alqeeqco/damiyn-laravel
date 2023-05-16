@@ -196,7 +196,7 @@ class SettingController extends Controller
                 'active' => $team->active,
             ]);
         }
-        session()->flash('success', 'تم التحديث بنجاح');
+        session()->flash('success', __('The data has been updated successfully'));
         return back();
     }
 }

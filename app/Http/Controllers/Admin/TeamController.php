@@ -59,7 +59,7 @@ class TeamController extends Controller
             Team::create($data_insert);
             toastr()->success('تم الاضافة بنجاح!');
 
-            return redirect()->route('admin.teams.index')->with(__('Data has been added successfully'));
+            return redirect()->route('admin.teams.index')->with(['success'=>__('Data has been added successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -109,7 +109,7 @@ class TeamController extends Controller
             $data_update['updated_at'] = date("Y-m-d H:s");
             Team::where(['id'=>$id])->update($data_update);
             toastr()->success('تم التحديث بنجاح !');
-            return redirect()->route('admin.teams.index')->with(__('The data has been updated successfully'));
+            return redirect()->route('admin.teams.index')->with(['success'=>__('The data has been updated successfully')]);
 
         } catch (\Exception $ex) {
             return redirect()->back()
@@ -128,7 +128,7 @@ class TeamController extends Controller
             File::delete('uploads/Team/'.$Team->path);
 
             $Team->delete();
-            return redirect()->route('admin.teams.index')->with(['error'=>__('Data has been deleted successfully!')]);
+            return redirect()->route('admin.teams.index')->with(['success'=>__('Data has been deleted successfully!')]);
         }catch(\Exception $ex){
             return redirect()->back()
                 ->with(['error' => 'عفوا حدث خطأ ما' . $ex->getMessage()])

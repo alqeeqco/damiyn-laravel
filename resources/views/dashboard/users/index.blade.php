@@ -44,7 +44,7 @@
                                     <td>{{ $info->email }}</td>
                                     <td>{{ $info->phone }}</td>
                                     <td>
-                                        <form class="d-inline" action="{{ route('admin.teams.destroy',$info->id) }}" method="POST">
+                                        <form class="d-inline" action="{{ route('admin.users.delete',$info->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                         <button class="btn  btn-sm btn-danger" onclick="return confirm('Are you sure')"><span class="fe fe-trash-2"> </span></button>
