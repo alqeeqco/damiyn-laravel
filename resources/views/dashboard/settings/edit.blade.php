@@ -160,7 +160,7 @@
 
                             <div class="col-md-12 mt-5">
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5"> {{ __('Edit') }}</button>
+                                    <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5 " > {{ __('Edit') }}</button>
                                     <a href="{{ route('admin.settings.index') }}"  class="btn btn-dark pd-x-30 mg-t-5"> {{ __('Cancel') }}</a>
                                 </div>
                             </div>
