@@ -21,7 +21,7 @@
                     <!-- Post Title -->
                     <h3> {{ $slug->$title }}</h3>
                     <!-- Post Description -->
-                    <p>{{ $slug->$content }}</p>
+                    <p>{!! $slug->$content  !!}</p>
 
                     <!-- Read more button -->
                     <div class="text-right date">

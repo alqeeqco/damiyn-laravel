@@ -56,7 +56,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/site', 'as' => 's
     Route::get('/order/index', [OrderSiteController::class, 'orderIndex'])->name('order/index');
     Route::post('/order/store', [OrderSiteController::class, 'orderStore'])->name('orderStore');
     Route::post('/order/ajax_search', [OrderSiteController::class, 'ajax_search'])->name('order.ajax_search');
-    Route::get('/order/show/{id}', [indexController::class, 'orderShow'])->name('orderShow');
+    Route::get('/order/show/{id}', [OrderSiteController::class, 'orderShow'])->name('orderShow');
     Route::get('/slider/index', [SliderSiteController::class, 'sliderIndex'])->name('slider.index');
     Route::get('/features/index', [FeatureSiteController::class, 'featuresIndex'])->name('features.index');
     Route::get('/send-sms', [IndexController::class, 'send_sms'])->name('send_sms');
