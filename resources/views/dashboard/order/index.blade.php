@@ -40,7 +40,6 @@
                                     <th class="wd-15p border-bottom-0">{{ __('Order Type') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Show Order') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Updated at') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('Active') }}</th>
                                     <th class="wd-15p border-bottom-0"></th>
                                 </tr>
                             </thead>
@@ -48,7 +47,16 @@
                                 @foreach ($data as $info)
                                     <tr>
                                         <th scope="row">{{ $info->id }}</th>
-                                        <td>{{ $info->number_orders }}</td>
+                                        <td>
+                                            @if ($info->order_status == 1)
+                                            p -
+                                            @elseif ($info->order_status == 2)
+                                            S -
+                                            @else
+                                            S -
+                                            @endif
+                                            {{ $info->number_orders }}
+                                        </td>
 
                                         <td>{{ $info->mobile_user }}</td>
                                         {{-- <td>
@@ -62,7 +70,7 @@
                                         </td> --}}
                                         <th>
                                             @if($info->order_status == 1)
-                                                <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-success btn-sm">مكتمل 
+                                                <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-success btn-sm">مكتمل
                                                 </a>
                                             @elseif($info->order_status == 2)
                                                 <a href="{{ route('admin.order.order_status',$info->id) }}" class="btn btn-warning btn-sm">بانتظار الدفع
@@ -79,7 +87,7 @@
                                                 خدمة
                                             @endif
                                         </td>
-                                        <td>{{ $info->$show_order }}</td>
+                                        <td> {!! Str::words($info->$show_order , 10, '...') !!}</td>
 
                                         <td>
                                             @if ($info->updated_by > 0 and $info->updated_by != null)
@@ -99,24 +107,6 @@
                                                 {{ __('No Updated') }}
                                             @endif
 
-                                        </td>
-                                        <td>
-                                            @if ($info->active == 1)
-                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
-                                                    class="btn text-white" style="font-size: 12px;background: #4FE39C"> <i
-                                                        class="fa fa-check"></i>
-                                                </a>
-                                            @elseif($info->active == 2)
-                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
-                                                    class="btn text-white" style="font-size: 12px;background: #DC4267"><i
-                                                        class="fas fa-times"></i>
-                                                </a>
-                                            @else
-                                                <a href="{{ route('admin.order.toggle_active', $info->id) }}"
-                                                    class="btn text-white btn-warning" style="font-size: 12px"><i
-                                                        class="fas fa-times"></i>
-                                                </a>
-                                            @endif
                                         </td>
                                         <td>
                                             <a class="btn btn-sm btn-primary"

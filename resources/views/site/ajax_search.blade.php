@@ -15,7 +15,15 @@ $show_order= 'show_order_'.app()->currentLocale();
         </tr>
        @foreach ($orders as $info )
        <tr class="table-body text-center">
-        <td>{{ $info->number_orders }}</td>
+        <td>
+            @if ($info->order_status == 1)
+            p
+            @elseif ($info->order_status == 2)
+            S
+            @else
+            S
+            @endif
+            {{ $info->number_orders }}</td>
         <td>{{ $info->mobile_user }}</td>
         <td>
             @if ($info->order_status == 1)
@@ -46,7 +54,18 @@ $show_order= 'show_order_'.app()->currentLocale();
                             src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
-                    <h5> <span class="modal-span">{{ $info->number_orders }}</span>{{ __("Show Order") }}</h5>
+                    <h5>
+                        {{ __("Show Order") }}
+                        <span class="modal-span">
+                            @if ($info->order_status == 1)
+                            p
+                            @elseif ($info->order_status == 2)
+                            S
+                            @else
+                            S
+                            @endif
+                        {{ $info->number_orders }}
+                    </span></h5>
                     <p>{{ $info->$show_order }}</p>
                 </div>
             </div>

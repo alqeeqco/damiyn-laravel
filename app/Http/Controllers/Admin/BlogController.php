@@ -51,10 +51,7 @@ class BlogController extends Controller
                 return redirect()->back()->withInput();
             }
             $slug = Str::slug($request->title_ar,'-');
-            if(!empty($slug)){
-                toastr()->error('عفوا اسم الرابط مكرر   من قبل');
-                return redirect()->back()->with(['error'=>'عفوا اسم الرابط مكرر   من قبل'])->withInput();
-            }
+            
             $data_insert['title_en'] = $request->title_en;
             $data_insert['title_ar'] = $request->title_ar;
             $data_insert['slug'] = $slug;

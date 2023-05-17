@@ -51,7 +51,6 @@ class ReviewController extends Controller
             $data_insert['name_ar'] = $request->name_ar;
             $data_insert['message_en'] = $request->message_en;
             $data_insert['message_ar'] = $request->message_ar;
-            $data_insert['active'] = $request->active;
             $data_insert['added_by'] = auth()->user()->id;
             $data_insert['created_at'] = date("Y-m-d H:s");
             Review::create($data_insert);
@@ -96,7 +95,6 @@ class ReviewController extends Controller
             $data_update['name_ar'] = $request->name_ar;
             $data_update['message_en'] = $request->message_en;
             $data_update['message_ar'] = $request->message_ar;
-            $data_update['active'] = $request->active;
             $data_update['updated_by'] = auth()->user()->id;
             $data_update['updated_at'] = date("Y-m-d H:s");
             Review::where(['id'=>$id])->update($data_update);

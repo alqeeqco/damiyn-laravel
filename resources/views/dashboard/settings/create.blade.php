@@ -155,6 +155,7 @@
                         </div>
 
                         <div class="col-md-6">
+                            <label for="">{{ __('Company logo at the top') }}</label>
                             <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
                                 <input type="file" name="logo_header" class="dropify" data-default-file="{{ asset('adminassets/img/photos/1.jpg') }}" data-height="200">
                                 @error('logo_header')
@@ -164,6 +165,7 @@
                         </div>
 
                         <div class="col-md-6">
+                            <label for="">{{ __('Company logo at the bottom') }}</label>
                             <div class="col-sm-12 col-md-8 mg-t-10 mg-md-t-0">
                                 <input type="file" name="logo_footer" class="dropify" data-default-file="{{ asset('adminassets/img/photos/1.jpg') }}" data-height="200">
                                 @error('logo_footer')

@@ -81,5 +81,7 @@
     "Data has been added successfully":"تم اضافة البيانات بنجاح !",
     "Email":"إيميل",
     "Number User":"رقم الهاتف",
-    "Users":"المستخدمين"
+    "Users":"المستخدمين",
+    "Company logo at the top":"شعار الشركة في الأعلى",
+    "Company logo at the bottom":"شعار الشركة في الاسفل"
 }

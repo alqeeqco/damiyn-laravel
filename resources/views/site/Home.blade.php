@@ -186,7 +186,7 @@
 			<div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
 
 				@foreach (\App\Models\Review::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
-                <div class="col">
+                <div class="col mt-3">
 					<div data-aos="zoom-in-right">
 						<div class="card h-100">
 							<div class="card-body backgroud-text">

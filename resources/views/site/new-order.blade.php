@@ -56,13 +56,14 @@
                                <tr class="table-body text-center">
                                 <td>
                                     @if ($info->order_status == 1)
-                                    p
+                                    p -
                                     @elseif ($info->order_status == 2)
-                                    S
+                                    S -
                                     @else
-                                    S
+                                    S -
                                     @endif
-                                    {{ $info->number_orders }}</td>
+                                    {{ $info->number_orders }}
+                                </td>
                                 <td>{{ $info->mobile_user }}</td>
                                 <td>
                                     @if ($info->order_status == 1)

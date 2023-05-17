@@ -279,7 +279,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
 
 				@foreach (\App\Models\Review::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
-                <div class="col">
+                <div class="col mt-3">
 					<div data-aos="zoom-in-right">
 						<div class="card h-100">
 							<div class="card-body backgroud-text">
@@ -429,14 +429,13 @@
                     </form>
                 </div>
                 <div class="modal-footer" style="border: 0;">
-                    <a href="{{ route('login') }}" class="btn btn-send w-100">ارسال </a>
+                    <a href="{{ route('login.site') }}" class="btn btn-send w-100">ارسال </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-header-edit1">
@@ -444,31 +443,26 @@
                             src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
-                    <h5> الشروط والأحكام</h5>
-                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                        حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
-                        التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما
-                        تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه
-                        الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.</p>
+                    @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
+                        <h5>{{ __('Terms and Conditions') }}</h5>
+                        <p>{{ $Setting->$Terms_and_Conditions }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-header-edit1">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img
-                            src="assets/images/blog/close-circle.svg" alt=""></button>
+                            src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
-                    <h5> سياسة الخصوصية</h5>
-                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
-                        حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
-                        التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما
-                        تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه
-                        الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.</p>
+                    @foreach (\App\Models\Setting::limit(1)->get() as $Setting)
+                        <h5> {{ __('Privacy Policy') }}</h5>
+                        <p>{{ $Setting->$privacy_policy }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
