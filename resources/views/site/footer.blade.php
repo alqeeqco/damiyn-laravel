@@ -3,22 +3,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-footer">
-                <ul class=" ">
-                    <li class="nav-item ">
+            </div>
+
+            <div class="col-md-7 col-footer">
+                <ul class=" list-footer">
+                    <li class="nav-item li-text with-footer-link " style="width: 150px">
                         <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                             data-bs-target="#exampleModal1">الشروط والاحكام</a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item li-text with-footer-link " style="width: 150px;">
                         <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                             data-bs-target="#exampleModal2"> سياسة الخصوصية</a>
                     </li>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-footer">
-                <ul class=" list-footer">
                     <li class="nav-item li-text with-footer-link">
                         <a class="nav-link" href="{{ route('site.blogs') }}">المقالات</a>
                     </li>
@@ -26,15 +22,15 @@
                         <a class="nav-link action" href="#">من نحن</a>
                     </li>
                     <li class="nav-item li-text bg-active with-footer-link">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            data-bs-whatever="@mdo">طلب جديد</a>
+                        <a class="nav-link" href="index.html" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
                     </li>
                     <li class="nav-item li-text">
                         <a class="nav-link" href="{{ route('site.home') }}">الرئيسية</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4 icon-footer col-footer-image">
+            <div class="col-md-3 icon-footer col-footer-image">
                 @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                     <img class="img-footer" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                 @endforeach

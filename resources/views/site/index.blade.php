@@ -340,24 +340,19 @@
     <footer class="footer section section-sm">
         <!-- Container Start -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-footer">
-                    <ul class=" ">
-                        <li class="nav-item ">
+            <div class="row" style="justify-content: end;">
+
+
+                <div class="col-md-9 col-footer">
+                    <ul class=" list-footer">
+                        <li class="nav-item li-text with-footer-link " style="width: 150px">
                             <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1">الشروط والاحكام</a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item li-text with-footer-link " style="width: 150px;">
                             <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal2"> سياسة الخصوصية</a>
                         </li>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="col-md-6 col-footer">
-                    <ul class=" list-footer">
                         <li class="nav-item li-text with-footer-link">
                             <a class="nav-link" href="{{ route('site.login') }}">المقالات</a>
                         </li>
@@ -373,7 +368,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4 icon-footer col-footer-image">
+                <div class="col-md-3 icon-footer col-footer-image">
                     @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                         <img class="img-footer" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                     @endforeach
