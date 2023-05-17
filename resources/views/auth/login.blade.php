@@ -62,7 +62,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="{{ route('homeIndex') }}">
                             @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
+                                <img width="100" src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
                             @endforeach
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-md-4 icon-footer col-footer-image">
                     @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                        <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
+                        <img width="100" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                     @endforeach
 
                 </div>

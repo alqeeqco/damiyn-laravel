@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthSiteController extends Controller
 {
@@ -17,6 +18,16 @@ class AuthSiteController extends Controller
     public function siteregisterPost(Request $request)
     {
 
+        // $validator = Validator($request->all() , [
+        //     'phone' => 'required|unique:users',
+        //     'email' => 'required|unique:users',
+        // ] , [
+        //     'phone.required' => 'يرجى أدخال رقم الهاتف',
+        // ]);
+
+        // if($validator->failed()){
+        //     return redirect()->back()->with(['error' => $validator->error()->first()])->withInput();
+        // }
         $user = new User();
         $code = rand(99999,99999);
         $user->name = $request->name;
@@ -34,47 +45,19 @@ class AuthSiteController extends Controller
                 return redirect()->back()->with(['error' => 'عفوا  الايميل مسجل من قبل'])->withInput();
             }
         $user->save();
-
-        // $TWILIO_SID = env('TWILIO_SID');
-        // $TWILIO_TOKEN = env('TWILIO_TOKEN');
-        // $TWILIO_FROM = env('TWILIO_FROM');
-        // $message = "Your verification code is $code";
-
-        // $twilio = new Twilio($TWILIO_SID, $TWILIO_TOKEN, $TWILIO_FROM);
-        // $twilio->message->create('+970'.$request->phone,[
-
-        //     'form'=>$TWILIO_FROM,
-        //     'body'=>"Your verification code is $code"
-        // ]);
-        // $message = $twilio->message($request->phone, $message, [], [
-        //     'from'=>$TWILIO_FROM,
-        // ]);
-
-        //  $twilio->message($user->phone, "Your verification code is $code");
-
-
-
-        // $twilio = new \Aloha\Twilio\Twilio("ACfcb86c09c8157469c19a3e17e2556b27",
-        //  "de16dee8913043e606df377ab3980a21", "+12707479981");
-
-        //  $twilio->message($user->phone, "Your verification code is $code");
-
-
-
-        $credetails = [
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'code'=>$request->code,
-            'password'=>$request->phone,
-        ];
-        if(Auth::attempt($credetails)){
-            toastr()->success('Register Successfully');
-
-            return redirect('site/verfiction');
-        }
+        // $credetails = [
+        //     'name'=>$request->name,
+        //     'email'=>$request->email,
+        //     'phone'=>$request->phone,
+        //     'code'=>$request->code,
+        //     'password'=>$request->phone,
+        // ];
+        // if(Auth::attempt($credetails)){
+        //     toastr()->success('Register Successfully');
+        //     return redirect('site/verfiction');
+        // }
         toastr()->success('Register Successfully');
-        return redirect('login');
+        return redirect('/verfiction')->with('user_id' ,  $user->id);
 
     }
     public function sitelogin()
@@ -105,8 +88,34 @@ class AuthSiteController extends Controller
     public function logout()
     {
         Auth::logout();
+
         return redirect()->route('login.site');
 
     }
 
 }
+
+
+    // $TWILIO_SID = env('TWILIO_SID');
+    // $TWILIO_TOKEN = env('TWILIO_TOKEN');
+    // $TWILIO_FROM = env('TWILIO_FROM');
+    // $message = "Your verification code is $code";
+
+    // $twilio = new Twilio($TWILIO_SID, $TWILIO_TOKEN, $TWILIO_FROM);
+    // $twilio->message->create('+970'.$request->phone,[
+
+    //     'form'=>$TWILIO_FROM,
+    //     'body'=>"Your verification code is $code"
+    // ]);
+    // $message = $twilio->message($request->phone, $message, [], [
+    //     'from'=>$TWILIO_FROM,
+    // ]);
+
+    //  $twilio->message($user->phone, "Your verification code is $code");
+
+
+
+    // $twilio = new \Aloha\Twilio\Twilio("ACfcb86c09c8157469c19a3e17e2556b27",
+    //  "de16dee8913043e606df377ab3980a21", "+12707479981");
+
+    //  $twilio->message($user->phone, "Your verification code is $code");

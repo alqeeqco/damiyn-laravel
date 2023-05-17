@@ -23,15 +23,22 @@ class AuthController extends Controller
     public function verfictionStore(Request $request)
     {
         $code = $request->code1 . $request->code2 . $request->code3 . $request->code4 . $request->code5;
-        if(auth()->user()->code == $code) {
-            $user = User::find(auth()->id());
-            $user->status = 'active';
-            $user->save();
-            return redirect('site');
-        } else {
-            toastr()->error("code error please try again");
-            return back();
+        $user = User::find($request->id);
+        if($user){
+            if($user->code == $code) {
+                $user->status = 'active';
+                $user->save();
+                if(Auth::loginUsingId($user->id)){
+                    toastr()->success('Register Successfully');
+                return redirect('site');
+                }
+            } else {
+                toastr()->error("code error please try again");
+                return back();
+            }
         }
+        return abort(403);
+
     }
 
 }

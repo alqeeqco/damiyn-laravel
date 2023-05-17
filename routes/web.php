@@ -46,7 +46,8 @@ Route::delete('/site/logout', [AuthSiteController::class, 'logout'])->name('site
 /*              end  start site  login                          */
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale() . '/site', 'as' => 'site.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => LaravelLocalization::setLocale() . '/site', 'as' => 'site.',
+'middleware' => ['auth']], function () {
 
     Route::get('/', [IndexController::class, 'index'])->name('home');
     Route::get('/profile/edit', [ProfileSiteController::class, 'edit'])->name('profile.edit');
@@ -60,9 +61,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/site', 'as' => 's
     Route::get('/slider/index', [SliderSiteController::class, 'sliderIndex'])->name('slider.index');
     Route::get('/features/index', [FeatureSiteController::class, 'featuresIndex'])->name('features.index');
     Route::get('/send-sms', [IndexController::class, 'send_sms'])->name('send_sms');
-    Route::get('/verfiction', [AuthController::class, 'verfictionIndex'])->name('verfictionIndex');
-    Route::post('/verfictionStore', [AuthController::class, 'verfictionStore'])->name('verfictionStore');
 });
+
+Route::get('/verfiction', [AuthController::class, 'verfictionIndex'])->name('verfictionIndex');
+Route::post('/verfictionStore', [AuthController::class, 'verfictionStore'])->name('verfictionStore');
 
 
 Route::get('/', [IndexController::class, 'homeIndex'])->name('homeIndex');

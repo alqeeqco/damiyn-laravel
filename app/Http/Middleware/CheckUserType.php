@@ -19,6 +19,9 @@ class CheckUserType
         if (Auth::user()->type == 'user') {
             return redirect('not-allowed');
         }
+        // if (Auth::attempt(['phone' => auth()->user()->phone])) {
+        //     return redirect('/verfiction');
+        // }
         return $next($request);
     }
 }

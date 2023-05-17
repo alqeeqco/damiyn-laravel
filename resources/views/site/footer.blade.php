@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-4 icon-footer col-footer-image">
                 @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                    <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
+                    <img class="img-footer" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                 @endforeach
             </div>
         </div>

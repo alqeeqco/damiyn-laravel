@@ -1173,7 +1173,22 @@ ul.pagination .active a {
   border: 1px solid #fff;
   color: #fff;
 }
+.img_home{
+    max-width: 107px;
+}
+.p_feature{
+    direction: rtl;
+    text-align: initial;
+}
 
+.img-footer{
+    max-width: 197px;
+
+}
+.logo_site{
+    max-width: 100%;
+
+}
 
 .page-search .advance-search ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */

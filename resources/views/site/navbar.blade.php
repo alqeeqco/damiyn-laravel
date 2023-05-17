@@ -3,9 +3,11 @@
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light navigation">
-                    <a class="navbar-brand" href="{{ route('site.home') }}">
+                    <a class="navbar-brand img_home" href="{{ route('site.home') }}">
                     @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                        <img   src="{{ asset('uploads/settings/'.$logo->logo_header) }}" alt="">
+
+                            <img   src="{{ asset('uploads/settings/'.$logo->logo_header) }}" class="logo_site" alt="">
+
                     @endforeach
                 </a>
 

@@ -51,7 +51,7 @@
 								<div>
 									<img width="50" src="{{ asset('uploads/feature/'.$feature->image) }}" alt="">
 									<h5> {{ $feature->$title_feature}}</h5>
-									<p >  {!! Str::words($feature->$content_feature, 20, '...') !!}</p>
+									<p class="p_feature">  {!! Str::words($feature->$content_feature, 20, '...') !!}</p>
 								</div>
 							</div>
 						</div>
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="about">
                                         <h5><span class="new">ضمين</span>,{{ $setting->$title_video }}</h5>
-                                        <p>{{ $setting->$content_video }}</p>
+                                        <p class="p_feature">{{ $setting->$content_video }}</p>
                                         </p>
                                         <button class="buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</button>
                                     </div>
@@ -134,7 +134,7 @@
 						</div>
 						<div class="about1">
 							<h5><span class="new">ضمين</span>, {{ $gallary->$title_gallary }}</h5>
-							<p>{{ $gallary->$content_gallary }}</p>
+							<p class="p_feature">{{ $gallary->$content_gallary }}</p>
 							<button class="buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</button>
 						</div>
 						<div class="test">
@@ -177,7 +177,7 @@
 					<div class="about2 ">
 						<h5>ماذا قالو عن <span class="new">ضمين</span></h5>
                         @if ((\App\Models\Review::where('active',1)->first()))
-                        <p>ماذا قال عنا عملاؤنا وعن خدمات ضمين ...</p>
+                        <p class="p_feature">ماذا قال عنا عملاؤنا وعن خدمات ضمين ...</p>
                         @endif
 
 					</div>
@@ -215,7 +215,7 @@
 					<div class="about2">
 						<h5>شركاء ضمين</h5>
 						@if ((\App\Models\Team::where('active',1)->first()))
-                        <p>شركاء نجاح ضمين دائما وأبدا...</p>
+                        <p class="p_feature">شركاء نجاح ضمين دائما وأبدا...</p>
 
                         @endif
 

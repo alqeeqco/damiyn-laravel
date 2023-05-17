@@ -57,9 +57,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand img_home" href="{{ route('homeIndex') }}">
                             @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                                <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" alt="">
+                                <img src="{{ asset('uploads/settings/' . $logo->logo_header) }}" class="logo_site" alt="">
                             @endforeach
 
                         </a>
@@ -127,32 +127,31 @@
 =            Popular deals section            =
 ============================================-->
 
-    <section class="popular-deals section bg-gray">
-        <div class="container">
-            <div class="row">
-                @foreach (\App\Models\Feature::where('active', 1)->get() as $feature)
-                    <div class="col-md-4">
-                        <div data-aos="fade-right">
-                            <div class="card task1 ">
-                                <div class="card-body padding-card">
-                                    <div>
-                                        <img width="50" src="{{ asset('uploads/feature/' . $feature->image) }}"
-                                            alt="">
-                                        <h5> {{ $feature->$title_feature }}</h5>
-                                        <p>{{ $feature->$content_feature }}</p>
-                                    </div>
-                                </div>
+<section class="popular-deals section bg-gray">
+    <div class="container">
+        <div class="row">
+            @foreach (\App\Models\Feature::where('active',1)->get() as $feature )
+            <div class="col-md-4" style="overflow: hidden">
+                <div data-aos="fade-right">
+                    <div class="card task1 ">
+                        <div class="card-body padding-card">
+                            <div>
+                                <img width="50" src="{{ asset('uploads/feature/'.$feature->image) }}" alt="">
+                                <h5> {{ $feature->$title_feature}}</h5>
+                                <p  class="p_feature">  {!! Str::words($feature->$content_feature, 27, '...') !!}</p>
                             </div>
                         </div>
-
                     </div>
-                @endforeach
+                </div>
+
             </div>
+            @endforeach
 
         </div>
-        </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
@@ -194,7 +193,7 @@
                                 </div>
                                 <div class="about">
                                     <h5><span class="new">ضمين</span>,{{ $setting->$title_video }}</h5>
-                                    <p>{{ $setting->$content_video }}</p>
+                                    <p class="p_feature">{{ $setting->$content_video }}</p>
                                     </p>
                                     <button class="buttons" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         data-bs-whatever="@mdo">طلب جديد</button>
@@ -223,7 +222,7 @@
                             </div>
                             <div class="about1">
                                 <h5><span class="new">ضمين</span>, {{ $gallary->$title_gallary }}</h5>
-                                <p>{{ $gallary->$content_gallary }}</p>
+                                <p class="p_feature">{{ $gallary->$content_gallary }}</p>
                                 <button class="buttons" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     data-bs-whatever="@mdo">طلب جديد</button>
                             </div>
@@ -264,68 +263,76 @@
         <!-- Container Start -->
         <div class="container">
             <div class="row">
-                <div class="col-md-12 abouts ">
-                    <div class="image_bg">
-                        <img width="60" src="{{ asset('webassets/images/blog/Group 100.png') }}" alt="">
-                    </div>
-                    <div class="about2 ">
-                        <h5>ماذا قالو عن <span class="new">ضمين</span></h5>
-                        <p>... ماذا قال عنا عملاؤنا وعن خدمات ضمين </p>
-                    </div>
-                </div>
-            </div>
+				<div class="col-md-12 abouts ">
+					<div class="image_bg">
+						<img width="60" src="{{ asset('webassets/images/blog/Group 100.png') }}" alt="">
+					</div>
+					<div class="about2 ">
+						<h5>ماذا قالو عن <span class="new">ضمين</span></h5>
+                        @if ((\App\Models\Review::where('active',1)->first()))
+                        <p class="p_feature">ماذا قال عنا عملاؤنا وعن خدمات ضمين ...</p>
+                        @endif
+
+					</div>
+				</div>
+			</div>
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
 
-                @foreach (\App\Models\Review::where('active', 1)->orderby('id', 'DESC')->limit(6)->get() as $review)
-                    <div class="col">
-                        <div data-aos="zoom-in-right">
-                            <div class="card h-100">
-                                <div class="card-body backgroud-text">
-                                    <p class="card-text">“ {{ $review->$message }}”</p>
-                                </div>
-                                <div class="card-footer backgroud-text-footer">
-                                    <small class="text-body-secondary">{{ $review->$name }}</small>
-                                </div>
-                            </div>
-                        </div>
+				@foreach (\App\Models\Review::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
+                <div class="col">
+					<div data-aos="zoom-in-right">
+						<div class="card h-100">
+							<div class="card-body backgroud-text">
+								<p class="card-text">“ {{ $review->$message }}”</p>
+							</div>
+							<div class="card-footer backgroud-text-footer">
+								<small class="text-body-secondary">{{ $review->$name }}</small>
+							</div>
+						</div>
+					</div>
 
-                    </div>
+				</div>
                 @endforeach
-            </div>
+			</div>
         </div>
     </section>
 
     <section class="section">
         <!-- Container Start -->
 
-        <img class="path2" src="assets/images/blog/_Path_.png" alt="">
+        <img class="path2" src="{{ asset('webassets/images/blog/_Path_.png') }}" alt="">
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12 abouts">
                     <div class="about2">
-                        <h5>شركاء ضمين</h5>
-                        <p>شركاء نجاح ضمين دائما وأبدا...</p>
-                    </div>
+						<h5>شركاء ضمين</h5>
+						@if ((\App\Models\Team::where('active',1)->first()))
+                        <p class="p_feature">شركاء نجاح ضمين دائما وأبدا...</p>
+
+                        @endif
+
+
+					</div>
                 </div>
             </div>
             <div class="grid text-center d-flex">
-                @foreach (\App\Models\Team::where('active', 1)->orderby('id', 'DESC')->limit(6)->get() as $review)
-                    <div class="total">
-                        <img src="{{ asset('uploads/team/' . $review->image) }}" alt="">
-                    </div>
+				@foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(6)->get() as $review )
+                <div class="total" style="overflow: hidden;">
+                    <img style="max-width: 100%;" src="{{ asset('uploads/team/'.$review->image) }}" alt="">
+                </div>
                 @endforeach
 
-            </div>
+			</div>
             <div class="grid text-center mt-2 d-flex justify-content-center">
-                @foreach (\App\Models\Team::where('active', 1)->orderby('id', 'DESC')->limit(2)->offset(5)->get() as $review)
-                    <div class="total">
-                        <img src="{{ asset('uploads/team/' . $review->image) }}" alt="">
-                    </div>
+				@foreach ( \App\Models\Team::where('active',1)->orderby('id','DESC')->limit(2)->offset(5)->get() as $review )
+                <div class="total" style="overflow: hidden;">
+                    <img  src="{{ asset('uploads/team/'.$review->image) }}" alt="">
+                </div>
                 @endforeach
 
 
-            </div>
+			</div>
         </div>
     </section>
 
@@ -355,20 +362,20 @@
                             <a class="nav-link" href="{{ route('site.login') }}">المقالات</a>
                         </li>
                         <li class="nav-item li-text with-footer-link">
-                            <a class="nav-link action" href="{{ route('site.login') }}">من نحن</a>
+                            <a class="nav-link action" href="#">من نحن</a>
                         </li>
                         <li class="nav-item li-text bg-active with-footer-link">
                             <a class="nav-link" href="index.html" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
                         </li>
                         <li class="nav-item li-text">
-                            <a class="nav-link" href="i{{ route('homeIndex') }}">الرئيسية</a>
+                            <a class="nav-link" href="{{ route('homeIndex') }}">الرئيسية</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-4 icon-footer col-footer-image">
                     @foreach (\App\Models\Setting::limit(1)->get() as $logo)
-                        <img src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
+                        <img class="img-footer" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                     @endforeach
 
                 </div>
@@ -439,7 +446,7 @@
             <div class="modal-content">
                 <div class="modal-header modal-header-edit1">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img
-                            src="assets/images/blog/close-circle.svg" alt=""></button>
+                            src="{{ asset('webassets/images/blog/close-circle.svg') }}" alt=""></button>
                 </div>
                 <div class="modal-body modal-body-edit">
                     <h5> الشروط والأحكام</h5>
