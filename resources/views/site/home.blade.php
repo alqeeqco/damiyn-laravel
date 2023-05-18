@@ -44,7 +44,7 @@
 		<div class="container">
 			<div class="row">
                 @foreach (\App\Models\Feature::where('active',1)->get() as $feature )
-                <div class="col-md-4" style="overflow: hidden">
+                <div class="col-md-4 mt-3" style="overflow: hidden">
 					<div data-aos="fade-right">
 						<div class="card task1 ">
 							<div class="card-body padding-card">
