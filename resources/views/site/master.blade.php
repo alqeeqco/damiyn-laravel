@@ -40,7 +40,8 @@
 
     <link href="{{ asset('webassets/plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link href="{{ asset('webassets/css/style.css') }}" rel="stylesheet">
-        @section('css')
+
+        @yield('css')
 </head>
 
 <body class="body-wrapper">
@@ -87,6 +88,16 @@ Essential Scripts
 
     <script>
         AOS.init();
+    </script>
+   <script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
     </script>
     @yield('script')
 </body>

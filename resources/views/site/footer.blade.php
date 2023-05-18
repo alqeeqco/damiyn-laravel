@@ -2,11 +2,8 @@
     <!-- Container Start -->
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-footer">
-            </div>
-
-            <div class="col-md-7 col-footer">
-                <ul class=" list-footer">
+            <div class="col-md-4 col-footer new-footer">
+                <ul class="d-flex">
                     <li class="nav-item li-text with-footer-link " style="width: 150px">
                         <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                             data-bs-target="#exampleModal1">الشروط والاحكام</a>
@@ -15,22 +12,31 @@
                         <a class="nav-link text-white" href="index.html" data-bs-toggle="modal"
                             data-bs-target="#exampleModal2"> سياسة الخصوصية</a>
                     </li>
-                    <li class="nav-item li-text with-footer-link">
-                        <a class="nav-link" href="{{ route('site.blogs') }}">المقالات</a>
-                    </li>
-                    <li class="nav-item li-text with-footer-link">
-                        <a class="nav-link action" href="#">من نحن</a>
-                    </li>
-                    <li class="nav-item li-text bg-active with-footer-link">
-                        <a class="nav-link" href="index.html" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
-                    </li>
-                    <li class="nav-item li-text">
-                        <a class="nav-link" href="{{ route('site.home') }}">الرئيسية</a>
-                    </li>
-                </ul>
+                   </ul>
             </div>
-            <div class="col-md-3 icon-footer col-footer-image">
+
+            <div class="col-md-5 col-footer pt-2">
+
+                <div>
+                    <ul class=" list-footer">
+
+                        <li class="nav-item li-text with-footer-link">
+                            <a class="nav-link" href="{{ route('site.blogs') }}">المقالات</a>
+                        </li>
+                        <li class="nav-item li-text with-footer-link">
+                            <a class="nav-link action" href="#">من نحن</a>
+                        </li>
+                        <li class="nav-item li-text bg-active with-footer-link">
+                            <a class="nav-link" href="index.html" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" data-bs-whatever="@mdo">طلب جديد</a>
+                        </li>
+                        <li class="nav-item li-text">
+                            <a class="nav-link" href="{{ route('site.home') }}">الرئيسية</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 icon-footer col-footer-image pt-2">
                 @foreach (\App\Models\Setting::limit(1)->get() as $logo)
                     <img class="img-footer" src="{{ asset('uploads/settings/' . $logo->logo_footer) }}" alt="">
                 @endforeach
