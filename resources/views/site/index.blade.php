@@ -104,24 +104,24 @@
 =            Hero Area            =
 ================================-->
 
-    <section class="hero-area bg-1 text-center ">
-        <div class="slider">
-            <div class="slide_viewer">
-                <div class="slide_group">
-                    @foreach (\App\Models\Slider::where('active', 1)->limit(2)->orderby('id', 'DESC')->get() as $info)
-                        <div class="slide">
-                            <img src="{{ asset('uploads/sliders/' . $info->slider) }}" />
-                        </div>
-                    @endforeach
+<section class="hero-area bg-1 text-center ">
+    <div class="slider">
+        <div class="slide_viewer">
 
+            <div class="slide_group text">
+                @foreach (\App\Models\Slider::where('active',1)->limit(2)->orderby('id','DESC')->get() as $info )
+                <div class="slide">
+                    <img class="slider-img" src="{{ asset('uploads/sliders/' . $info->slider) }}" />
                 </div>
+                @endforeach
+
             </div>
-        </div><!-- End // .slider -->
-
-        <div class="slide_buttons">
         </div>
-    </section>
+    </div><!-- End // .slider -->
 
+    <div class="slide_buttons">
+    </div>
+</section>
 
     <!--===========================================
 =            Popular deals section            =
@@ -131,7 +131,7 @@
     <div class="container">
         <div class="row">
             @foreach (\App\Models\Feature::where('active',1)->get() as $feature )
-            <div class="col-md-4" style="overflow: hidden">
+            <div class="col-md-4 mt-2" style="overflow: hidden">
                 <div data-aos="fade-right">
                     <div class="card task1 ">
                         <div class="card-body padding-card">
