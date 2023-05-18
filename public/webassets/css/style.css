@@ -3892,7 +3892,18 @@ a.slide_btn {
         display: flex;
         width: 100%;
     }
+    #mobile-mune {
+        position: absolute;
+        top: 100px;
+        background: white;
+        width: 100%;
+    }
+    header{
+        height: 120px;
+    }
   }
+
+
   @media only screen and (max-width: 912px){
     .slide_buttons {
         top: 580px;
@@ -3902,6 +3913,12 @@ a.slide_btn {
     }
     .img-footer {
         max-width: 80px;
+    }
+    #mobile-mune {
+        position: absolute;
+        top: 100px;
+        background: white;
+        width: 100%;
     }
 
   }
