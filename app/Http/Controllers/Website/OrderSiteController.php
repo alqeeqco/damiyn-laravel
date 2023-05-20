@@ -16,10 +16,19 @@ class OrderSiteController extends Controller
     public function orderIndex()
     {
         $orders = Order::select("*")->orderby('id','DESC')->get();
-        $all_orders_count = Order::count();
-        $waiting = Order::where('order_status',3)->count();
-        $waiting_pay = Order::where('order_status',2)->count();
-        $finish = Order::where('order_status',1)->count();
+        $user = auth()->user();
+        $hasOrders = $user->orders()->exists();
+
+        if ($hasOrders) {
+            $orders = $user->orders;
+
+        } else {
+            $orders = [];
+        }
+        $all_orders_count = $user->orders()->count();
+        $waiting =$user->orders()->where('order_status',3)->count();
+        $waiting_pay = $user->orders()->where('order_status',2)->count();
+        $finish = $user->orders()->where('order_status',1)->count();
         return view('site.new-order',compact('orders','all_orders_count','waiting','waiting_pay','finish'));
     }
 
@@ -36,8 +45,10 @@ class OrderSiteController extends Controller
             } else {
                 $data_insert['number_orders'] = 1;
             }
+            $user_id = auth()->id();
             $data_insert['active'] = 1;
             $data_insert['mobile_user'] = $request->mobile_user;
+            $data_insert['user_id'] = $user_id;
             $data_insert['order_type'] = $request->order_type;
             $data_insert['show_order_en'] = $request->show_order_en;
             $data_insert['show_order_ar'] = $request->show_order_ar;

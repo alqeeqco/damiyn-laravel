@@ -9,5 +9,10 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = "orders";
-    protected $fillable = ['number_orders','mobile_user','order_status','order_type','added_by','date','active','show_order_en','show_order_ar'];
+    protected $fillable = ['number_orders','user_id','mobile_user','order_status','order_type','added_by','date','active','show_order_en','show_order_ar'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

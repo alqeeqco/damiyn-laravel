@@ -35,6 +35,7 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('ID') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Number Orders') }}</th>
+                                    <th class="wd-15p border-bottom-0">اسم المستخدم</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Mobile User') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Order status') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('Order Type') }}</th>
@@ -58,6 +59,7 @@
                                             {{ $info->number_orders }}
                                         </td>
 
+                                        <td>{{ $info->user_id_name }}</td>
                                         <td>{{ $info->mobile_user }}</td>
                                         {{-- <td>
                                             @if ($info->order_status == 1)

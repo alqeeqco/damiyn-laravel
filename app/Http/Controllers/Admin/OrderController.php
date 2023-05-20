@@ -20,6 +20,7 @@ class OrderController extends Controller
         if (!empty($data)) {
             foreach ($data as $info) {
                 $info->added_by_admin = User::where('id', $info->added_by)->value('name');
+                $info->user_id_name = User::where('id', $info->user_id)->value('name');
                 if ($info->updated_by > 0 and $info->updated_by != null) {
                     $info->updated_by_admin = User::where('id', $info->updated_by)->value('name');
                 }
@@ -76,7 +77,7 @@ class OrderController extends Controller
             $data_update['order_status'] = $request->order_status;
             $data_update['show_order_en'] = $request->show_order_en;
             $data_update['show_order_ar'] = $request->show_order_ar;
-            $data_update['Order_type'] = $request->Order_type;
+            $data_update['order_type'] = $request->order_type;
             $data_update['active'] = $request->active;
             $data_update['updated_at'] = date("Y-m-d H:s");
             Order::where(['id'=>$id])->update($data_update);
