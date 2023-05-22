@@ -12,6 +12,7 @@
     $Terms_and_Conditions = 'Terms_and_Conditions_' . app()->currentLocale();
 
 @endphp
+{{-- hamza --}}
 <html lang="en">
 
 <head>
