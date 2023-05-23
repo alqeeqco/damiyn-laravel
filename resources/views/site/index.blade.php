@@ -13,7 +13,7 @@
 
 @endphp
 <html lang="en">
-    
+
 <head>
 
     <!-- ** Basic Page Needs ** -->
@@ -118,8 +118,8 @@
         </div>
     </div><!-- End // .slider -->
 
-    <div class="slide_buttons">
-    </div>
+    {{-- <div class="slide_buttons">
+    </div> --}}
 </section>
 
     <!--===========================================

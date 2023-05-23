@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ExportOrders;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\updateOrdersRequest;
@@ -9,6 +10,8 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
+
 class OrderController extends Controller
 {
     /**
@@ -139,6 +142,11 @@ class OrderController extends Controller
         }
         session()->flash('success', __('The data has been updated successfully'));
         return back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportOrders, 'orders.xlsx');
     }
 
 

@@ -24,7 +24,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-
+                    <form action="{{ route('order.export') }}" method="get">
+                        @csrf
+                    @if(\Illuminate\Support\Facades\App::getLocale() == 'en')
+                    <button type="submit" class="btn btn-success float-right">Excel</button>
+                    @else
+                        <button type="submit" class="btn btn-success float-left">Excel</button>
+                    @endif
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -59,6 +59,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::get('order/toggle_active/{id}', [OrderController::class, 'toggle_active'])->name('order.toggle_active');
     Route::get('order/order_status/{id}', [OrderController::class, 'order_status'])->name('order.order_status');
 
+
     /*              end order                                     */
 
     /*              start Features                                     */

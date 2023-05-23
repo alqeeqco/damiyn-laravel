@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ExportUsers;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\dashboaedController;
 use App\Http\Controllers\Admin\FeatureController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
@@ -69,3 +70,5 @@ Route::post('/verfictionStore', [AuthController::class, 'verfictionStore'])->nam
 
 Route::get('/', [IndexController::class, 'homeIndex'])->name('homeIndex');
 Route::get('/home/Blogs', [IndexController::class, 'homeBlogs'])->name('homeBlogs');
+
+Route::get('order/export', [OrderController::class, 'export'])->name('order.export');

@@ -31,8 +31,8 @@
 			</div>
 		</div><!-- End // .slider -->
 
-		<div class="slide_buttons">
-		</div>
+		{{-- <div class="slide_buttons">
+		</div> --}}
 	</section>
 
 
