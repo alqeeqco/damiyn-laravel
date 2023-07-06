@@ -252,7 +252,7 @@ class OrderController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($form_data),
             CURLOPT_HTTPHEADER => array(
-                'authorization: SDJNLMJLRH-J6J9BG9HD2-TRNK6GK6BB'
+                'authorization: token'
             ),
         ));
         $response = curl_exec($curl);
@@ -274,7 +274,7 @@ class OrderController extends Controller
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_POSTFIELDS => json_encode(""),
             CURLOPT_HTTPHEADER => array(
-                'authorization: SDJNLMJLRH-J6J9BG9HD2-TRNK6GK6BB'
+                'authorization: token'
             ),
         ));
         $response = curl_exec($curl);
