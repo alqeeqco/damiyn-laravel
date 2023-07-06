@@ -8,6 +8,7 @@
 		<meta name="Description" content="">
 		<meta name="Author" content="Spruko Technologies Private Limited">
 		<meta name="Keywords" content="admin">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!-- Title -->
 		<title>  @yield('title',env('APP_NAME'))  </title>

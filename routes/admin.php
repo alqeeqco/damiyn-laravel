@@ -58,6 +58,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin', 'as' => '
     Route::post('order/new_order/{id}', [OrderController::class, 'new_order'])->name('order.new_order');
     Route::get('order/toggle_active/{id}', [OrderController::class, 'toggle_active'])->name('order.toggle_active');
     Route::get('order/order_status/{id}', [OrderController::class, 'order_status'])->name('order.order_status');
+    Route::post('order/createPaymentUrl', [OrderController::class, 'createPaymentUrl'])->name('order.createPaymentUrl');
+    Route::get('order/Callback/{id}', [OrderController::class, 'Callback'])->name('order.Callback');
 
 
     /*              end order                                     */

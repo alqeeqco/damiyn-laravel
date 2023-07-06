@@ -84,9 +84,16 @@
                                                 خدمة
                                             @endif
                                         </td>
-                                        <td><a href="{{ route('site.orderShow', $info->id) }}" class="show"
+                                        <td>
+                                            <a href="{{ route('site.orderShow', $info->id) }}" class="show"
                                                 data-bs-toggle="modal" data-bs-target="#exampleModal{{ $info->id }}"
-                                                data-bs-whatever="@mdo">مشاهدة التفاصيل</a></td>
+                                                data-bs-whatever="@mdo">مشاهدة التفاصيل</a>
+                                                @if ($info->order_status != 1)
+                                                    @if ($info->total || $info->url_pay || $info->invoice_id)
+                                                    <a style="padding: 5px;" href="{{  $info->url_pay }}" target="_blank" class="btn btn-payment">دفع الأن</a>                                            </td>
+                                                    @endif
+                                                @endif
+
                                     </tr>
                                     <div class="modal fade" id="exampleModal{{ $info->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">

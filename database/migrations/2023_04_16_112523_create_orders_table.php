@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('number_orders');
+            $table->integer('total');
+            $table->text('url_pay');
+            $table->integer('invoice_id');
             $table->string('mobile_user');
             $table->foreignId('user_id');
             $table->tinyInteger('order_status')->default(2);//حالة الطلب
